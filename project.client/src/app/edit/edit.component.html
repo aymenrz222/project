@@ -1,0 +1,60 @@
+<div class="back-layer">
+    <div class="section">
+  
+        <form (ngSubmit)="onSaveModification(nom.value, prenom.value, cin.value, age.value, telephone.value, duedate.value, description.value, category.value, pudget.value)">
+
+      <h1>Modifier l'employée</h1>
+      <div>
+        <label for="nom">Title<span class="required-field">*</span>:</label>
+        <input type="text" id="nom" name="nom" placeholder="Enter your title" required #nom>
+      </div>
+
+      <div>
+        <label for="prenom">Project Status<span class="required-field">*</span>:</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Enter your project status" required #prenom>
+      </div>
+
+      <div>
+        <label for="cin">Client<span class="required-field">*</span>:</label>
+        <input type="text" id="cin" name="cin" placeholder="Enter your client" required #cin>
+      </div>
+
+      <div>
+        <label for="age">Teams:</label>
+        <input type="text" id="age" name="age" placeholder="Enter your teams" #age>
+      </div>
+
+      <div>
+        <label for="telephone">Debut Date:</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="Enter your debut date" #telephone>
+      </div>
+
+      <div>
+        <label for="duedate">Due Date:</label>
+        <input type="tel" id="duedate" name="duedate" placeholder="Enter your due date" #duedate>
+      </div>
+
+      <div>
+        <label for="description">Detailed Description:</label>
+        <input type="text" id="description" name="description" placeholder="Enter detailed description" #description>
+      </div>
+
+      <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" placeholder="Enter category" #category>
+      </div>
+
+      <div>
+        <label for="pudget">Project Budget:</label>
+        <input type="text" id="pudget" name="pudget" placeholder="Enter project budget" #pudget>
+      </div>
+  
+      
+  
+      <button  type="submit">Modifier   <i class="fa-regular fa-floppy-disk"></i></button>
+      <button type="button" (click)="closeModal()" class="cancel-button">
+        Annuler  <i class="fa-solid fa-xmark"></i> 
+      </button>
+    </form>
+    </div>
+  </div>

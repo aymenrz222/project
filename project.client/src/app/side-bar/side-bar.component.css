@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  
+  /* le side bar */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 121px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: #fff;
+    overflow: hidden;
+    background-color: black ;
+    transition: all 0.5s linear;
+    animation: sidebarAnimation 1s forwards; /* Ajout de l'animation */
+}
+.sidebar:hover{
+  width: 240px;
+  transition: 0.5s;
+}
+@keyframes sidebarAnimation { /* Définition de l'animation */
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+.logo {
+    height: 80px;
+    padding: 16px;
+}
+
+
+.menu {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    animation: menuAnimation 1s forwards; /* Ajout de l'animation */
+}
+@keyframes menuAnimation { /* Définition de l'animation */
+    0% {
+        transform: translateY(-100%);
+        
+    }
+    100% {
+        transform: translateY(0);
+    }
+    
+}
+.menu li {
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.8s ease-in-out;
+}
+.menu li:hover , .activate{
+    background: #faf6f63a;
+}
+
+
+.menu li span {
+   overflow: hidden;
+    text-shadow:  0 0 10px rgb(93, 91, 94);
+    text-decoration: solid ;
+
+} 
+.menu a {
+    color: whitesmoke;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+}
+.menu a i {
+    font-size: 1.2rem;
+
+}
+.logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
