@@ -13,7 +13,7 @@ import { AjoutComponent } from './ajout/ajout.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ViewComponent } from './view/view.component';
-import { UserComponent } from './user/user.component';
+
 import { MembreComponent } from './membre/membre.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { MembreComponent } from './membre/membre.component';
     EditComponent,
     DeleteComponent,
     ViewComponent,
-    UserComponent,
+    
     MembreComponent
   ],
   imports: [

@@ -17,19 +17,19 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a [routerLink]="['list-projet']">
         <i class="fas fa-user"></i>
         <span>gestion de projet </span>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a [routerLink]="['membre']">
         <i class="fas fa-chart-bar"></i>
-        <span> membre au logiciel </span>
+        <span>membre</span>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a [routerLink]="['list-projet']">
         <i class="fas fa-briefcase"></i>
         <span>  careers</span>
       </a>
@@ -61,5 +61,10 @@
   </ul>
 </div>
     </div>
+    
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    
   </div>
 
