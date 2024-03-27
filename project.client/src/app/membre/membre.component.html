@@ -30,18 +30,22 @@
           Nom
           <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
             <i class="th-sm sorting_asc"></i>
-          </button>
+          </button></th>
           <th>
             Prénom
             <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
               <i class="th-sm sorting_asc"></i>
-            </button>
+            </button></th>
             <th>
               CIN
               <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
                 <i class="th-sm sorting_asc"></i>
-              </button>
-
+              </button></th>
+              <th>
+                poste
+                <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+                  <i class="th-sm sorting_asc"></i>
+                </button></th>
         <th>Actions</th>
       </tr>
 
@@ -54,6 +58,7 @@
         <td>{{ employee.name }}</td>
         <td>{{ employee.firstName }}</td>
         <td>{{ employee.cin }}</td>
+        <td>{{ employee.age }}</td>
      <td>
             <button (click)="viewEmployee(employee)">
               <i class="material-icons">person</i>
@@ -99,7 +104,7 @@
   </div>
     <app-membre-ajout *ngIf="showAddPopup" (saveEmployee)="addEmployee($event)" (closePopup)="handleClosePopup()"></app-membre-ajout>
   <app-membre-view [employeer]="employeer" *ngIf="openpopup" (ClosePopup)="handeleClosePopup()"></app-membre-view>
-  <app-membre-edit *ngIf="showEditPopup" [employee]="employeeToEdit" (edited)="editEmployee($event)"></app-membre-edit>
+  <app-membre-edit *ngIf="showEditPopup"(savemodifiedEmployee)="saveModifiedEmployee($event)" (closePopup)="closeEditPopup()"></app-membre-edit>
   <app-membre-delet *ngIf="showConfirmation" (confirmed)="deleteEmployee($event)"></app-membre-delet>
 
 

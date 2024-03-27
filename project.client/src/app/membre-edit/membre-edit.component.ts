@@ -6,28 +6,18 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrl: './membre-edit.component.css'
 })
 export class MembreEditComponent {
-  @Input() employee: any;
-  @Output() edited: EventEmitter<any> = new EventEmitter<any>();
+  @Output() savemodifiedEmployee = new EventEmitter<any>();
+  @Output() closePopup = new EventEmitter<void>();
 
-  newName: string = '';
-  newFirstName: string = '';
-  newCin: string = '';
+  onSaveModification(nom: string, prenom: string, cin: string, age: string, telephone: string, duedate: string): void {
+    const newEmployeeData = { nom, prenom, cin, age, telephone, duedate};
+    
+    this.savemodifiedEmployee.emit(newEmployeeData);
+    this.closePopup.emit();
+  }
 
-  editEmployee(): void {
-    if (this.newName.trim() !== '' && this.newFirstName.trim() !== '' && this.newCin.trim() !== '') {
-      if (!Number.isInteger(+this.newCin) || this.newCin.length !== 8) {
-        alert('Le nouveau CIN est invalide.');
-        return;
-      }
-      const editedEmployee = {
-        ...this.employee,
-        name: this.newName,
-        firstName: this.newFirstName,
-        cin: this.newCin
-      };
-      this.edited.emit(editedEmployee);
-    } else {
-      alert('Veuillez entrer des valeurs valides pour le nom, le prénom et le CIN.');
-    }
+  closeModal(): void {
+    this.closePopup.emit();
   }
 }
+

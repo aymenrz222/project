@@ -1,20 +1,20 @@
-<div class ="back-layer">
- 
+<div class="back-layer">
     <div class="section">
-        <div  #container class="container">
-          <h1>VIEW</h1>
+        <div #container class="container">
+            <h1>VIEW</h1>
             <div class="title">
-              
-              <button class="close-button" (click)="closeModal()">Close</button>
+                <button class="close-button" (click)="closeModal()">Close</button>
+            </div>
+            <div>
+                <p>Nom: {{ employeer.name }}</p>
+                <p>Prenom: {{ employeer.firstName }}</p>
+                <p>Cin: {{ employeer.cin }}</p>
+                <p>poste: {{ employeer.age }}</p>
+                <p>Telepohne: {{ employeer.phoneNumber }}</p>
+                <p>E-mail: {{ employeer.dueDate }}</p>
+                
                 
             </div>
-            <div >
-            <p>Nom: {{ employeer.name }}</p>
-            <p>Prénom: {{ employeer.firstName }}</p>
-            <p>CIN: {{ employeer.cin }}</p>
-            </div>
-            
         </div>
     </div>
-  
   </div>

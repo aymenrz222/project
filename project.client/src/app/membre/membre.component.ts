@@ -45,9 +45,12 @@ export class MembreComponent {
   }
 
   handeleClosePopup(): void {
+    
     this.openpopup = false;
   }
-
+  closeEditPopup(): void {
+    this.showEditPopup = false;
+  }
   checkDuplicateEmployee(cin: string): boolean {
     return this.employees.some(employee => employee.cin === cin);
   }
@@ -95,19 +98,24 @@ export class MembreComponent {
     this.openpopup = true;
   }
 
+ 
   openEditPopup(employee: any): void {
-    this.employeeToEdit = employee;
     this.showEditPopup = true;
+    this.employeeToEdit = employee;
   }
 
-  editEmployee(editedEmployee: any): void {
-    const index = this.employees.findIndex(emp => emp === this.employeeToEdit);
-    if (index > -1) {
-      this.employees[index] = editedEmployee;
-    }
+  saveModifiedEmployee(newEmployeeData: any): void {
+    const { nom, prenom, cin, age, telephone} = newEmployeeData;
+
+    this.employeeToEdit.name = nom;
+    this.employeeToEdit.firstName = prenom;
+    this.employeeToEdit.cin = cin;
+    this.employeeToEdit.age = age;
+    
+    this.employeeToEdit.phoneNumber = telephone;
+
     this.showEditPopup = false;
   }
-
   deleteEmployeeConfirmation(employee: any): void {
     this.showConfirmation = true;
     this.employeeToDelete = employee;

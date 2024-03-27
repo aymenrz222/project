@@ -1,14 +1,45 @@
-<div class ="back-layer">
-    <div class="edit-employee-popup">
-        <h2>Edit Employee</h2>
-        <label for="newName">New Name:</label>
-        <input type="text" id="newName" [(ngModel)]="newName">
-        <label for="newFirstName">New First Name:</label>
-        <input type="text" id="newFirstName" [(ngModel)]="newFirstName">
-        <label for="newCin">New CIN:</label>
-        <input type="text" id="newCin" [(ngModel)]="newCin">
-        <button (click)="editEmployee()">Save Changes</button>
+<div class="back-layer">
+    <div class="section">
+  
+        <form (ngSubmit)="onSaveModification(nom.value, prenom.value, cin.value, age.value, telephone.value, duedate.value)">
+
+      <h1>Modifier l'employée</h1>
+      <div>
+        <label for="nom">Nom<span class="required-field">*</span>:</label>
+        <input type="text" id="nom" name="nom" placeholder="Enter your title" required #nom>
       </div>
-    </div>
-      <!-- Votre tableau va ici -->
+
+      <div>
+          <label for="prenom">Prenom<span class="required-field">*</span>:</label>
+          <input type="text" id="prenom" name="prenom" placeholder="Enter your title" required #prenom>
+        </div>
+
+      <div>
+        <label for="cin">Cin<span class="required-field">*</span>:</label>
+        <input type="text" id="cin" name="cin" placeholder="Enter your client" required #cin>
+      </div>
+
+      <div>
+        <label for="age">poste:</label>
+        <input type="text" id="age" name="age" placeholder="Enter your teams" #age>
+      </div>
+
+      <div>
+        <label for="telephone">telephone</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="Enter your debut date" #telephone>
+      </div>
+
+      <div>
+        <label for="duedate">E-mail</label>
+        <input type="tel" id="duedate" name="duedate" placeholder="Enter your due date" #duedate>
+      </div>
+
       
+  
+      <button  type="submit">Modifier   <i class="fa-regular fa-floppy-disk"></i></button>
+      <button type="button" (click)="closeModal()" class="cancel-button">
+        Annuler  <i class="fa-solid fa-xmark"></i> 
+      </button>
+    </form>
+    </div>
+  </div>
