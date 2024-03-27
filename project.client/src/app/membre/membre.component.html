@@ -1,6 +1,6 @@
 <head><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"></head>
 <div class="content">
-  <h1>Registre des employés</h1>
+  <h1>ajout membre</h1>
   <br><br>
   <div class="container">
     <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher des employés...">
@@ -101,7 +101,7 @@
   <app-membre-view [employeer]="employeer" *ngIf="openpopup" (ClosePopup)="handeleClosePopup()"></app-membre-view>
   <app-membre-edit *ngIf="showEditPopup" [employee]="employeeToEdit" (edited)="editEmployee($event)"></app-membre-edit>
   <app-membre-delet *ngIf="showConfirmation" (confirmed)="deleteEmployee($event)"></app-membre-delet>
-</div>
+
 
   <!-- Autres éléments HTML... -->
  

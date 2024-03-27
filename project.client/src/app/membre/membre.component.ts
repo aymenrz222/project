@@ -153,7 +153,7 @@ export class MembreComponent {
     alert(message);
   }
 
-  getEmployeesForCurrentPage(): Array<any> {
+ getEmployeesForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
     return this.employees.slice(startIndex, endIndex);

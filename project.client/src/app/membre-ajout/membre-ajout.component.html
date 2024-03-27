@@ -1,42 +1,42 @@
 <div class="back-layer">
     <div class="section">
-      <form (submit)="onSaveClick(nom.value, prenom.value, cin.value, age.value, telephone.value, email.value)">
-        <h1>add membre</h1>
+      <form (submit)="onSaveClick(nom.value, prenom.value, cin.value, age.value, telephone.value, duedate.value)">
+        <h1>Ajout membre</h1>
   
         <div>
           <label for="nom">Nom<span class="required-field">*</span>:</label>
-          <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required #nom>
+          <input type="text" id="nom" name="nom" placeholder="Enter your title" required #nom>
         </div>
   
         <div>
-          <label for="prenom">Prénom<span class="required-field">*</span>:</label>
-          <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required #prenom>
+            <label for="prenom">Prenom<span class="required-field">*</span>:</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Enter your title" required #prenom>
+          </div>
+  
+        <div>
+          <label for="cin">Cin<span class="required-field">*</span>:</label>
+          <input type="text" id="cin" name="cin" placeholder="Enter your client" required #cin>
         </div>
   
         <div>
-          <label for="cin">CIN<span class="required-field">*</span>:</label>
-          <input type="text" id="cin" name="cin" placeholder="Entrez votre CIN" required #cin>
+          <label for="age">poste:</label>
+          <input type="text" id="age" name="age" placeholder="Enter your teams" #age>
         </div>
   
         <div>
-          <label for="age">Âge:</label>
-          <input type="text" id="age" name="age" placeholder="Entrez votre âge" #age>
+          <label for="telephone">telephone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="Enter your debut date" #telephone>
         </div>
   
         <div>
-          <label for="telephone">Téléphone:</label>
-          <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" #telephone>
+          <label for="duedate">E-mail</label>
+          <input type="tel" id="duedate" name="duedate" placeholder="Enter your due date" #duedate>
         </div>
   
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" #email>
-        </div>
   
-        <button type="submit">Enregistrer   <i class="fa-regular fa-floppy-disk"></i></button>
-        <button type="button" (click)="closeModal()" class="cancel-button">
-          Annuler    <i class="fa-solid fa-xmark"></i> 
-        </button>
+        <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
+        <button type="button" (click)="closeModal()" class="cancel-button">Annuler <i class="fa-solid fa-xmark"></i></button>
       </form>
     </div>
   </div>
+  
