@@ -1,0 +1,53 @@
+.back-layer {
+    background: rgba(221, 111, 111, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  .delete-confirmation {
+    background-color: #6d6d6d;
+    border-radius: 30px;
+    box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    position: absolute;
+    max-width: 613px;
+    margin: 0 auto;
+    top: 50%; /* Centrer verticalement */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Centrer complètement */
+  }
+  
+  .delete-confirmation p {
+    margin-bottom: 10px;
+    text-align: center; /* Centrez le texte dans les paragraphes */
+  }
+  
+  .delete-confirmation button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Étirez le bouton sur toute la largeur */
+  }
+  
+  .delete-confirmation button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .delete-confirmation button:last-child {
+    background-color: #6c757d;
+    margin-top: 10px; /* Ajoutez un espacement entre les boutons */
+  }
+  
+  .delete-confirmation button:last-child:hover {
+    background-color: #5a6268;
+  }
+  

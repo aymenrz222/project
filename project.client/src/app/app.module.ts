@@ -15,6 +15,10 @@ import { DeleteComponent } from './delete/delete.component';
 import { ViewComponent } from './view/view.component';
 
 import { MembreComponent } from './membre/membre.component';
+import { MembreAjoutComponent } from './membre-ajout/membre-ajout.component';
+import { MembreEditComponent } from './membre-edit/membre-edit.component';
+import { MembreDeletComponent } from './membre-delet/membre-delet.component';
+import { MembreViewComponent } from './membre-view/membre-view.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { MembreComponent } from './membre/membre.component';
     DeleteComponent,
     ViewComponent,
     
-    MembreComponent
+    MembreComponent,
+          MembreAjoutComponent,
+          MembreEditComponent,
+          MembreDeletComponent,
+          MembreViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

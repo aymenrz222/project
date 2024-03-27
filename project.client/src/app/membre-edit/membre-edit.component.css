@@ -1,0 +1,60 @@
+.back-layer {
+    background: rgba(224, 224, 224, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+.edit-employee-popup {
+    background-color: #f9f9f9; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+    padding: 20px; /* Espacement intérieur */
+    max-width: 400px; /* Largeur maximale */
+    margin: 20px auto; /* Centré horizontalement avec une marge de 20px en haut et en bas */
+    position: relative; /* Position relative pour permettre le positionnement absolu */
+    z-index: 999; /* Assure que la fenêtre est au-dessus du tableau */
+  }
+  
+  .edit-employee-popup h2 {
+    margin-top: 0; /* Supprime la marge supérieure */
+    margin-bottom: 20px; /* Espacement en bas */
+    text-align: center; /* Centré horizontalement */
+    color: #333; /* Couleur du texte */
+  }
+  
+  .edit-employee-popup label {
+    display: block; /* Affiche les labels sur une nouvelle ligne */
+    margin-bottom: 8px; /* Espacement en bas */
+    color: #666; /* Couleur du texte */
+  }
+  
+  .edit-employee-popup input {
+    width: calc(100% - 16px); /* Largeur de l'entrée */
+    padding: 10px; /* Espacement interne */
+    margin-bottom: 20px; /* Espacement en bas */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 4px; /* Coins arrondis */
+    font-size: 16px; /* Taille de police */
+    color: #333; /* Couleur du texte */
+  }
+  
+  .edit-employee-popup button {
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Supprime la bordure */
+    border-radius: 4px; /* Coins arrondis */
+    padding: 12px 20px; /* Espacement interne */
+    cursor: pointer; /* Curseur de la souris */
+    font-size: 16px; /* Taille de police */
+    width: 100%; /* Largeur du bouton */
+    transition: background-color 0.3s ease; /* Transition de couleur au survol */
+  }
+  
+  .edit-employee-popup button:hover {
+    background-color: #0056b3; /* Nouvelle couleur de fond au survol */
+  }
+  

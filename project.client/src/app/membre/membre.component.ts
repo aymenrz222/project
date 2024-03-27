@@ -8,58 +8,50 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class MembreComponent {
   newEmployeeForm: FormGroup;
-  showEditPopup: boolean = false;
-  showConfirmation: boolean = false;
-  employeeToDelete: any;
-  employeeToEdit: any;
+  employees: Array<{ name: string, firstName: string, cin: string, actions: Array<{ type: string, callback: Function }> }> = [];
+  filteredEmployees: any[] = [];
   searchQuery: string = '';
-    filteredEmployees: any[] = [];
-  employees: Array<{
-    name: string,
-    firstName: string,
-    cin: string,
-    age: string,
-    phoneNumber: string,
-    
-    actions: Array<{ type: string, callback: Function }>
-  }> = [];
   openpopup: boolean = false;
   employeer: any;
-
+  showConfirmation: boolean = false;
+  employeeToDelete: any;
+  showEditPopup: boolean = false;
+  employeeToEdit: any;
   currentPage: number = 1;
-  entriesPerPage: number = 3;
+  entriesPerPage: number = 2; // Nombre d'éléments à afficher par page
+  sortDirection: number = 1; // 1 pour trier de A à Z, -1 pour trier de Z à A
+  sortField: string = 'name';
+  
+ 
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
-
   constructor() {
     this.newEmployeeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
-      cin: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
-      dueDate:new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
-      description:new FormControl('', Validators.required),
-      category:new FormControl('', Validators.required),
-      budget:new FormControl('', Validators.required),
+      cin: new FormControl('', Validators.required)
     });
   }
 
-  ngOnInit() {
-    // Additional initializations if needed
+  ngOnInit(): void {
+   
   }
-
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
   }
-
   handleClosePopup(): void {
     this.openpopup = false;
     this.showAddPopup = false;
   }
+
   handeleClosePopup(): void {
     this.openpopup = false;
   }
+
+  checkDuplicateEmployee(cin: string): boolean {
+    return this.employees.some(employee => employee.cin === cin);
+  }
+
   addEmployee(newEmployeeData: any): void {
     const { nom, prenom, cin, age, telephone, duedate, description, category, pudget, } = newEmployeeData;
     const statusElement = document.querySelector('input[name="status"]:checked');
@@ -98,42 +90,27 @@ export class MembreComponent {
     }
 }
 
-  
-
- 
-  viewEmployee(employee: { name: string, firstName: string, cin: string,duedate:Date,  phoneNumber:Date, description:string, category:string, pudget:Float32Array }): void {
+  viewEmployee(employee: { name: string, firstName: string, cin: string }): void {
     this.employeer = employee;
     this.openpopup = true;
   }
 
- 
-
   openEditPopup(employee: any): void {
-    this.showEditPopup = true;
     this.employeeToEdit = employee;
+    this.showEditPopup = true;
   }
 
-  saveModifiedEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone} = newEmployeeData;
-
-    this.employeeToEdit.name = nom;
-    this.employeeToEdit.firstName = prenom;
-    this.employeeToEdit.cin = cin;
-    this.employeeToEdit.age = age;
-    
-    this.employeeToEdit.phoneNumber = telephone;
-
+  editEmployee(editedEmployee: any): void {
+    const index = this.employees.findIndex(emp => emp === this.employeeToEdit);
+    if (index > -1) {
+      this.employees[index] = editedEmployee;
+    }
     this.showEditPopup = false;
   }
 
-  closeEditPopup(): void {
-    this.showEditPopup = false;
-  }
-
-  deleteEmployeeConfirmation (employee: { name: string, firstName: string, cin: string,duedate:Date,  phoneNumber:Date, description:string, category:string, pudget:Float32Array }): void {
+  deleteEmployeeConfirmation(employee: any): void {
     this.showConfirmation = true;
     this.employeeToDelete = employee;
-   
   }
 
   deleteEmployee(confirmed: boolean): void {
@@ -147,7 +124,9 @@ export class MembreComponent {
   
   }
 
+
   searchEmployee(): void {
+    // Filtrer les employés en fonction du terme de recherche
     this.filteredEmployees = this.employees.filter(employee => {
       return (
         employee.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
@@ -156,10 +135,9 @@ export class MembreComponent {
       );
     });
   
-    // Reset current page to 1 when search is performed
-    this.currentPage = 1;
-  }
-  
+  // Afficher les résultats de la recherche dans le tableau
+  this.currentPage = 1; // Revenir à la première page
+}
   
 
   displayEmployeeDetails(employee: any): void {
@@ -175,7 +153,6 @@ export class MembreComponent {
     alert(message);
   }
 
-  // Pagination methods
   getEmployeesForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
@@ -188,7 +165,7 @@ export class MembreComponent {
 
   getLastEntryIndex(): number {
     const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex >this.employees.length ? this.employees.length : endIndex;
+    return endIndex > this.employees.length ? this.employees.length : endIndex;
   }
 
   getTotalPages(): number {
@@ -211,7 +188,7 @@ export class MembreComponent {
     // Handle the selected value as needed
     console.log('Selected entries per page:', selectedValue);
     this.entriesPerPage = +selectedValue; // Convert the selected value to a number
-    this.currentPage = 1; // Reset the current page to 1 when entries per page changes
+    this.currentPage =1; // Reset the current page to 1 when entries per page changes
   }
 
   // Method to handle sorting by name

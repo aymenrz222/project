@@ -1,0 +1,40 @@
+back-layer {
+    background: rgba(224, 224, 224, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+  .container{
+    background-color:#E0E0E0;
+  }
+  .icon-close {
+    top: 24px;
+    right: 24px;
+  }
+  
+  .section{
+    position: fixed;
+      padding: 0 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 684px;
+      z-index: 100002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 150%;
+      right: 0;
+      width: 684px;
+     }
+  
+     .title{
+      background-color: #E0E0E0;
+      min-height: 94px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
