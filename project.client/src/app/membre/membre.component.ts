@@ -29,7 +29,10 @@ export class MembreComponent {
     this.newEmployeeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
-      cin: new FormControl('', Validators.required)
+      cin: new FormControl('', Validators.required),
+      age: new FormControl('', Validators.required),
+      dueDate:new FormControl('', Validators.required),
+      phoneNumber: new FormControl('', Validators.required)
     });
   }
 
@@ -59,7 +62,24 @@ export class MembreComponent {
     const { nom, prenom, cin, age, telephone, duedate, description, category, pudget, } = newEmployeeData;
     const statusElement = document.querySelector('input[name="status"]:checked');
     const status = statusElement ? prenom.value : 'En cours'; // Valeur par défaut si aucun bouton n'est sélectionné
+    if (!Number.isInteger(+cin) || cin.length !== 8) {
+      alert('Le CIN est impossible');
+      return;
+    }
 
+    if (this.checkDuplicateEmployee(cin)) {
+      alert('Désolé, cet employé est déjà dans ce tableau.');
+      return;
+    }
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(duedate)) {
+      alert('L\'e-mail est invalide');
+      return;
+  }
+  
+  if (this.checkDuplicateEmployee(duedate)) {
+      alert('Désolé, cet employé est déjà dans ce tableau.');
+      return;
+  }
     // Check if all required fields are filled
    
 
@@ -105,8 +125,25 @@ export class MembreComponent {
   }
 
   saveModifiedEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone} = newEmployeeData;
+    const { nom, prenom, cin, age, telephone,duedate} = newEmployeeData;
+    if (!Number.isInteger(+cin) || cin.length !== 8) {
+      alert('Le CIN est impossible');
+      return;
+    }
 
+    if (this.checkDuplicateEmployee(cin)) {
+      alert('Désolé, cet employé est déjà dans ce tableau.');
+      return;
+    }
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(duedate)) {
+      alert('L\'e-mail est invalide');
+      return;
+  }
+  
+  if (this.checkDuplicateEmployee(duedate)) {
+      alert('Désolé, cet employé est déjà dans ce tableau.');
+      return;
+  }
     this.employeeToEdit.name = nom;
     this.employeeToEdit.firstName = prenom;
     this.employeeToEdit.cin = cin;
