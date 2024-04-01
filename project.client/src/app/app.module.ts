@@ -19,6 +19,12 @@ import { MembreAjoutComponent } from './membre-ajout/membre-ajout.component';
 import { MembreEditComponent } from './membre-edit/membre-edit.component';
 import { MembreDeletComponent } from './membre-delet/membre-delet.component';
 import { MembreViewComponent } from './membre-view/membre-view.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { PopupTasksComponent } from './popup-tasks/popup-tasks.component';
+import { PopupSidebarComponent } from './popup-sidebar/popup-sidebar.component';
+import { TasksDeleteComponent } from './tasks-delete/tasks-delete.component';
+import { TasksViewComponent } from './tasks-view/tasks-view.component';
+import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,13 @@ import { MembreViewComponent } from './membre-view/membre-view.component';
           MembreAjoutComponent,
           MembreEditComponent,
           MembreDeletComponent,
-          MembreViewComponent
+          MembreViewComponent,
+          TasksComponent,
+          PopupTasksComponent,
+          PopupSidebarComponent,
+          TasksDeleteComponent,
+          TasksViewComponent,
+          TasksEditComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

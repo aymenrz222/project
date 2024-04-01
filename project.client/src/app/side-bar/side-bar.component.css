@@ -88,3 +88,66 @@
     left: 0;
     width: 100%;
 }
+.back-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    display: flex;
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+  }
+  
+  .section {
+    background-color: white;
+    padding: 40px; /* Ajouter un espace autour du formulaire */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre portée */
+  }
+  
+  /* Ajout de styles pour le titre */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Espacement sous le titre */
+  }
+  
+  /* Styles pour les éléments du formulaire */
+  form div {
+    margin-bottom: 20px; /* Espacement entre les éléments du formulaire */
+  }
+  
+  label {
+    display: block; /* Afficher les libellés sur une nouvelle ligne */
+  }
+  
+  input[type="text"],
+  select,
+  input[type="date"] {
+    width: 100%; /* Remplir la largeur disponible */
+    padding: 10px; /* Ajouter de l'espace à l'intérieur des champs de formulaire */
+    margin-top: 5px; /* Espacement au-dessus des champs de formulaire */
+    border-radius: 5px; /* Coins arrondis pour les champs de formulaire */
+    border: 1px solid #ccc; /* Bordure grise autour des champs de formulaire */
+  }
+  
+  button[type="submit"],
+  button[type="button"] {
+    width: 100%; /* Remplir la largeur disponible */
+    padding: 10px; /* Ajouter de l'espace à l'intérieur du bouton */
+    margin-top: 10px; /* Espacement au-dessus du bouton */
+    border: none; /* Supprimer la bordure */
+    border-radius: 5px; /* Coins arrondis pour le bouton */
+    cursor: pointer; /* Curseur de type main */
+  }
+  
+  .cancel-button {
+    background-color: #e74c3c; /* Couleur de fond du bouton Annuler */
+    color: white; /* Couleur du texte du bouton Annuler */
+  }
+  
+  .cancel-button:hover {
+    background-color: #c0392b; /* Couleur de fond du bouton Annuler au survol */
+  }
+  

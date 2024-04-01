@@ -1,0 +1,81 @@
+h1 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    TEXT-ALIGN: center;
+     }
+  .back-layer {
+    background: rgba(196, 194, 194, 0.541);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+  back-layer {
+    background: rgba(196, 196, 196, 0.562);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+  .container{
+    background-color:#ffffff;
+  }
+  .icon-close {
+    top: 24px;
+    right: 24px;
+  }
+  
+  .section{
+    position: fixed;
+      padding: 0 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 684px;
+      z-index: 100002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 150%;
+      right: 0;
+      width: 684px;
+     }
+  
+     .title{
+      background-color: #ffffff;
+      min-height: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative; 
+    width: 584px;/* Ajoutez cette ligne */
+  }
+  
+  .close-button {
+    position: absolute;
+    bottom: 10px; /* Placez le bouton en bas */
+    right: 10px; /* Placez le bouton à droite */
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    background-color: #6e6e6e;
+  }
+  

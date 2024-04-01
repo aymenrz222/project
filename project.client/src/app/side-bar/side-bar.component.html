@@ -11,7 +11,7 @@
 
   <ul class="menu">
     <li class="activate">
-      <a href="/membre">
+      <a href="">
         <i class="fas fa-tachometer-alt"></i>
         <span>Dashbord</span>
       </a>
@@ -23,17 +23,18 @@
       </a>
     </li>
     <li>
-      <a href="#">
-        <i class="fas fa-chart-bar"></i>
+      <a href="#" >
+        <i class="fas fa-chart-bar" ></i>
         <span>Teams</span>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="#" (click)="toggleAddPopup()">
         <i class="fas fa-briefcase"></i>
-        <span>  careers</span>
+        <span>tasks</span>
       </a>
     </li>
+    
     <li>
       <a href="#">
         <i class="fas fa-question-circle"></i>
@@ -60,8 +61,6 @@
     </li>
   </ul>
 </div>
-    </div>
-    
+<app-popup-sidebar *ngIf="showAddPopup" (saveEmployee)="addEmployee($event)" (closePopup)="handleClosePopup()"></app-popup-sidebar>
   </div>
-
  

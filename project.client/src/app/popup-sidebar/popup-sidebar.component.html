@@ -1,0 +1,28 @@
+<div class="back-layer">
+  <div class="section">
+    <form (submit)="onSaveClick( prenom.value)">
+      <h1>select Project</h1>
+
+      
+
+      <div>
+        <label for="prenom">Project Status:</label>
+       
+<select name="pets" id="pet-select"#prenom>
+  <option value="">select projet </option>
+  <option value="">membre d'equipe</option>
+  <option value="app angular">app angular</option>
+  
+
+  
+  </select>
+      </div>
+
+     
+        
+
+      <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
+      <button type="button" (click)="closeModal()" class="cancel-button">Annuler <i class="fa-solid fa-xmark"></i></button>
+    </form>
+  </div>
+</div>
