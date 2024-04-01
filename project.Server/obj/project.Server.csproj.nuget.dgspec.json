@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj": {}
+    "C:\\Users\\khouloud\\Desktop\\New folder\\project\\project.Server\\project.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj": {
+    "C:\\Users\\khouloud\\Desktop\\New folder\\project\\project.Server\\project.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj",
+        "projectUniqueName": "C:\\Users\\khouloud\\Desktop\\New folder\\project\\project.Server\\project.Server.csproj",
         "projectName": "project.Server",
-        "projectPath": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj",
-        "packagesPath": "C:\\Users\\rezgu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\obj\\",
+        "projectPath": "C:\\Users\\khouloud\\Desktop\\New folder\\project\\project.Server\\project.Server.csproj",
+        "packagesPath": "C:\\Users\\khouloud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khouloud\\Desktop\\New folder\\project\\project.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rezgu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\khouloud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,22 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.SpaProxy": {
-              "target": "Package",
-              "version": "[8.*-*, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -66,15 +55,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

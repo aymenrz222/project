@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cJ6c4aLEuTPlIZW+O+KbdwZCp6gmmXdvZi3XkNv4l5EqOmvvLWOGgOHm3YyspqoxwQtIcE8FGKQ9yk/IYV+7Xg==",
+  "dgSpecHash": "X5UzGiBpTtk9IXgVCfMha6drjC4OW+nMSlnFlRSBEN6hmfLtPhmWiciDYwxx2+7kFw2VexryWdr2gmnIfM1OQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\rezgu\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.3\\microsoft.aspnetcore.spaproxy.8.0.3.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\khouloud\\Desktop\\New folder\\project\\project.Server\\project.Server.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
