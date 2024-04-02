@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
   
  
    
@@ -30,7 +30,7 @@
   }
 }
 .logo {
-    height: 80px;
+    height: 50px;
     padding: 16px;
 }
 
@@ -88,6 +88,7 @@
     left: 0;
     width: 100%;
 }
+
 .back-layer {
     position: fixed;
     top: 0;
@@ -151,3 +152,12 @@
     background-color: #c0392b; /* Couleur de fond du bouton Annuler au survol */
   }
   
+
+.home-section .home-view {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    }
+

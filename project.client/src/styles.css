@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+/**body**/
+app-membre ,app-list-projet   {
+    width: 100%;
+    padding: 8% 8% 8% 15%;;
+  }

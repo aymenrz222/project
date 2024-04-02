@@ -35,8 +35,8 @@ import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
     EditComponent,
     DeleteComponent,
     ViewComponent,
-    
     MembreComponent,
+
           MembreAjoutComponent,
           MembreEditComponent,
           MembreDeletComponent,
@@ -47,11 +47,12 @@ import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
           TasksDeleteComponent,
           TasksViewComponent,
           TasksEditComponent
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,BrowserModule,
-    AppRoutingModule,
+
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot()
