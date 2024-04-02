@@ -29,12 +29,11 @@ import { MembreViewComponent } from './membre-view/membre-view.component';
     EditComponent,
     DeleteComponent,
     ViewComponent,
-    
     MembreComponent,
-          MembreAjoutComponent,
-          MembreEditComponent,
-          MembreDeletComponent,
-          MembreViewComponent
+    MembreAjoutComponent,
+    MembreEditComponent,
+    MembreDeletComponent,
+    MembreViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
