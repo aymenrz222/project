@@ -4,11 +4,10 @@
   <br><br>
   <div class="container">
     <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher des employés...">
-    <button type="submit" id="addButton">Rechercher</button><br><br>
-  </div>
-  <button type="button" (click)="toggleAddPopup()">
+ 
+  <button class="ajout" type="button" (click)="toggleAddPopup()">
     <i class="fa-solid fa-plus"></i> Ajouter </button>
-
+  </div>
   <div class="dataTables_length bs-select" id="dtBasicExample_length">
     <label>Show 
       <select 
@@ -23,6 +22,7 @@
       </select> entries
     </label>
   </div>
+ 
   <table>
     <thead>
       <tr>
@@ -72,8 +72,8 @@
           </td>
       </tr>
     </tbody>
-  </table>
-  <div class="row">
+  </table><br>
+  <br><div class="row">
     <div class="col-sm-12 col-md-5">
       <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
         Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ employees.length }} entries

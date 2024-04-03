@@ -29,6 +29,7 @@ export class SideBarComponent {
   entriesPerPage: number = 3;
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
+  selectedProjectName: string = '';
 
   constructor() {
     this.newEmployeeForm = new FormGroup({
@@ -43,6 +44,10 @@ export class SideBarComponent {
       budget:new FormControl('', Validators.required),
     });
   }
+  selectProject(projectName: string): void {
+    this.selectedProjectName = projectName;
+  }
+  
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
   }

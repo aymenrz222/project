@@ -72,9 +72,9 @@ export class TasksComponent {
    
 
     // Check if CIN is unique
-    const isCinUnique = !this.employees.some(employee => employee.cin === cin);
+ 
 
-    if (isCinUnique) {
+  
         const newEmployee = {
             name: nom,
             firstName: prenom,
@@ -95,11 +95,8 @@ export class TasksComponent {
 
         // Only add the employee if the CIN is unique
         this.employees.push(newEmployee);
-    } else {
-        const message = 'Le CIN doit être unique pour chaque employé. Employé non ajouté.';
-        alert(message);
     }
-}
+
 
   viewEmployee(employee: { name: string, firstName: string, cin: string }): void {
     this.employeer = employee;

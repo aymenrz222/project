@@ -1,10 +1,11 @@
 
 /* Media query pour les écrans de 2000px ou moins */
-@media only screen and (max-width: 2000px) {
-  .content {
-    margin-left: 15px;
-  }
 
+  .content[_ngcontent-ng-c2231757140][_ngcontent-ng-c2231757140] {
+    margin-left: 65px;
+    padding: 16px;
+    margin-right: -26px;
+}
   .content h1 {
     color: #000000d8;
     text-align: left;
@@ -336,6 +337,6 @@ app-pop-up {
   --bs-pagination-disabled-bg: var(--bs-secondary-bg);
   --bs-pagination-disabled-border-color: var(--bs-border-color);
   display: flex; 
-     padding-left: 129px;
+  padding-left: 400px;
   list-style: none;
 }

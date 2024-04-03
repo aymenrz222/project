@@ -161,3 +161,6 @@
     flex-direction: column;
     }
 
+    .p-5 {
+      padding: 0rem !important;
+  }

@@ -12,6 +12,7 @@ export class PopupSidebarComponent {
     status: '' // Initialisez status avec une valeur par défaut, ou laissez-le vide pour l'instant
     // Ajoutez d'autres propriétés de newEmployeeData si nécessaire
   };
+  selectedProjectName: string = '';
   hoveredStatus: string = '';
   
   setHoveredStatus(status: string) {
@@ -27,5 +28,8 @@ export class PopupSidebarComponent {
   }
   closeModal(): void {
   this.closePopup.emit();
+  }
+  selectProject(projectName: string): void {
+    this.selectedProjectName = projectName;
   }
 }

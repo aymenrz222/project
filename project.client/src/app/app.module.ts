@@ -25,6 +25,7 @@ import { PopupSidebarComponent } from './popup-sidebar/popup-sidebar.component';
 import { TasksDeleteComponent } from './tasks-delete/tasks-delete.component';
 import { TasksViewComponent } from './tasks-view/tasks-view.component';
 import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
           PopupSidebarComponent,
           TasksDeleteComponent,
           TasksViewComponent,
-          TasksEditComponent
+          TasksEditComponent,
+          TopBarComponent
 
   ],
   imports: [
