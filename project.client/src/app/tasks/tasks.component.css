@@ -2,14 +2,12 @@
 /* Media query pour les écrans de 2000px ou moins */
 
 
-    .content[_ngcontent-ng-c1469109816][_ngcontent-ng-c1469109816] {
-        margin-left: 65px;
-        padding: 133px;
-        margin-right: -26px;
-    }
-    
-
-
+.content[_ngcontent-ng-c1469109816][_ngcontent-ng-c1469109816][_ngcontent-ng-c1469109816] {
+    margin-left: 172px;
+    padding: 103px;
+    margin-right: -116px;
+    margin-top: -39px;
+}
 table {
 border-collapse: collapse;
 width: 100%;
@@ -55,7 +53,7 @@ box-sizing: border-box;
 border-radius: 5px;
 overflow: hidden;
 background-color: #fff;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.877);
 }
 
 table {
@@ -70,7 +68,7 @@ color: cadetblue;
 }
 
 button {
-background-color: #212529;
+background-color: #000000;
 color: #f7f2f2;
 border: none;
 border-radius: 18px;
