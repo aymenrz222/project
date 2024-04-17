@@ -8,18 +8,15 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 
 const routes: Routes = [
   { path: '',
-   component:TopBarComponent },
-{  path: '',
-  component: SideBarComponent, 
- 
-  children: [
-    {path: 'list-projet', component:ListProjetComponent},
-    {path: 'membre',component:MembreComponent},
-    {path: 'tasks',component:TasksComponent},
-  ]
-  
-},
-];
+    component: SideBarComponent,
+    children: [
+      { path: '', component: ListProjetComponent },
+      { path: 'list-projet', component: ListProjetComponent },
+      { path: 'membre', component: MembreComponent },
+      { path: 'tasks', component: TasksComponent }
+    ]
+  }
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

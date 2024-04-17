@@ -8,7 +8,6 @@
 
 # Node
 /node_modules
-/.angular
 npm-debug.log
 yarn-error.log
 
@@ -42,14 +41,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-/package-lock.json
-/package.json
-
-.vs/slnx.sqlite
-*.assets.cache
-*.csproj.AssemblyReference.cache
-*.csproj.CoreCompileInputs.cache
-*.csproj.FileListAbsolute.txt
-*.pdb
-project.assets.json
-project.nuget.cache
