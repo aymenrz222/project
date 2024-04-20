@@ -1,1 +1,2 @@
 C:\Users\rezgu\source\repos\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
+C:\Users\aymen\Desktop\gestio\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
