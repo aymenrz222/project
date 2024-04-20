@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj": {}
+    "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\project.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj": {
+    "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\project.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj",
+        "projectUniqueName": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\project.Server.csproj",
         "projectName": "project.Server",
-        "projectPath": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\project.Server.csproj",
-        "packagesPath": "C:\\Users\\rezgu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rezgu\\source\\repos\\project\\project.Server\\obj\\",
+        "projectPath": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\project.Server.csproj",
+        "packagesPath": "C:\\Users\\aymen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rezgu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aymen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -53,6 +53,26 @@
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
               "version": "[8.*-*, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -74,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

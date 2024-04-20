@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "+k0qXCX8Ps7vpTkdJ8/zHRHddvU7pKW3STdTu4vQSgw=",
+  "Hash": "7bujfura9/y4aH1+GTmIq2oGy/CxHQVa6gv57Zf6YjY=",
   "Source": "project.Server",
   "BasePath": "_content/project.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\rezgu\\source\\repos\\project\\project.client\\project.client.esproj",
+      "Identity": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.client\\project.client.esproj",
       "Version": 2,
       "Source": "project.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
