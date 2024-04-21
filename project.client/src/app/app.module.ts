@@ -26,6 +26,7 @@ import { TasksDeleteComponent } from './tasks-delete/tasks-delete.component';
 import { TasksViewComponent } from './tasks-view/tasks-view.component';
 import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
           TasksDeleteComponent,
           TasksViewComponent,
           TasksEditComponent,
-          TopBarComponent
+          TopBarComponent,
+          DashbordComponent
 
   ],
   imports: [
