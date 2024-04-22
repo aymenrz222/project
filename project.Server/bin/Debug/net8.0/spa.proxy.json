@@ -3,11 +3,7 @@
 "ServerUrl": "https://localhost:4200",
 "RedirectUrl": "",
 "LaunchCommand": "npm start",
-<<<<<<< HEAD
-"WorkingDirectory": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\..\\project.client",
-=======
 "WorkingDirectory": "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.Server\\..\\project.client",
->>>>>>> 98dbe9bc3e2299e7236c9b920cd9b682ec90d62a
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

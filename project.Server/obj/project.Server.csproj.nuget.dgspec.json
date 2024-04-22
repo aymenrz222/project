@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\project.Server.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\project.Server.csproj",
         "packagesPath": "C:\\Users\\aymen\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\aymen\\Desktop\\gestio\\project\\project.Server\\obj\\",
-=======
-    "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.Server\\project.Server.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.Server\\project.Server.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.Server\\project.Server.csproj",
-        "projectName": "project.Server",
-        "projectPath": "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.Server\\project.Server.csproj",
-        "packagesPath": "C:\\Users\\aymen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.Server\\obj\\",
->>>>>>> 98dbe9bc3e2299e7236c9b920cd9b682ec90d62a
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -68,15 +54,6 @@
               "target": "Package",
               "version": "[8.*-*, )"
             },
-<<<<<<< HEAD
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-=======
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -86,7 +63,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0, )"
->>>>>>> 98dbe9bc3e2299e7236c9b920cd9b682ec90d62a
             },
             "Newtonsoft.Json": {
               "target": "Package",

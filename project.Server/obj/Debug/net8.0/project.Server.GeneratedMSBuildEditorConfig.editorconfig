@@ -9,19 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = project.Server
 build_property.RootNamespace = project.Server
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\aymen\Desktop\gestio\project\project.Server\
-=======
-build_property.ProjectDir = C:\Users\aymen\Desktop\gestion\project\project.Server\
->>>>>>> 98dbe9bc3e2299e7236c9b920cd9b682ec90d62a
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\aymen\Desktop\gestio\project\project.Server
-=======
-build_property.MSBuildProjectDirectory = C:\Users\aymen\Desktop\gestion\project\project.Server
->>>>>>> 98dbe9bc3e2299e7236c9b920cd9b682ec90d62a
 build_property._RazorSourceGeneratorDebug = 

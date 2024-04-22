@@ -741,7 +741,7 @@
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
@@ -749,7 +749,7 @@
   
   .row>* {
     flex-shrink: 0;
-    width: 100%;
+    width: 25%;
     max-width: 100%;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
@@ -26932,9 +26932,10 @@
       overflow: auto !important;
     }
   }
-  .bg-gradient-danger[_ngcontent-ng-c1616241238] {
-    background-image: linear-gradient(310deg, #fb6340 0%, #f5365c 100%);
-} 
+  .bg-gradient-danger[_ngcontent-ng-c1616241238][_ngcontent-ng-c1616241238] {
+  
+    background-image: linear-gradient(310deg, #373737 0%, #fc4c51 100%);
+}
 .header {
   position: relative;
 }
