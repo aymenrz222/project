@@ -1,12 +1,15 @@
-import { Component} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProjetService } from '../services/projet.service';
+
+
 
 @Component({
   selector: 'app-list-projet',
   templateUrl: './list-projet.component.html',
   styleUrl: './list-projet.component.css'
 })
-export class ListProjetComponent {
+export class ListProjetComponent  implements OnInit{
   
   newEmployeeForm: FormGroup;
   showEditPopup: boolean = false;
@@ -32,7 +35,7 @@ export class ListProjetComponent {
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
 
-  constructor() {
+  constructor(private projetService: ProjetService)  {
     this.newEmployeeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -46,8 +49,10 @@ export class ListProjetComponent {
     });
   }
 
-  ngOnInit() {
-    // Additional initializations if needed
+  ngOnInit(): void {
+    // Utilisation du service pour récupérer des données depuis l'API
+    this.projetService;
+  
   }
 
   toggleAddPopup(): void {

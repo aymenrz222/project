@@ -27,6 +27,7 @@ import { TasksViewComponent } from './tasks-view/tasks-view.component';
 import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { ProjetService } from './services/projet.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { DashbordComponent } from './dashbord/dashbord.component';
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [ProjetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
