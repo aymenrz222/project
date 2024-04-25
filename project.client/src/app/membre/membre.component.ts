@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { MembreService } from '../services/membre.service';
 @Component({
   selector: 'app-membre',
   templateUrl: './membre.component.html',
@@ -25,7 +25,7 @@ export class MembreComponent {
  
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
-  constructor() {
+  constructor(private MembreService: MembreService) {
     this.newEmployeeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -37,7 +37,9 @@ export class MembreComponent {
   }
 
   ngOnInit(): void {
-   
+    // Utilisation du service pour récupérer des données depuis l'API
+    this.MembreService.getDonnees;
+  
   }
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;

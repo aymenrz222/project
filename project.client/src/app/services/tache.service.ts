@@ -5,11 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjetService {
-  constructor(private http: HttpClient) { }
+export class TacheService {
 
-  // Exemple de méthode pour récupérer des données depuis l'API
-  getDonnees(): Observable<any> {
+  constructor(private http: HttpClient) {}
+    getDonnees(): Observable<any> {
     return this.http.get<any>('https://localhost:44369/api/project');
-  }
-}
+  } }
+

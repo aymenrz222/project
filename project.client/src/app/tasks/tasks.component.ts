@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { TacheService } from '../services/tache.service';
 // Interface Employee pour représenter un employé
 
 @Component({
@@ -27,7 +27,7 @@ export class TasksComponent {
   showPopup: boolean = false;
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
-  constructor() {
+  constructor(private  TacheService:  TacheService) {
     this.newEmployeeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -39,7 +39,9 @@ export class TasksComponent {
   }
 
   ngOnInit(): void {
-   
+    // Utilisation du service pour récupérer des données depuis l'API
+    this. TacheService.getDonnees;
+  
   }
   
   toggleAddPopup(): void {

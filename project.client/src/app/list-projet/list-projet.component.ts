@@ -51,7 +51,7 @@ export class ListProjetComponent  implements OnInit{
 
   ngOnInit(): void {
     // Utilisation du service pour récupérer des données depuis l'API
-    this.projetService;
+    this.projetService.getDonnees;
   
   }
 

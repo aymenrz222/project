@@ -28,6 +28,8 @@ import { TasksEditComponent } from './tasks-edit/tasks-edit.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { ProjetService } from './services/projet.service';
+import { MembreService } from './services/membre.service';
+import { TacheService } from './services/tache.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { ProjetService } from './services/projet.service';
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [ProjetService],
+  providers: [ProjetService,MembreService,TacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
