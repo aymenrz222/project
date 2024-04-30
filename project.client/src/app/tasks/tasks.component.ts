@@ -168,50 +168,21 @@ export class TasksComponent {
     alert(message);
   }
 
- getEmployeesForCurrentPage(): Array<any> {
-    const startIndex = (this.currentPage - 1) * this.entriesPerPage;
-    const endIndex = startIndex + this.entriesPerPage;
-    return this.employees.slice(startIndex, endIndex);
+  getEmployees(): Array<any> {
+    return this.employees;
   }
+  getEmployeesApproved(): Array<any> {
+    return this.employees.filter(employee => employee.firstName.toLowerCase() === 'approved');
+  }
+  
+  getEmployeesReview(): Array<any> {
+    return this.employees.filter(employee => employee.firstName.toLowerCase() === 'review');
+  }
+  
+  getEmployeesProgress(): Array<any> {
+    return this.employees.filter(employee => employee.firstName.toLowerCase() === 'progress');
+  }
+  
 
-  getFirstEntryIndex(): number {
-    return (this.currentPage - 1) * this.entriesPerPage + 1;
-  }
 
-  getLastEntryIndex(): number {
-    const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex > this.employees.length ? this.employees.length : endIndex;
-  }
-
-  getTotalPages(): number {
-    return Math.ceil(this.employees.length / this.entriesPerPage);
-  }
-
-  getPages(): Array<number> {
-    return Array.from({ length: this.getTotalPages() }, (_, i) => i + 1);
-  }
-
-  changePage(newPage: number): void {
-    if (newPage >= 1 && newPage <= this.getTotalPages()) {
-      this.currentPage = newPage;
-    }
-  }
-
-  // Method to handle entries per page change
-  onEntriesPerPageChange(event: Event): void {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    // Handle the selected value as needed
-    console.log('Selected entries per page:', selectedValue);
-    this.entriesPerPage = +selectedValue; // Convert the selected value to a number
-    this.currentPage =1; // Reset the current page to 1 when entries per page changes
-  }
-
-  // Method to handle sorting by name
-  sortByName(): void {
-    this.isSortedAscending = !this.isSortedAscending;
-    this.employees.sort((a, b) => {
-      const order = this.isSortedAscending ? 1 : -1;
-      return a.name.localeCompare(b.name) * order;
-    });
-  }
 }

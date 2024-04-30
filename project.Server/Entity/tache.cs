@@ -2,13 +2,13 @@
 {
     public class tache
     {
-        public int Id_tache { get; set; }
-        public string nom_t { get; set; }
+        public int tacheId { get; set; }
+        public string NomTache { get; set; }
         public string etat { get; set; }
-        public string membre_t { get; set; }
-        public string team { get; set; }
-        public string description_t { get; set; }
-        public DateOnly date_echeance { get; set; }
+        public string membre{ get; set; }
+      
+        public string descriptionTache { get; set; }
+        public DateTime dateecheance { get; set; }
 
     }
 }
