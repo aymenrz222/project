@@ -2,12 +2,12 @@
 {
     public class team
     {
-        public int Id_team { get; set; }
-        public string nom { get; set; }
-        public string prenom { get; set; }
-        public int cin { get; set; }
-        public string poste { get; set; }
-        public int telephone { get; set; }
-        public string email { get; set; }
+        public int teamId { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public int Cin { get; set; }
+        public string Poste { get; set; }
+        public int Telephone { get; set; }
+        public string Email { get; set; }
     }
 }
