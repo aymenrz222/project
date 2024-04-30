@@ -59,22 +59,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let employee of getEmployeesForCurrentPage()">
+        <tr *ngFor="let project of ListProjects">
             <td><input type="checkbox"></td>
-          <td>{{ employee.name }}</td>
-          <td>{{ employee.firstName }}</td>
-          <td>{{ employee. age}}</td>
-          <td>{{ employee.cin }}</td>
-          <td>{{ employee. phoneNumber}}</td>
+          <td>{{ project.titre }}</td>
+          <td>{{ project.projectStatus }}</td>
+          <td>{{ project. client}}</td>
+          <td>{{ project.team }}</td>
+          <td>{{ project. dueDate}}</td>
           
           <td>
-            <button (click)="viewEmployee(employee)">
+            <button (click)="viewEmployee(project)">
               <i class="material-icons">person</i>
           </button>
-          <button (click)="openEditPopup(employee)">
+          <button (click)="openEditPopup(project)">
               <i class="material-icons">edit</i>
           </button>
-          <button (click)="deleteEmployeeConfirmation(employee)">
+          <button (click)="deleteEmployeeConfirmation(project.id)">
               <i class="material-icons">close</i>
           </button>
           </td>

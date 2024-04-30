@@ -17,43 +17,51 @@ export class ListProjetComponent  implements OnInit{
   employeeToDelete: any;
   employeeToEdit: any;
   searchQuery: string = '';
-    filteredEmployees: any[] = [];
+  filteredEmployees: any[] = [];
   employees: Array<{
-    name: string,
-    firstName: string,
-    cin: string,
-    age: string,
-    phoneNumber: string,
+  name: string,
+  firstName: string,
+  cin: string,
+  age: string,
+  phoneNumber: string,
     
-    actions: Array<{ type: string, callback: Function }>
-  }> = [];
+
+  actions: Array<{ type: string, callback: Function }>}> = [];
   openpopup: boolean = false;
   employeer: any;
-
   currentPage: number = 1;
   entriesPerPage: number = 3;
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
+  ListProjects: any;
 
-  constructor(private projetService: ProjetService)  {
-    this.newEmployeeForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      cin: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
-      dueDate:new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
-      description:new FormControl('', Validators.required),
-      category:new FormControl('', Validators.required),
-      budget:new FormControl('', Validators.required),
-    });
+  constructor(private projetService: ProjetService) {
+      this.newEmployeeForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        firstName: new FormControl('', Validators.required),
+        cin: new FormControl('', Validators.required),
+        age: new FormControl('', Validators.required),
+        dueDate:new FormControl('', Validators.required),
+        phoneNumber: new FormControl('', Validators.required),
+        description:new FormControl('', Validators.required),
+        category:new FormControl('', Validators.required),
+        budget:new FormControl('', Validators.required),
+      });
   }
 
   ngOnInit(): void {
-    // Utilisation du service pour récupérer des données depuis l'API
-    this.projetService.getDonnees;
+  
+    //call function pour recuperer les projets
+    this.listeProject();
   
   }
+
+  listeProject(): void{
+    this.projetService.getListProjects().subscribe((data) => {
+      console.log("data" , data)
+       this.ListProjects = data
+    });
+  }  
 
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
@@ -136,10 +144,9 @@ export class ListProjetComponent  implements OnInit{
     this.showEditPopup = false;
   }
 
-  deleteEmployeeConfirmation (employee: { name: string, firstName: string, cin: string,duedate:Date,  phoneNumber:Date, description:string, category:string, pudget:Float32Array }): void {
-    this.showConfirmation = true;
-    this.employeeToDelete = employee;
-   
+  deleteEmployeeConfirmation (projet : any): void {
+    console.log("iddd" , projet);
+     this.projetService.DeleteService(projet);
   }
 
   deleteEmployee(confirmed: boolean): void {
