@@ -1,7 +1,13 @@
-﻿namespace project.Server.Entity
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace project.Server.Entity
 {
     public class tache
     {
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int tacheId { get; set; }
         public string NomTache { get; set; }
         public string etat { get; set; }

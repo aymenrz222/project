@@ -9,7 +9,7 @@
   <br><br> 
   <!-- Your cards content -->
   <div class="container">
-       
+      <!-- 
         
     <ul id="autowidth" class="cs-hidden">
       <li class="item-a" >
@@ -18,13 +18,13 @@
           <button type="button" (click)="toggleAddPopup()">
             News            <i class="fa-solid fa-plus"></i> 
           </button>
-          <div class="detail1" *ngFor="let employee of getEmployeesApproved()">
-            <div><strong>Nom de la tâche:</strong> {{ employee.name }}</div>
-            <div><strong>État:</strong> {{ employee.firstName }}</div>
-            <div><strong>Membre:</strong> {{ employee.age }}</div>
-            <div><strong>Description:</strong> {{ employee.description }}</div>
-            <div><strong>Date d'échéance:</strong> {{ employee.phoneNumber }}</div>
-            <!-- Vous pouvez ajouter les boutons d'action ici -->
+          <div class="detail1" *ngFor="let tache of tacheApproved()">
+            <div><strong>Nom de la tâche:</strong> {{ tache.NomTache }}</div>
+            <div><strong>État:</strong> {{ tache.etat }}</div>
+            <div><strong>Membre:</strong> {{ tache.membre }}</div>
+            <div><strong>Description:</strong> {{ tache.descriptionTache }}</div>
+            <div><strong>Date d'échéance:</strong> {{ tache.dateecheance }}</div>
+         
           </div>
         </div>
         <br><br><br>
@@ -42,7 +42,7 @@
         <div><strong>Membre:</strong> {{ employee.age }}</div>
         <div><strong>Description:</strong> {{ employee.description }}</div>
         <div><strong>Date d'échéance:</strong> {{ employee.phoneNumber }}</div>
-        <!-- Vous pouvez ajouter les boutons d'action ici -->
+       
       </div>
       
     </div>
@@ -63,7 +63,7 @@
         <div><strong>Membre:</strong> {{ employee.age }}</div>
         <div><strong>Description:</strong> {{ employee.description }}</div>
         <div><strong>Date d'échéance:</strong> {{ employee.phoneNumber }}</div>
-        <!-- Vous pouvez ajouter les boutons d'action ici -->
+        
       
       </div>
 
@@ -77,9 +77,10 @@
  </div>
   
   
-  <app-popup-tasks *ngIf="showAddPopup" (saveEmployee)="addEmployee($event)" (closePopup)="handleClosePopup()"></app-popup-tasks>
+ <app-popup-tasks *ngIf="showAddPopup" (saveEmployee)="addEmployee($event)" (closePopup)="handleClosePopup()"></app-popup-tasks>
   <app-tasks-view [employeer]="employeer" *ngIf="openpopup" (ClosePopup)="handeleClosePopup()"></app-tasks-view>
   <app-tasks-delete *ngIf="showConfirmation" (confirmed)="deleteEmployee($event)"></app-tasks-delete>
       
       <app-tasks-edit *ngIf="showEditPopup"(savemodifiedEmployee)="saveModifiedEmployee($event)" (closePopup)="closeEditPopup()"></app-tasks-edit>
   
+    -->

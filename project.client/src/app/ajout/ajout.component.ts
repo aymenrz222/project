@@ -1,31 +1,53 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProjetService } from '../services/projet.service';
+
 @Component({
   selector: 'app-ajout',
   templateUrl: './ajout.component.html',
-  styleUrl: './ajout.component.css'
+  styleUrls: ['./ajout.component.css']
 })
 export class AjoutComponent {
   
- @Output() saveEmployee = new EventEmitter<any>();
-@Output() closePopup = new EventEmitter<void>(); // New event to close the popup
-newEmployeeData = {
-  status: '' // Initialisez status avec une valeur par défaut, ou laissez-le vide pour l'instant
-  // Ajoutez d'autres propriétés de newEmployeeData si nécessaire
-};
-hoveredStatus: string = '';
+  @Output() saveProject:EventEmitter<void> = new EventEmitter <void>(); // Événement de sortie pour enregistrer les données du projet
+  @Output() closePopup = new EventEmitter<void>(); // Événement de sortie pour fermer le popup
 
-setHoveredStatus(status: string) {
-  this.hoveredStatus = status;
+  newProjectForm: FormGroup; // Formulaire de nouveau projet
+
+  constructor(private projectService: ProjetService) {
+    // Initialiser le formulaire avec les contrôles requis et les validateurs
+    this.newProjectForm = new FormGroup({
+      titre: new FormControl('', Validators.required),
+      projectStatus: new FormControl('', Validators.required),
+      client: new FormControl('', Validators.required),
+      team: new FormControl(''),
+      debutDate: new FormControl('', Validators.required),
+      dueDate: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      categorie: new FormControl(''),
+      budget: new FormControl('')
+    });
+  }
+
+  onSaveClick(): void {
+    // Vérifier si le formulaire est valide avant d'émettre les données
+    
+      const newProjectData = this.newProjectForm.value; // Obtenir les valeurs du formulaire
+      this.projectService.addData(newProjectData).subscribe(
+        (response) => {
+          console.log('Project added successfully!', response);
+          this.saveProject.emit(); // Émettre les données du nouveau projet via l'événement saveProject
+          this.closePopup.emit(); // Émettre l'événement closePopup pour fermer le popup
+        },
+        (error) => {
+          console.error('Error adding project:', error);
+          // Traitez l'erreur en conséquence, affichez un message à l'utilisateur, etc.
+        }
+      );
+  
+  }
+
+  closeModal(): void {
+    this.closePopup.emit(); // Émettre l'événement closePopup pour fermer le popup
+  }
 }
-onSaveClick(nom: string, prenom: string, cin: string, age: string, telephone: string, duedate: string, description: string, category: string, pudget: string): void {
-  const newEmployeeData = { nom, prenom, cin, age, telephone, duedate, description, category, pudget };
-  this.saveEmployee.emit(newEmployeeData);
-  // Emit the closePopup event to notify the parent component to close the popup
-
-
-  this.closePopup.emit();
-}
-closeModal(): void {
-this.closePopup.emit();
-}}

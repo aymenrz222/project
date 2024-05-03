@@ -1,67 +1,63 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProjetService } from '../services/projet.service';
-
-
 
 @Component({
   selector: 'app-list-projet',
   templateUrl: './list-projet.component.html',
-  styleUrl: './list-projet.component.css'
+  styleUrls: ['./list-projet.component.css']
 })
-export class ListProjetComponent  implements OnInit{
+export class ListProjetComponent implements OnInit {
   
-  newEmployeeForm: FormGroup;
+  newProjectForm: FormGroup;
   showEditPopup: boolean = false;
   showConfirmation: boolean = false;
-  employeeToDelete: any;
-  employeeToEdit: any;
+  projectToDelete: any;
+  projectToEdit: any;
   searchQuery: string = '';
-  filteredEmployees: any[] = [];
-  employees: Array<{
-  name: string,
-  firstName: string,
-  cin: string,
-  age: string,
-  phoneNumber: string,
-    
-
-  actions: Array<{ type: string, callback: Function }>}> = [];
+  filteredProjects: any[] = [];
+  projects: Array<{
+    titre: string,
+    projectstatus: string,
+    client: string,
+    team: string,
+    debutdate: string,
+    categorie: string,
+    budget: string,
+    actions: Array<{ type: string, callback: Function }>
+  }> = [];
   openpopup: boolean = false;
-  employeer: any;
+  project: any;
   currentPage: number = 1;
   entriesPerPage: number = 3;
-  showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
-  ListProjects: any;
-
-  constructor(private projetService: ProjetService) {
-      this.newEmployeeForm = new FormGroup({
-        name: new FormControl('', Validators.required),
-        firstName: new FormControl('', Validators.required),
-        cin: new FormControl('', Validators.required),
-        age: new FormControl('', Validators.required),
-        dueDate:new FormControl('', Validators.required),
-        phoneNumber: new FormControl('', Validators.required),
-        description:new FormControl('', Validators.required),
-        category:new FormControl('', Validators.required),
-        budget:new FormControl('', Validators.required),
-      });
+  listProjects: any;
+  showlistes = false;
+  showAddPopup: boolean = false;
+  constructor(private projectService: ProjetService) {
+    this.newProjectForm = new FormGroup({
+      titre: new FormControl('', Validators.required),
+      projectstatus: new FormControl('', Validators.required),
+      client: new FormControl('', Validators.required),
+      team: new FormControl('', Validators.required),
+      debutdate: new FormControl('', Validators.required),
+      categorie: new FormControl('', Validators.required),
+      budget: new FormControl('', Validators.required),
+    });
   }
 
   ngOnInit(): void {
-  
-    //call function pour recuperer les projets
-    this.listeProject();
-  
+    this.ListProjects();
+    
   }
 
-  listeProject(): void{
-    this.projetService.getListProjects().subscribe((data) => {
-      console.log("data" , data)
-       this.ListProjects = data
+  ListProjects(): void {
+    this.projectService.getListProjects().subscribe((data) => {
+      console.log("data", data)
+      this.listProjects = data;
+      this.showlistes = true;
     });
-  }  
+  }
 
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
@@ -70,73 +66,35 @@ export class ListProjetComponent  implements OnInit{
   handleClosePopup(): void {
     this.openpopup = false;
     this.showAddPopup = false;
+    
   }
-  handeleClosePopup(): void {
-    this.openpopup = false;
+
+
+  addProject(): void {
+    this.showlistes = false;
+    this.ListProjects();
+  console.log (this.showlistes)
   }
-  addEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone, duedate, description, category, pudget, } = newEmployeeData;
-    const statusElement = document.querySelector('input[name="status"]:checked');
-    const status = statusElement ? prenom.value : 'En cours'; // Valeur par défaut si aucun bouton n'est sélectionné
 
-    // Check if all required fields are filled
-   
-
-    // Check if CIN is unique
-    const isCinUnique = !this.employees.some(employee => employee.cin === cin);
-
-    if (isCinUnique) {
-        const newEmployee = {
-            name: nom,
-            firstName: prenom,
-            cin: cin,
-            age: age,
-            phoneNumber: telephone,
-            dueDate: duedate,
-            description: description,
-            category: category,
-            budget: pudget,
-            status: status, // Include the project status
-            actions: [
-                { type: 'view', callback: this.viewEmployee.bind(this) },
-                { type: 'edit', callback: this.openEditPopup.bind(this) },
-                { type: 'delete', callback: this.deleteEmployeeConfirmation.bind(this) }
-            ]
-        };
-
-        // Only add the employee if the CIN is unique
-        this.employees.push(newEmployee);
-    } else {
-        const message = 'Le CIN doit être unique pour chaque employé. Employé non ajouté.';
-        alert(message);
-    }
-}
-
-  
-
- 
-  viewEmployee(employee: { name: string, firstName: string, cin: string,duedate:Date,  phoneNumber:Date, description:string, category:string, pudget:Float32Array }): void {
-    this.employeer = employee;
+  viewProject(project: any): void {
+    this.project = project;
     this.openpopup = true;
   }
 
- 
-
-  openEditPopup(employee: any): void {
+  openEditPopup(project: any): void {
     this.showEditPopup = true;
-    this.employeeToEdit = employee;
+    this.projectToEdit = project;
   }
 
-  saveModifiedEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone} = newEmployeeData;
-
-    this.employeeToEdit.name = nom;
-    this.employeeToEdit.firstName = prenom;
-    this.employeeToEdit.cin = cin;
-    this.employeeToEdit.age = age;
-    
-    this.employeeToEdit.phoneNumber = telephone;
-
+  saveModifiedProject(newProjectData: any): void {
+    const { titre, projetstatus, client, team, debutdate, categorie, budget } = newProjectData;
+    this.projectToEdit.titre = titre;
+    this.projectToEdit.projetstatus = projetstatus;
+    this.projectToEdit.client = client;
+    this.projectToEdit.team = team;
+    this.projectToEdit.debutdate = debutdate;
+    this.projectToEdit.categorie = categorie;
+    this.projectToEdit.budget = budget;
     this.showEditPopup = false;
   }
 
@@ -144,55 +102,58 @@ export class ListProjetComponent  implements OnInit{
     this.showEditPopup = false;
   }
 
-  deleteEmployeeConfirmation (projet : any): void {
-    console.log("iddd" , projet);
-     this.projetService.DeleteService(projet);
+  deleteProjectConfirmation(id: any): void {
+    this.projectService.deleteProject(id).subscribe(
+      () => {
+        console.log('Suppression réussie !');
+        this.listProjects(); // Recharger la liste des projets après la suppression
+      },
+      error => {
+        console.error('Erreur lors de la suppression :', error);
+        // Traitez l'erreur en conséquence, affichez un message à l'utilisateur, etc.
+      }
+    );
   }
 
-  deleteEmployee(confirmed: boolean): void {
+  deleteProject(confirmed: boolean): void {
     if (confirmed) {
-      const index = this.employees.indexOf(this.employeeToDelete);
+      const index = this.projects.indexOf(this.projectToDelete);
       if (index > -1) {
-        this.employees.splice(index, 1);
+        this.projects.splice(index, 1);
       }
     }
     this.showConfirmation = false;
-  
   }
 
-  searchEmployee(): void {
-    this.filteredEmployees = this.employees.filter(employee => {
+  searchProject(): void {
+    this.filteredProjects = this.projects.filter(project => {
       return (
-        employee.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        employee.firstName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        employee.cin.toLowerCase().includes(this.searchQuery.toLowerCase())
+        project.titre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        project.projectstatus.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        project.client.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
-  
-    // Reset current page to 1 when search is performed
     this.currentPage = 1;
   }
-  
-  
 
-  displayEmployeeDetails(employee: any): void {
+  displayProjectDetails(project: any): void {
     const message = `
-      Name: ${employee.name}
-      First Name: ${employee.firstName}
-      CIN: ${employee.cin}
-      Age: ${employee.age}
-      Email: ${employee.email}
-      Phone Number: ${employee.phoneNumber}
+      Titre: ${project.titre}
+      Projet Status: ${project.projetstatus}
+      Client: ${project.client}
+      Team: ${project.team}
+      Debut Date: ${project.debutdate}
+      Categorie: ${project.categorie}
+      Budget: ${project.budget}
     `;
-
     alert(message);
   }
 
   // Pagination methods
-  getEmployeesForCurrentPage(): Array<any> {
+  getProjectsForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
-    return this.employees.slice(startIndex, endIndex);
+    return this.filteredProjects.slice(startIndex, endIndex);
   }
 
   getFirstEntryIndex(): number {
@@ -201,11 +162,11 @@ export class ListProjetComponent  implements OnInit{
 
   getLastEntryIndex(): number {
     const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex >this.employees.length ? this.employees.length : endIndex;
+    return endIndex > this.filteredProjects.length ? this.filteredProjects.length : endIndex;
   }
 
   getTotalPages(): number {
-    return Math.ceil(this.employees.length / this.entriesPerPage);
+    return Math.ceil(this.filteredProjects.length / this.entriesPerPage);
   }
 
   getPages(): Array<number> {
@@ -221,8 +182,6 @@ export class ListProjetComponent  implements OnInit{
   // Method to handle entries per page change
   onEntriesPerPageChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
-    // Handle the selected value as needed
-    console.log('Selected entries per page:', selectedValue);
     this.entriesPerPage = +selectedValue; // Convert the selected value to a number
     this.currentPage = 1; // Reset the current page to 1 when entries per page changes
   }
@@ -230,10 +189,9 @@ export class ListProjetComponent  implements OnInit{
   // Method to handle sorting by name
   sortByName(): void {
     this.isSortedAscending = !this.isSortedAscending;
-    this.employees.sort((a, b) => {
+    this.filteredProjects.sort((a, b) => {
       const order = this.isSortedAscending ? 1 : -1;
-      return a.name.localeCompare(b.name) * order;
+      return a.titre.localeCompare(b.titre) * order;
     });
   }
 }
-

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TacheService } from '../services/tache.service';
-// Interface Employee pour représenter un employé
 
 @Component({
   selector: 'app-tasks',
@@ -9,180 +8,141 @@ import { TacheService } from '../services/tache.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  newEmployeeForm: FormGroup;
-  employees: Array<{ name: string, firstName: string, cin: string, actions: Array<{ type: string, callback: Function }> }> = [];
-  filteredEmployees: any[] = [];
+  newTacheForm: FormGroup;
+  taches: Array<{ NomTache: string, etat: string, membre: string, descriptionTache: string, dateecheance: string }> = [];
+  filteredTaches: any[] = [];
   searchQuery: string = '';
   openpopup: boolean = false;
-  employeer: any;
+  tacheDetails: any;
   showConfirmation: boolean = false;
-  employeeToDelete: any;
+  tacheToDelete: any;
   showEditPopup: boolean = false;
-  employeeToEdit: any;
+  tacheToEdit: any;
   currentPage: number = 1;
-  entriesPerPage: number = 2; // Nombre d'éléments à afficher par page
-  sortDirection: number = 1; // 1 pour trier de A à Z, -1 pour trier de Z à A
-  sortField: string = 'name';
-  
+  entriesPerPage: number = 2;
+  sortDirection: number = 1;
+  sortField: string = 'NomTache';
+  tache:any;
   showPopup: boolean = false;
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
-  constructor(private  TacheService:  TacheService) {
-    this.newEmployeeForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      cin: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
-      dueDate:new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required)
+  constructor(private tacheService: TacheService) {
+    this.newTacheForm = new FormGroup({
+      NomTache: new FormControl('', Validators.required),
+      etat: new FormControl('', Validators.required),
+      membre: new FormControl('', Validators.required),
+      descriptionTache: new FormControl('', Validators.required),
+      dateecheance: new FormControl('', Validators.required),
     });
   }
 
   ngOnInit(): void {
-    // Utilisation du service pour récupérer des données depuis l'API
-    this. TacheService.getDonnees;
-  
+    this.Taches();
   }
-  
+
+  Taches(): void {
+    this.tacheService.gettache().subscribe((data) => {
+      console.log("data", data)
+      this.tache = data;
+    });
+  }
+
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
   }
+
   handleClosePopup(): void {
     this.openpopup = false;
     this.showAddPopup = false;
   }
 
   handeleClosePopup(): void {
-    
     this.openpopup = false;
   }
+
   closeEditPopup(): void {
     this.showEditPopup = false;
   }
-  checkDuplicateEmployee(cin: string): boolean {
-    return this.employees.some(employee => employee.cin === cin);
+
+  checkDuplicateTache(NomTache: string): boolean {
+    return this.taches.some(tache => tache.NomTache === NomTache);
   }
 
-  addEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone, duedate, description, category, pudget, } = newEmployeeData;
-    const statusElement = document.querySelector('input[name="status"]:checked');
-    const status = statusElement ? prenom.value : 'En cours'; // Valeur par défaut si aucun bouton n'est sélectionné
-   
+  addTache(newTacheData: any): void {
+    const { NomTache, etat, membre, descriptionTache, dateecheance } = newTacheData;
 
-    
-    // Check if all required fields are filled
-   
+    const newTache = {
+      NomTache: NomTache,
+      etat: etat,
+      membre: membre,
+      descriptionTache: descriptionTache,
+      dateecheance: dateecheance,
+    };
 
-    // Check if CIN is unique
- 
+    this.taches.push(newTache);
+  }
 
-  
-        const newEmployee = {
-            name: nom,
-            firstName: prenom,
-            cin: cin,
-            age: age,
-            phoneNumber: telephone,
-            dueDate: duedate,
-            description: description,
-            category: category,
-            budget: pudget,
-            status: status, // Include the project status
-            actions: [
-                { type: 'view', callback: this.viewEmployee.bind(this) },
-                { type: 'edit', callback: this.openEditPopup.bind(this) },
-                { type: 'delete', callback: this.deleteEmployeeConfirmation.bind(this) }
-            ]
-        };
-
-        // Only add the employee if the CIN is unique
-        this.employees.push(newEmployee);
-    }
-
-
-  viewEmployee(employee: { name: string, firstName: string, cin: string }): void {
-    this.employeer = employee;
+  viewTache(tache: any): void {
+    this.tacheDetails = tache;
     this.openpopup = true;
   }
 
- 
-  openEditPopup(employee: any): void {
+  openEditPopup(tache: any): void {
     this.showEditPopup = true;
-    this.employeeToEdit = employee;
+    this.tacheToEdit = tache;
   }
 
-  saveModifiedEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone,duedate} = newEmployeeData;
-   
-    this.employeeToEdit.name = nom;
-    this.employeeToEdit.firstName = prenom;
-    this.employeeToEdit.cin = cin;
-    this.employeeToEdit.age = age;
-    
-    this.employeeToEdit.phoneNumber = telephone;
+  saveModifiedTache(newTacheData: any): void {
+    const { NomTache, etat, membre, descriptionTache, dateecheance } = newTacheData;
+
+    this.tacheToEdit.NomTache = NomTache;
+    this.tacheToEdit.etat = etat;
+    this.tacheToEdit.membre = membre;
+    this.tacheToEdit.descriptionTache = descriptionTache;
+    this.tacheToEdit.dateecheance = dateecheance;
 
     this.showEditPopup = false;
   }
-  deleteEmployeeConfirmation(employee: any): void {
+
+  deleteTacheConfirmation(tache: any): void {
     this.showConfirmation = true;
-    this.employeeToDelete = employee;
+    this.tacheToDelete = tache;
   }
 
-  deleteEmployee(confirmed: boolean): void {
+  deleteTache(confirmed: boolean): void {
     if (confirmed) {
-      const index = this.employees.indexOf(this.employeeToDelete);
+      const index = this.taches.indexOf(this.tacheToDelete);
       if (index > -1) {
-        this.employees.splice(index, 1);
+        this.taches.splice(index, 1);
       }
     }
     this.showConfirmation = false;
-  
   }
 
-
-  searchEmployee(): void {
-    // Filtrer les employés en fonction du terme de recherche
-    this.filteredEmployees = this.employees.filter(employee => {
+  searchTache(): void {
+    this.filteredTaches = this.taches.filter(tache => {
       return (
-        employee.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        employee.firstName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        employee.cin.toLowerCase().includes(this.searchQuery.toLowerCase())
+        tache.NomTache.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        tache.etat.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        tache.membre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        tache.descriptionTache.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
-  
-  // Afficher les résultats de la recherche dans le tableau
-  this.currentPage = 1; // Revenir à la première page
-}
-  
+    this.currentPage = 1;
+  }
 
-  displayEmployeeDetails(employee: any): void {
+  displayTacheDetails(tache: any): void {
     const message = `
-      Name: ${employee.name}
-      First Name: ${employee.firstName}
-      CIN: ${employee.cin}
-      Age: ${employee.age}
-      Email: ${employee.email}
-      Phone Number: ${employee.phoneNumber}
+      Nom de la tâche: ${tache.NomTache}
+      État: ${tache.etat}
+      Membre: ${tache.membre}
+      Description: ${tache.descriptionTache}
+      Date d'échéance: ${tache.dateecheance}
     `;
-
     alert(message);
   }
 
-  getEmployees(): Array<any> {
-    return this.employees;
+  getTaches(): Array<any> {
+    return this.taches;
   }
-  getEmployeesApproved(): Array<any> {
-    return this.employees.filter(employee => employee.firstName.toLowerCase() === 'approved');
-  }
-  
-  getEmployeesReview(): Array<any> {
-    return this.employees.filter(employee => employee.firstName.toLowerCase() === 'review');
-  }
-  
-  getEmployeesProgress(): Array<any> {
-    return this.employees.filter(employee => employee.firstName.toLowerCase() === 'progress');
-  }
-  
-
-
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace project.Server.Entity
 {
     public class Project
     {
+        [Key] 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; } // It's advisable to have a unique identifier for each project
 
         [Required]

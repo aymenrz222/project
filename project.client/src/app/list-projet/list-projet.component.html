@@ -1,119 +1,106 @@
 <!-- Your table content -->
-
 <div class="content">
-    <head>
-
-    
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"></head>
-      <h1>Current Project</h1><br>
-      <div class="container">
-        <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher ...">
-      
-     
-     <button type="button" (click)="toggleAddPopup()">
-        <i class="fa-solid fa-plus"></i> Ajouter </button>
-      
-      
-    </div>
-   
-    <br><br> 
-    <div class="dataTables_length bs-select" id="dtBasicExample_length">
+  <head>
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+  </head>
+  <h1>Current Project</h1><br>
+  <div class="container">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher ...">
+      <button type="button" (click)="toggleAddPopup()">
+          <i class="material-icons">add</i> Ajouter 
+      </button>
+  </div>
+  <br><br> 
+  <div class="dataTables_length bs-select" id="dtBasicExample_length">
       <label>Show 
-        <select 
-          name="dtBasicExample_length" 
-          aria-controls="dtBasicExample" 
-          class="custom-select custom-select-sm form-control form-control-sm"
-          (change)="onEntriesPerPageChange($event)">
-          <option value="3">3</option>
-          <option value="6">6</option>
-          <option value="12">12</option>
-          <option value="24">24</option>
-          <option value="48">48</option>
-        </select> entries
+          <select 
+            name="dtBasicExample_length" 
+            aria-controls="dtBasicExample" 
+            class="custom-select custom-select-sm form-control form-control-sm"
+            (change)="onEntriesPerPageChange($event)">
+              <option value="3">3</option>
+              <option value="6">6</option>
+              <option value="12">12</option>
+              <option value="24">24</option>
+              <option value="48">48</option>
+          </select> entries
       </label>
-    </div>
-    
-    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  </div>
+  
+  <table *ngIf = "showlistes" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
       <thead>
-        <tr>
-<th><input type="checkbox"></th>
-            
-          <th>
-            title
-            <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
-              <i class="fa-solid fa-sort"></i>
-            </button>
-            <th>
-              projet status
-              
-             
+          <tr>
+              <th><input type="checkbox"></th>
               <th>
-                Client
-              
-               
+                  Titre
+                  <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+                      <i class="material-icons">sort</i>
+                  </button>
               </th>
-             
-          <th>teams</th>
+              <th>Projet Status</th>
+              <th>Client</th>
+              <th>Team</th>
               <th>Due date</th>
-          <th>Actions</th>
-        </tr>
+              <th>Actions</th>
+          </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let project of ListProjects">
-            <td><input type="checkbox"></td>
-          <td>{{ project.titre }}</td>
-          <td>{{ project.projectStatus }}</td>
-          <td>{{ project. client}}</td>
-          <td>{{ project.team }}</td>
-          <td>{{ project. dueDate}}</td>
-          
-          <td>
-            <button (click)="viewEmployee(project)">
-              <i class="material-icons">person</i>
-          </button>
-          <button (click)="openEditPopup(project)">
-              <i class="material-icons">edit</i>
-          </button>
-          <button (click)="deleteEmployeeConfirmation(project.id)">
-              <i class="material-icons">close</i>
-          </button>
-          </td>
-        </tr>
+          <tr *ngFor="let project of listProjects">
+              <td><input type="checkbox"></td>
+              <td>{{ project.titre }}</td>
+              <td>{{ project.projectStatus }}</td>
+              <td>{{ project.client }}</td>
+              <td>{{ project.team }}</td>
+              <td>{{ project.dueDate}}</td>
+              <td>
+                  <button (click)="viewProject(project)">
+                      <i class="material-icons">person</i>
+                  </button>
+                  <button (click)="openEditPopup(project)">
+                      <i class="material-icons">edit</i>
+                  </button>
+                  <button (click)="deleteProjectConfirmation(project.id)">
+                      <i class="material-icons">close</i>
+                  </button>
+              </td>
+          </tr>
       </tbody>
-    </table>
-    
-    <br><br>
+  </table>
+  
+  <br><br>
 
-    <div class="row">
+  <div class="row">
       <div class="col-sm-12 col-md-5">
-        <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
-          Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ employees.length }} entries
-        </div>
+          <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
+             
+          </div>
       </div>
       <div class="col-sm-12 col-md-7">
-        <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
-          <ul class="pagination">
-            <!-- Previous button -->
-            <li class="paginate_button page-item" [class.disabled]="currentPage === 1" 
-                (click)="changePage(currentPage - 1)">
-              <a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-            </li>
-            <!-- Page numbers -->
-            <li class="paginate_button page-item" [class.active]="page === currentPage" *ngFor="let page of getPages()">
-              <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
-                 class="page-link" (click)="changePage(page)">{{ page }}</a>
-            </li>
-            <!-- Next button -->
-            <li class="paginate_button page-item" [class.disabled]="currentPage === getTotalPages()" 
-                (click)="changePage(currentPage + 1)">
-              <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
-                 class="page-link">Next</a>
-            </li>
-          </ul>
-        </div>
+          <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
+              <ul class="pagination">
+                  <!-- Previous button -->
+                  <li class="page-item" [class.disabled]="currentPage === 1" 
+                      (click)="changePage(currentPage - 1)">
+                      <a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                  </li>
+                  <!-- Page numbers -->
+                  <li class="page-item" [class.active]="page === currentPage" *ngFor="let page of getPages()">
+                      <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
+                         class="page-link" (click)="changePage(page)">{{ page }}</a>
+                  </li>
+                  <!-- Next button -->
+                  <li class="page-item" [class.disabled]="currentPage === getTotalPages()" 
+                      (click)="changePage(currentPage + 1)">
+                      <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
+                         class="page-link">Next</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-    <app-view [employeer]="employeer" *ngIf="openpopup" (ClosePopup)="handeleClosePopup()"></app-view>
-<app-delete *ngIf="showConfirmation" (confirmed)="deleteEmployee($event)"></app-delete>
-    <app-ajout *ngIf="showAddPopup" (saveEmployee)="addEmployee($event)" (closePopup)="handleClosePopup()"></app-ajout>
-    <app-edit *ngIf="showEditPopup"(savemodifiedEmployee)="saveModifiedEmployee($event)" (closePopup)="closeEditPopup()"></app-edit>
+  </div>
+</div>
+
+
+<app-delete *ngIf="showConfirmation" (confirmed)="deleteProject($event)"></app-delete>
+<app-ajout *ngIf="showAddPopup" (saveProject)="addProject()" (closePopup)="handleClosePopup()"></app-ajout>
+<app-edit *ngIf="showEditPopup"(savemodifiedProject)="saveModifiedProject($event)" (closePopup)="closeEditPopup()"></app-edit>

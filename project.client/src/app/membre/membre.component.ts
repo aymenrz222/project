@@ -1,209 +1,135 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MembreService } from '../services/membre.service';
+
 @Component({
   selector: 'app-membre',
   templateUrl: './membre.component.html',
-  styleUrl: './membre.component.css'
+  styleUrls: ['./membre.component.css']
 })
 export class MembreComponent {
-  newEmployeeForm: FormGroup;
-  employees: Array<{ name: string, firstName: string, cin: string, actions: Array<{ type: string, callback: Function }> }> = [];
-  filteredEmployees: any[] = [];
-  searchQuery: string = '';
-  openpopup: boolean = false;
-  employeer: any;
-  showConfirmation: boolean = false;
-  employeeToDelete: any;
+  newMemberForm: FormGroup;
   showEditPopup: boolean = false;
-  employeeToEdit: any;
+  showConfirmation: boolean = false;
+  membreToDelete: any;
+  membreToEdit: any;
+  searchQuery: string = '';
+  filteredMembres: any[] = [];
+  membres: Array<{
+    Nom: string,
+    Prenom: string,
+    Cin: Int32Array,
+    Poste: string, // Remplacez "age" par "poste" ici
+    Telepohne: Int32Array,
+    Email: string,
+    actions: Array<{ type: string, callback: Function }>
+  }> = [];
+  openpopup: boolean = false;
+  membreToShow: any;
   currentPage: number = 1;
-  entriesPerPage: number = 2; // Nombre d'éléments à afficher par page
-  sortDirection: number = 1; // 1 pour trier de A à Z, -1 pour trier de Z à A
-  sortField: string = 'name';
-  
- 
+  entriesPerPage: number = 3;
   showAddPopup: boolean = false;
-  isSortedAscending: boolean = true;
-  constructor(private MembreService: MembreService) {
-    this.newEmployeeForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      cin: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
-      dueDate:new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required)
+  isSortedAscending: boolean = true; // 1 pour trier de A à Z, -1 pour trier de Z à A
+  sortField: string = 'nom';
+  membre: any;
+  showlistesmembre = false;
+  constructor(private membreService: MembreService) {
+    this.newMemberForm = new FormGroup({
+      Nom: new FormControl('', Validators.required),
+      Prenom: new FormControl('', Validators.required),
+      Cin: new FormControl('', Validators.required),
+      Poste: new FormControl('', Validators.required),
+      Telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{2}-[0-9]{3}-[0-9]{3}')]),
+      Email: new FormControl('', [Validators.required, Validators.email])
     });
   }
-
-  ngOnInit(): void {
-    // Utilisation du service pour récupérer des données depuis l'API
-    this.MembreService.getDonnees;
   
+  ngOnInit(): void {
+    this.team();
   }
+
+  team(): void{
+    this.membreService.getmembre().subscribe((database) => {
+      console.log("data" ,database)
+       this.membre = database
+       this.showlistesmembre = true;
+    });
+  }  
+
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
   }
+
+  
+  
   handleClosePopup(): void {
     this.openpopup = false;
     this.showAddPopup = false;
+    
   }
 
-  handeleClosePopup(): void {
-    
-    this.openpopup = false;
-  }
   closeEditPopup(): void {
     this.showEditPopup = false;
   }
-  checkDuplicateEmployee(cin: string): boolean {
-    return this.employees.some(employee => employee.cin === cin);
+
+  checkDuplicateMembre(cin: Int32Array): boolean {
+    return this.membres.some(membre => membre.Cin === cin);
   }
 
-  addEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone, duedate, description, category, pudget, } = newEmployeeData;
-    const statusElement = document.querySelector('input[name="status"]:checked');
-    const status = statusElement ? prenom.value : 'En cours'; // Valeur par défaut si aucun bouton n'est sélectionné
-    if (!Number.isInteger(+cin) || cin.length !== 8) {
-      alert('Le CIN est impossible');
-      return;
-    }
-
-    if (this.checkDuplicateEmployee(cin)) {
-      alert('Désolé, cet employé est déjà dans ce tableau.');
-      return;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(duedate)) {
-      alert('L\'e-mail est invalide');
-      return;
+  addMembre(): void {
+    this.showlistesmembre = false;
+    this.team();
+    console.log (this.showlistesmembre)
   }
-  
-  if (this.checkDuplicateEmployee(duedate)) {
-      alert('Désolé, cet employé est déjà dans ce tableau.');
-      return;
-  }
-    // Check if all required fields are filled
-   
 
-    // Check if CIN is unique
-    const isCinUnique = !this.employees.some(employee => employee.cin === cin);
-
-    if (isCinUnique) {
-        const newEmployee = {
-            name: nom,
-            firstName: prenom,
-            cin: cin,
-            age: age,
-            phoneNumber: telephone,
-            dueDate: duedate,
-            description: description,
-            category: category,
-            budget: pudget,
-            status: status, // Include the project status
-            actions: [
-                { type: 'view', callback: this.viewEmployee.bind(this) },
-                { type: 'edit', callback: this.openEditPopup.bind(this) },
-                { type: 'delete', callback: this.deleteEmployeeConfirmation.bind(this) }
-            ]
-        };
-
-        // Only add the employee if the CIN is unique
-        this.employees.push(newEmployee);
-    } else {
-        const message = 'Le CIN doit être unique pour chaque employé. Employé non ajouté.';
-        alert(message);
-    }
-}
-
-  viewEmployee(employee: { name: string, firstName: string, cin: string }): void {
-    this.employeer = employee;
+  viewMembre(membre: any): void {
+    this.membreToShow = membre;
     this.openpopup = true;
   }
 
- 
-  openEditPopup(employee: any): void {
+  openEditPopup(membre: any): void {
     this.showEditPopup = true;
-    this.employeeToEdit = employee;
+    this.membreToEdit = membre;
   }
 
-  saveModifiedEmployee(newEmployeeData: any): void {
-    const { nom, prenom, cin, age, telephone,duedate} = newEmployeeData;
-    if (!Number.isInteger(+cin) || cin.length !== 8) {
-      alert('Le CIN est impossible');
-      return;
-    }
+  saveModifiedMembre(newMembreData: any): void {
+    // Perform necessary validations and update membre
+  }
 
-    if (this.checkDuplicateEmployee(cin)) {
-      alert('Désolé, cet employé est déjà dans ce tableau.');
-      return;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(duedate)) {
-      alert('L\'e-mail est invalide');
-      return;
-  }
-  
-  if (this.checkDuplicateEmployee(duedate)) {
-      alert('Désolé, cet employé est déjà dans ce tableau.');
-      return;
-  }
-    this.employeeToEdit.name = nom;
-    this.employeeToEdit.firstName = prenom;
-    this.employeeToEdit.cin = cin;
-    this.employeeToEdit.age = age;
-    
-    this.employeeToEdit.phoneNumber = telephone;
-
-    this.showEditPopup = false;
-  }
-  deleteEmployeeConfirmation(employee: any): void {
+  deleteMembreConfirmation(membre: any): void {
     this.showConfirmation = true;
-    this.employeeToDelete = employee;
+    this.membreToDelete = membre;
   }
 
-  deleteEmployee(confirmed: boolean): void {
+  deleteMembre(confirmed: boolean): void {
     if (confirmed) {
-      const index = this.employees.indexOf(this.employeeToDelete);
+      const index = this.membres.indexOf(this.membreToDelete);
       if (index > -1) {
-        this.employees.splice(index, 1);
+        this.membres.splice(index, 1);
       }
     }
     this.showConfirmation = false;
-  
   }
 
-
-  searchEmployee(): void {
-    // Filtrer les employés en fonction du terme de recherche
-    this.filteredEmployees = this.employees.filter(employee => {
+  searchMembre(): void {
+    this.filteredMembres = this.membres.filter(membre => {
       return (
-        employee.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        employee.firstName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        employee.cin.toLowerCase().includes(this.searchQuery.toLowerCase())
+        membre.Nom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        membre.Prenom.toLowerCase().includes(this.searchQuery.toLowerCase()) 
+       
       );
     });
-  
-  // Afficher les résultats de la recherche dans le tableau
-  this.currentPage = 1; // Revenir à la première page
-}
-  
-
-  displayEmployeeDetails(employee: any): void {
-    const message = `
-      Name: ${employee.name}
-      First Name: ${employee.firstName}
-      CIN: ${employee.cin}
-      Age: ${employee.age}
-      Email: ${employee.email}
-      Phone Number: ${employee.phoneNumber}
-    `;
-
-    alert(message);
+    this.currentPage = 1; // Reset to the first page
   }
 
- getEmployeesForCurrentPage(): Array<any> {
+  displayMembreDetails(membre: any): void {
+    // Display details of the membre
+  }
+
+  getMembresForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
-    return this.employees.slice(startIndex, endIndex);
+    return this.membres.slice(startIndex, endIndex);
   }
 
   getFirstEntryIndex(): number {
@@ -212,11 +138,11 @@ export class MembreComponent {
 
   getLastEntryIndex(): number {
     const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex > this.employees.length ? this.employees.length : endIndex;
+    return endIndex > this.membres.length ? this.membres.length : endIndex;
   }
 
   getTotalPages(): number {
-    return Math.ceil(this.employees.length / this.entriesPerPage);
+    return Math.ceil(this.membres.length / this.entriesPerPage);
   }
 
   getPages(): Array<number> {
@@ -229,21 +155,17 @@ export class MembreComponent {
     }
   }
 
-  // Method to handle entries per page change
   onEntriesPerPageChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
-    // Handle the selected value as needed
-    console.log('Selected entries per page:', selectedValue);
     this.entriesPerPage = +selectedValue; // Convert the selected value to a number
-    this.currentPage =1; // Reset the current page to 1 when entries per page changes
+    this.currentPage = 1; // Reset the current page to 1 when entries per page changes
   }
 
-  // Method to handle sorting by name
   sortByName(): void {
     this.isSortedAscending = !this.isSortedAscending;
-    this.employees.sort((a, b) => {
+    this.membres.sort((a, b) => {
       const order = this.isSortedAscending ? 1 : -1;
-      return a.name.localeCompare(b.name) * order;
+      return a.Nom.localeCompare(b.Nom) * order;
     });
   }
 }

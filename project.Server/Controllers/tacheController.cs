@@ -40,7 +40,7 @@ namespace project.Server.Controllers
         {
             _database.tache.Add(tache);
             await _database.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetTache), new { TacheId = tache.tacheId }, tache);
+            return CreatedAtAction(nameof(GetTache), new { TacheId = tache.tacheId });
         }
 
         [HttpPut("{tacheId}")]

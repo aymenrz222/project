@@ -1,98 +1,97 @@
-<head><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"></head>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</head>
 <div class="content">
-  <h1>ajout membre</h1>
+  <h1>Ajout de membre</h1>
   <br><br>
   <div class="container">
-    <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher des employés...">
- 
-  <button class="ajout" type="button" (click)="toggleAddPopup()">
-    <i class="fa-solid fa-plus"></i> Ajouter </button>
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher des membres...">
+
+    <button class="ajout" type="button" (click)="toggleAddPopup()">
+      <i class="fa-solid fa-plus"></i> Ajouter </button>
   </div>
   <div class="dataTables_length bs-select" id="dtBasicExample_length">
-    <label>Show 
+    <label>Show
       <select 
         name="dtBasicExample_length" 
         aria-controls="dtBasicExample" 
         class="custom-select custom-select-sm form-control form-control-sm"
         (change)="onEntriesPerPageChange($event)">
-        <option value="5">2</option>
+        <option value="5">5</option>
         <option value="10">10</option>
         <option value="25">25</option>
-        
       </select> entries
     </label>
   </div>
- 
-  <table>
+
+  <table *ngIf = "showlistesmembre">
     <thead>
       <tr>
         <th>
           Nom
           <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
             <i class="th-sm sorting_asc"></i>
-          </button></th>
-          <th>
-            Prénom
-            <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
-              <i class="th-sm sorting_asc"></i>
-            </button></th>
-            <th>
-              CIN
-              <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
-                <i class="th-sm sorting_asc"></i>
-              </button></th>
-              <th>
-                poste
-                <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
-                  <i class="th-sm sorting_asc"></i>
-                </button></th>
+          </button>
+        </th>
+        <th>
+          Prénom
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
+        <th>
+          CIN
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
+        <th>
+          Poste
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
         <th>Actions</th>
       </tr>
-
-
-
-      
     </thead>
     <tbody>
-      <tr *ngFor="let employee of getEmployeesForCurrentPage()">
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.cin }}</td>
-        <td>{{ employee.age }}</td>
-     <td>
-            <button (click)="viewEmployee(employee)">
-              <i class="material-icons">person</i>
+      <tr *ngFor="let membre of membre ">
+        <td>{{ membre.nom }}</td>
+        <td>{{ membre.prenom }}</td>
+        <td>{{ membre.cin }}</td>
+        <td>{{ membre.poste}}</td>
+        
+        <td>
+          <button (click)="viewMembre(membre)">
+            <i class="material-icons">person</i>
           </button>
-          <button (click)="openEditPopup(employee)">
-              <i class="material-icons">edit</i>
+          <button (click)="openEditPopup(membre)">
+            <i class="material-icons">edit</i>
           </button>
-          <button (click)="deleteEmployeeConfirmation(employee)">
-              <i class="material-icons">close</i>
+          <button (click)="deleteMembreConfirmation(membre)">
+            <i class="material-icons">close</i>
           </button>
-          </td>
+        </td>
       </tr>
     </tbody>
   </table><br>
   <br><div class="row">
     <div class="col-sm-12 col-md-5">
       <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
-        Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ employees.length }} entries
+        Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ membres.length }} entries
       </div>
     </div>
     <div class="col-sm-12 col-md-7">
       <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
         <ul class="pagination">
-          
           <li class="paginate_button page-item" [class.disabled]="currentPage === 1" 
               (click)="changePage(currentPage - 1)">
             <a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
           </li>
-       
           <li class="paginate_button page-item" [class.active]="page === currentPage" *ngFor="let page of getPages()">
             <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
                class="page-link" (click)="changePage(page)">{{ page }}</a>
           </li>
-      
           <li class="paginate_button page-item" [class.disabled]="currentPage === getTotalPages()" 
               (click)="changePage(currentPage + 1)">
             <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
@@ -102,12 +101,8 @@
       </div>
     </div>
   </div>
-    <app-membre-ajout *ngIf="showAddPopup" (saveEmployee)="addEmployee($event)" (closePopup)="handleClosePopup()"></app-membre-ajout>
-  <app-membre-view [employeer]="employeer" *ngIf="openpopup" (ClosePopup)="handeleClosePopup()"></app-membre-view>
-  <app-membre-edit *ngIf="showEditPopup"(savemodifiedEmployee)="saveModifiedEmployee($event)" (closePopup)="closeEditPopup()"></app-membre-edit>
-  <app-membre-delet *ngIf="showConfirmation" (confirmed)="deleteEmployee($event)"></app-membre-delet>
-
+  <app-membre-ajout *ngIf="showAddPopup" (saveMembre)=" addMembre()" (closePopup)="handleClosePopup()"></app-membre-ajout>
+  
 
   <!-- Autres éléments HTML... -->
- 
-
+</div>

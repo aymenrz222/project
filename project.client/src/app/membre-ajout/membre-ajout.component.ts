@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MembreService } from '../services/membre.service';
 
 @Component({
   selector: 'app-membre-ajout',
@@ -6,27 +8,43 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrl: './membre-ajout.component.css'
 })
 export class MembreAjoutComponent {
- 
-  @Output() saveEmployee = new EventEmitter<any>();
-  @Output() closePopup = new EventEmitter<void>(); // New event to close the popup
-  newEmployeeData = {
-    status: '' // Initialisez status avec une valeur par défaut, ou laissez-le vide pour l'instant
-    // Ajoutez d'autres propriétés de newEmployeeData si nécessaire
-  };
-  hoveredStatus: string = '';
-  
-  setHoveredStatus(status: string) {
-    this.hoveredStatus = status;
+  @Output() saveMembre:EventEmitter<void> = new EventEmitter <void>();
+  @Output() closePopup = new EventEmitter<void>();// Output event to close the popup
+
+  newMemberForm: FormGroup; // Form for adding a new member
+
+  constructor(private membreService: MembreService) {
+    // Initialize the form with required controls and validators
+    this.newMemberForm = new FormGroup({
+      Nom: new FormControl('', Validators.required),
+      Prenom: new FormControl('', Validators.required),
+      Cin: new FormControl('', Validators.required),
+      Poste: new FormControl('', Validators.required),
+      Telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{2}-[0-9]{3}-[0-9]{3}')]),
+      Email: new FormControl('', [Validators.required, Validators.email])
+    });
   }
-  onSaveClick(nom: string, prenom: string, cin: string, age: string, telephone: string, duedate: string): void {
-    const newEmployeeData = { nom, prenom, cin, age, telephone, duedate };
-    this.saveEmployee.emit(newEmployeeData);
-    // Emit the closePopup event to notify the parent component to close the popup
-  
-  
-    this.closePopup.emit();
+
+  onSaveClick(): void {
+    // Check if the form is valid before emitting the data
+   
+      const newMemberData = this.newMemberForm.value; // Get form values
+      // Call the service method to add member data
+      this.membreService.addmembre(newMemberData).subscribe(
+        (response) => {
+          console.log('Member added successfully!', response);
+          this.saveMembre.emit();
+          this.closePopup.emit(); // Emit closePopup event to close the popup
+        },
+        (error) => {
+          console.error('Error adding member:', error);
+          // Handle the error accordingly, display a message to the user, etc.
+        }
+      );
+    
   }
+
   closeModal(): void {
-  this.closePopup.emit();
+    this.closePopup.emit(); // Emit closePopup event to close the popup
   }
 }

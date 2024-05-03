@@ -1,14 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class TacheService {
 
-  constructor(private http: HttpClient) {}
-    getDonnees(): Observable<any> {
-    return this.http.get<any>('https://localhost:44369/api/project');
-  } }
+  private BaseURL = `${environment.appUrl}/taches`;
+  
+  constructor(private httpClient: HttpClient) { }
 
+  gettache(): Observable<{DataBASE: any[]}> {
+    return this.httpClient.get<{DataBASE: any[]}>(`${this.BaseURL}`);
+  }
+
+ 
+
+}
