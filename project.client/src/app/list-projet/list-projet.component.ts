@@ -62,7 +62,7 @@ export class ListProjetComponent implements OnInit {
       this.listProjects = data;
       this.showlistes = true;
       this.projectId = true;
-      
+     
   })}
 
   toggleAddPopup(): void {
@@ -74,7 +74,7 @@ export class ListProjetComponent implements OnInit {
     this.showAddPopup = false;
     
   }
-
+  
 
   addProject(): void {
     this.showlistes = false;

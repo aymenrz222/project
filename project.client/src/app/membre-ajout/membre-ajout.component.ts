@@ -8,7 +8,7 @@ import { MembreService } from '../services/membre.service';
   styleUrl: './membre-ajout.component.css'
 })
 export class MembreAjoutComponent {
-  @Output() saveMembre:EventEmitter<void> = new EventEmitter <void>();
+  @Output() saveMembre: EventEmitter<void> = new EventEmitter <void>(); 
   @Output() closePopup = new EventEmitter<void>();// Output event to close the popup
 
   newMemberForm: FormGroup; // Form for adding a new member

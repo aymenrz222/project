@@ -6,12 +6,12 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrl: './view.component.css'
 })
 export class ViewComponent {
-  @Input() employeer: any;
+  @Input() project: any;
   @Output() ClosePopup: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
   ngOnInit(){
-    console.log('open pop-up' , this.employeer)
+    console.log('open pop-up' , this.project)
   }
   closeModal(): void {
     this.ClosePopup.emit();

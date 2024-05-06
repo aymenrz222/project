@@ -100,7 +100,7 @@
       </div>
   </div>
 </div>
-
+<app-view [project]="project" *ngIf="openpopup" (ClosePopup)="handleClosePopup()"></app-view>
 <app-delete *ngIf="showConfirmation" [data]="Data" (confirmed)="deleteProject()"></app-delete>
 <app-ajout *ngIf="showAddPopup" (saveProject)="addProject()" (closePopup)="handleClosePopup()"></app-ajout>
 <app-edit *ngIf="showEditPopup"(savemodifiedProject)="saveModifiedProject()" [data]="Data" (closePopup)="closeEditPopup()"></app-edit>

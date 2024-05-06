@@ -32,6 +32,8 @@ export class MembreComponent {
   isSortedAscending: boolean = true; // 1 pour trier de A à Z, -1 pour trier de Z à A
   sortField: string = 'nom';
   membre: any;
+  database : any;
+  membreId = false;
   showlistesmembre = false;
   constructor(private membreService: MembreService) {
     this.newMemberForm = new FormGroup({
@@ -53,6 +55,7 @@ export class MembreComponent {
       console.log("data" ,database)
        this.membre = database
        this.showlistesmembre = true;
+       this.membreId = true;
     });
   }  
 
@@ -89,39 +92,25 @@ export class MembreComponent {
 
   openEditPopup(membre: any): void {
     this.showEditPopup = true;
-    this.membreToEdit = membre;
+    this.database = membre;
+  
   }
 
-  saveModifiedMembre(newMembreData: any): void {
-    // Perform necessary validations and update membre
+  saveModifiedMembre(): void {
+    this.showlistesmembre = false;
+    this.team();
+    this.membreId = false;
   }
 
-  deleteMembreConfirmation(membre: any): void {
+  deletemembreConfirmation( membre:any): void {
     this.showConfirmation = true;
-    this.membreToDelete = membre;
-  }
+    this.database = membre;
+   }
 
-  deleteMembre(confirmed: boolean): void {
-    if (confirmed) {
-      const index = this.membres.indexOf(this.membreToDelete);
-      if (index > -1) {
-        this.membres.splice(index, 1);
-      }
-    }
+  deletemembre(): void {
     this.showConfirmation = false;
+   
   }
-
-  searchMembre(): void {
-    this.filteredMembres = this.membres.filter(membre => {
-      return (
-        membre.Nom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        membre.Prenom.toLowerCase().includes(this.searchQuery.toLowerCase()) 
-       
-      );
-    });
-    this.currentPage = 1; // Reset to the first page
-  }
-
   displayMembreDetails(membre: any): void {
     // Display details of the membre
   }

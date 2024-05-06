@@ -68,7 +68,7 @@
           <button (click)="openEditPopup(membre)">
             <i class="material-icons">edit</i>
           </button>
-          <button (click)="deleteMembreConfirmation(membre)">
+          <button (click)=" deletemembreConfirmation( membre)">
             <i class="material-icons">close</i>
           </button>
         </td>
@@ -102,5 +102,6 @@
     </div>
   </div>
   <app-membre-ajout *ngIf="showAddPopup" (saveMembre)=" addMembre()" (closePopup)="handleClosePopup()"></app-membre-ajout>
-  
-</div>
+  <app-membre-edit *ngIf="showEditPopup"(saveModifiedMember)="saveModifiedMembre()"  [database]="database" (closePopup)="closeEditPopup()"></app-membre-edit>
+<app-membre-delet *ngIf="showConfirmation"  [database]="database" (confirmed)="deletemembre()"  ></app-membre-delet>
+ 

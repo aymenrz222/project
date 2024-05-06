@@ -1,50 +1,50 @@
 <div class="back-layer">
     <div class="section">
   
-        <form (ngSubmit)="onSaveModification(nom.value, prenom.value, cin.value, age.value, telephone.value, duedate.value)">
+      <form [formGroup]="newMemberForm " (ngSubmit)="onSaveModification()">
 
       <h1>Modifier l'employée</h1>
       <div>
         <label for="nom">Nom<span class="required-field">*</span>:</label>
-        <input type="text" id="nom" name="nom" placeholder="Enter your title" required #nom>
+        <input type="text" id="nom"  formControlName="nom" placeholder="Enter your title" required #nom>
       </div>
 
       <div>
           <label for="prenom">Prenom<span class="required-field">*</span>:</label>
-          <input type="text" id="prenom" name="prenom" placeholder="Enter your title" required #prenom>
+          <input type="text" id="prenom"  formControlName="prenom" placeholder="Enter your title" required #prenom>
         </div>
 
       <div>
         <label for="cin">Cin<span class="required-field">*</span>:</label>
-        <input type="text" id="cin" name="cin" placeholder="Enter your client" required #cin>
+        <input type="text" id="cin"  formControlName="cin" placeholder="Enter your client" required #cin>
       </div>
 
         <div>
           <label for="age">poste:</label>
         
 
-<select name="pets" id="pet-select"#age>
-  <option value="">poste</option>
-  <option value="Devloppeur web">Devloppeur web</option>
-  <option value="devloppeur mobile">devloppeur mobile</option>
-  <option value="design">design</option>
+       <select formControlName="pets" id="pet-select"#poste>
+           <option value="">poste</option>
+            <option value="Devloppeur web">Devloppeur web</option>
+            <option value="devloppeur mobile">devloppeur mobile</option>
+                 <option value="design">design</option>
  
-</select>
+              </select>
         </div>
 
-      <div>
-        <label for="telephone">telephone</label>
-        <input type="tel" id="telephone" name="telephone" placeholder="Enter your debut date" #telephone>
+        <div>
+          <label for="Telephone">Téléphone:</label>
+          <input type="tel" id="Telephone"formControlName="Telephone" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Entrer votre téléphone" required #telephone>
       </div>
 
+
       <div>
-        <label for="duedate">E-mail</label>
-        <input type="tel" id="duedate" name="duedate" placeholder="Enter your due date" #duedate>
-      </div>
+        <label for="Email">E-mail:</label>
+        <input type="Email" id="Email" formControlName="Email" placeholder="Entrer votre e-mail" required #email>
+    </div>
 
       
-  
-      <button  type="submit">Modifier   <i class="fa-regular fa-floppy-disk"></i></button>
+    <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
       <button type="button" (click)="closeModal()" class="cancel-button">
         Annuler  <i class="fa-solid fa-xmark"></i> 
       </button>
