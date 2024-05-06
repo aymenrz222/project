@@ -30,6 +30,7 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import { ProjetService } from './services/projet.service';
 import { MembreService } from './services/membre.service';
 import { TacheService } from './services/tache.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { TacheService } from './services/tache.service';
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [ProjetService,MembreService,TacheService],
+  providers: [ProjetService,MembreService,TacheService , DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

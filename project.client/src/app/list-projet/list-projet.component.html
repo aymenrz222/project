@@ -51,7 +51,7 @@
               <td>{{ project.projectStatus }}</td>
               <td>{{ project.client }}</td>
               <td>{{ project.team }}</td>
-              <td>{{ project.dueDate}}</td>
+              <td>{{ project.dueDate | date: 'dd/MM/yyyy'}}</td>
               <td>
                   <button (click)="viewProject(project)">
                       <i class="material-icons">person</i>
@@ -59,9 +59,10 @@
                   <button (click)="openEditPopup(project)">
                       <i class="material-icons">edit</i>
                   </button>
-                  <button (click)="deleteProjectConfirmation(project.id)">
-                      <i class="material-icons">close</i>
-                  </button>
+               
+                <button (click)="deleteprojectConfirmation(project)">
+                    <i class="material-icons">close</i>
+                </button>
               </td>
           </tr>
       </tbody>
@@ -100,7 +101,6 @@
   </div>
 </div>
 
-
-<app-delete *ngIf="showConfirmation" (confirmed)="deleteProject($event)"></app-delete>
+<app-delete *ngIf="showConfirmation" [data]="Data" (confirmed)="deleteProject()"></app-delete>
 <app-ajout *ngIf="showAddPopup" (saveProject)="addProject()" (closePopup)="handleClosePopup()"></app-ajout>
-<app-edit *ngIf="showEditPopup"(savemodifiedProject)="saveModifiedProject($event)" (closePopup)="closeEditPopup()"></app-edit>
+<app-edit *ngIf="showEditPopup"(savemodifiedProject)="saveModifiedProject()" [data]="Data" (closePopup)="closeEditPopup()"></app-edit>

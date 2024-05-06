@@ -24,7 +24,7 @@
     </label>
   </div>
 
-  <table *ngIf = "showlistesmembre">
+  <table *ngIf = "showlistesmembre" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
     <thead>
       <tr>
         <th>
@@ -103,6 +103,4 @@
   </div>
   <app-membre-ajout *ngIf="showAddPopup" (saveMembre)=" addMembre()" (closePopup)="handleClosePopup()"></app-membre-ajout>
   
-
-  <!-- Autres éléments HTML... -->
 </div>

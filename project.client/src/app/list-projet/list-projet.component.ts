@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProjetService } from '../services/projet.service';
 
@@ -9,10 +9,10 @@ import { ProjetService } from '../services/projet.service';
 })
 export class ListProjetComponent implements OnInit {
   
+ 
   newProjectForm: FormGroup;
   showEditPopup: boolean = false;
   showConfirmation: boolean = false;
-  projectToDelete: any;
   projectToEdit: any;
   searchQuery: string = '';
   filteredProjects: any[] = [];
@@ -22,6 +22,7 @@ export class ListProjetComponent implements OnInit {
     client: string,
     team: string,
     debutdate: string,
+    duedate: string,
     categorie: string,
     budget: string,
     actions: Array<{ type: string, callback: Function }>
@@ -32,7 +33,10 @@ export class ListProjetComponent implements OnInit {
   entriesPerPage: number = 3;
   isSortedAscending: boolean = true;
   listProjects: any;
+  projectId = false;
+  Data : any;
   showlistes = false;
+  showlistesmodifier = false;
   showAddPopup: boolean = false;
   constructor(private projectService: ProjetService) {
     this.newProjectForm = new FormGroup({
@@ -41,6 +45,7 @@ export class ListProjetComponent implements OnInit {
       client: new FormControl('', Validators.required),
       team: new FormControl('', Validators.required),
       debutdate: new FormControl('', Validators.required),
+      duedate: new FormControl('', Validators.required),
       categorie: new FormControl('', Validators.required),
       budget: new FormControl('', Validators.required),
     });
@@ -56,8 +61,9 @@ export class ListProjetComponent implements OnInit {
       console.log("data", data)
       this.listProjects = data;
       this.showlistes = true;
-    });
-  }
+      this.projectId = true;
+      
+  })}
 
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
@@ -73,7 +79,6 @@ export class ListProjetComponent implements OnInit {
   addProject(): void {
     this.showlistes = false;
     this.ListProjects();
-  console.log (this.showlistes)
   }
 
   viewProject(project: any): void {
@@ -83,46 +88,28 @@ export class ListProjetComponent implements OnInit {
 
   openEditPopup(project: any): void {
     this.showEditPopup = true;
-    this.projectToEdit = project;
+    this.Data = project
+  
   }
 
-  saveModifiedProject(newProjectData: any): void {
-    const { titre, projetstatus, client, team, debutdate, categorie, budget } = newProjectData;
-    this.projectToEdit.titre = titre;
-    this.projectToEdit.projetstatus = projetstatus;
-    this.projectToEdit.client = client;
-    this.projectToEdit.team = team;
-    this.projectToEdit.debutdate = debutdate;
-    this.projectToEdit.categorie = categorie;
-    this.projectToEdit.budget = budget;
-    this.showEditPopup = false;
+  saveModifiedProject(): void {
+    this.showlistes = false;
+    this.ListProjects();
+    this.projectId = false;
   }
-
+  
   closeEditPopup(): void {
     this.showEditPopup = false;
   }
 
-  deleteProjectConfirmation(id: any): void {
-    this.projectService.deleteProject(id).subscribe(
-      () => {
-        console.log('Suppression réussie !');
-        this.listProjects(); // Recharger la liste des projets après la suppression
-      },
-      error => {
-        console.error('Erreur lors de la suppression :', error);
-        // Traitez l'erreur en conséquence, affichez un message à l'utilisateur, etc.
-      }
-    );
-  }
+  deleteprojectConfirmation(project:any): void {
+    this.showConfirmation = true;
+    this.Data = project
+   }
 
-  deleteProject(confirmed: boolean): void {
-    if (confirmed) {
-      const index = this.projects.indexOf(this.projectToDelete);
-      if (index > -1) {
-        this.projects.splice(index, 1);
-      }
-    }
+  deleteProject(): void {
     this.showConfirmation = false;
+   
   }
 
   searchProject(): void {

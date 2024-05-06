@@ -17,8 +17,8 @@ export class MembreService {
   addmembre(database: any): Observable<{ database: any[] }> {
     return this.httpClient.post<{ database: any }>(`${this.BaseURL}`, database);
   }
-  DeleteService(id: any){
-    console.log("iddddd00000" , id)
+  deletemembre(id: any): Observable<any> {
+    return this.httpClient.delete(`${this.BaseURL}/${id}`);
   }
 
 }

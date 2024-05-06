@@ -5,7 +5,11 @@
 
       <div>
         <label for="titre">Title<span class="required-field">*</span>:</label>
-        <input type="text" id="titre" formControlName="titre" placeholder="Enter your title" required>
+        <input type="text"  id="titre" formControlName="titre" placeholder="Enter your title" required>
+      </div>
+    
+      <div *ngIf="newProjectForm.controls['titre'].errors">
+        Titre is required
       </div>
 
       <div>

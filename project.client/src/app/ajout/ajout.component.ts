@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ProjetService } from '../services/projet.service';
 
 @Component({
@@ -14,10 +14,10 @@ export class AjoutComponent {
 
   newProjectForm: FormGroup; // Formulaire de nouveau projet
 
-  constructor(private projectService: ProjetService) {
+  constructor(private projectService: ProjetService , private formBuilder : FormBuilder) {
     // Initialiser le formulaire avec les contrôles requis et les validateurs
-    this.newProjectForm = new FormGroup({
-      titre: new FormControl('', Validators.required),
+    this.newProjectForm = this.formBuilder.group({
+      titre: ['', Validators.required],
       projectStatus: new FormControl('', Validators.required),
       client: new FormControl('', Validators.required),
       team: new FormControl(''),
@@ -27,6 +27,7 @@ export class AjoutComponent {
       categorie: new FormControl(''),
       budget: new FormControl('')
     });
+    
   }
 
   onSaveClick(): void {

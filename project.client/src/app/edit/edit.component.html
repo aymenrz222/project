@@ -1,66 +1,60 @@
 <div class="back-layer">
-    <div class="section">
-  
-        <form (ngSubmit)="onSaveModification(nom.value, prenom.value, cin.value, age.value, telephone.value, duedate.value, description.value, category.value, pudget.value)">
+  <div class="section">
+    <form [formGroup]="newProjectForm" (ngSubmit)="onSaveModification()"><!-- Add formGroup binding to the form -->
+      <h1></h1>
 
-      <h1>Modifier l'employée</h1>
       <div>
-        <label for="nom">Title<span class="required-field">*</span>:</label>
-        <input type="text" id="nom" name="nom" placeholder="Enter your title" required #nom>
+        <label for="titre">Title<span class="required-field">*</span>:</label>
+        <input type="text" id="titre" formControlName="titre" placeholder="Enter your title" required >
       </div>
-<div>
-      <label for="prenom">Project Status:</label>
-       
-      <select name="pets" id="pet-select"#prenom>
-        <option value="">etat</option>
-        <option value="approved">approved</option>
-        <option value="in review">in review</option>
-        <option value="in progress">in progress</option>
-        
+
+      <div>
+        <label for="projectStatus">Project Status:</label>
+        <select name="projectStatus" id="projectStatus" formControlName="projectStatus">
+          <option value="">Select status</option>
+          <option value="approved">Approved</option>
+          <option value="in review">In Review</option>
+          <option value="in progress">In Progress</option>
         </select>
-            </div>
-
-      <div>
-        <label for="cin">Client<span class="required-field">*</span>:</label>
-        <input type="text" id="cin" name="cin" placeholder="Enter your client" required #cin>
       </div>
 
       <div>
-        <label for="age">Teams:</label>
-        <input type="text" id="age" name="age" placeholder="Enter your teams" #age>
+        <label for="client">Client<span class="required-field">*</span>:</label>
+        <input type="text" id="client" formControlName="client" placeholder="Enter your client" required>
       </div>
 
       <div>
-        <label for="telephone">Debut Date:</label>
-        <input type="tel" id="telephone" name="telephone" placeholder="Enter your debut date" #telephone>
+        <label for="team">Teams:</label>
+        <input type="text" id="team" formControlName="team" placeholder="Enter your teams">
       </div>
 
       <div>
-        <label for="duedate">Due Date:</label>
-        <input type="tel" id="duedate" name="duedate" placeholder="Enter your due date" #duedate>
+        <label for="debutDate">Debut Date:</label>
+        <input type="date" id="debutDate" formControlName="debutDate" required>
+      </div>
+
+      <div>
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" formControlName="dueDate"  required>
       </div>
 
       <div>
         <label for="description">Detailed Description:</label>
-        <input type="text" id="description" name="description" placeholder="Enter detailed description" #description>
+        <input type="text" id="description" formControlName="description" placeholder="Enter detailed description">
       </div>
 
       <div>
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category" placeholder="Enter category" #category>
+        <label for="categorie">Categorie:</label>
+        <input type="text" id="categorie" formControlName="categorie" placeholder="Enter category">
       </div>
 
       <div>
-        <label for="pudget">Project Budget:</label>
-        <input type="text" id="pudget" name="pudget" placeholder="Enter project budget" #pudget>
+        <label for="budget">Project Budget:</label>
+        <input type="text" id="budget" formControlName="budget" placeholder="Enter project budget">
       </div>
-  
-      
-  
-      <button  type="submit">Modifier   <i class="fa-regular fa-floppy-disk"></i></button>
-      <button type="button" (click)="closeModal()" class="cancel-button">
-        Annuler  <i class="fa-solid fa-xmark"></i> 
-      </button>
+
+      <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
+      <button type="button" (click)="closeModal()" class="cancel-button">Annuler <i class="fa-solid fa-xmark"></i></button>
     </form>
-    </div>
   </div>
+</div>

@@ -44,33 +44,28 @@ namespace project.Server.Controllers
             return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProject(int id, Project project)
+        [HttpPut]
+        public async Task<IActionResult> UpdateProject( Project project)
         {
-            if (id != project.Id)
-            {
-                return BadRequest();
+            if (!ModelState.IsValid) { 
+                return BadRequest(ModelState);
             }
-
+            if (!_database.project.Any(p => p.Id == project.Id)) {
+                return NotFound(); 
+            }
             _database.Entry(project).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await _database.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProjectExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                var newproject = await _database.project.FindAsync(project.Id);
+                return Ok(newproject);
+
+            } catch (DbUpdateConcurrencyException) { 
+
+                throw;
             }
 
-            return NoContent();
+            
         }
 
         [HttpDelete("{id}")]

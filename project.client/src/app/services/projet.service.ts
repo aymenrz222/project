@@ -20,10 +20,18 @@ export class ProjetService {
     return this.httpClient.delete(`${this.BaseURL}/${id}`);
   }
 
+  getProject(id: any): Observable<any> {
+    return this.httpClient.get(`${this.BaseURL}/${id}`);
+  }
   // Fonction pour envoyer des données à l'API
   addData(data: any): Observable<{ data: any[] }> {
     return this.httpClient.post<{ data: any }>(`${this.BaseURL}`, data);
   }
 
-}
+  updateProject(data: any): Observable<{ data: any[] }> {
+    return this.httpClient.put<{ data: any[] }>(`${this.BaseURL}`, data);
+  }
+  
+  }
+
 
