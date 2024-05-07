@@ -17,11 +17,11 @@ export class MembreService {
   addmembre(database: any): Observable<{ database: any[] }> {
     return this.httpClient.post<{ database: any }>(`${this.BaseURL}`, database);
   }
-  getmember(id: any): Observable<any> {
-    return this.httpClient.get(`${this.BaseURL}/${id}`);
+  getmember(teamId: any): Observable<any> {
+    return this.httpClient.get(`${this.BaseURL}/${teamId}`);
   }
-  deletemembre(id: any): Observable<any> {
-    return this.httpClient.delete(`${this.BaseURL}/${id}`);
+  deletemembre(teamId: any): Observable<any> {
+    return this.httpClient.delete(`${this.BaseURL}/${teamId}`);
   }
   updatemembre(database: any): Observable<{ database: any[] }> {
     return this.httpClient.put<{ database: any[] }>(`${this.BaseURL}`, database);
