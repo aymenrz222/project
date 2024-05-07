@@ -45,33 +45,35 @@ namespace project.Server.Controllers
             return CreatedAtAction(nameof(GetTeam), new { TeamId = team.teamId }, team); // Return the created team with CreatedAtAction
         }
 
-        [HttpPut("{teamId}")]
-        public async Task<IActionResult> UpdateTeam(int teamId, team team)
-        {
-            if (teamId != team.teamId)
-            {
-                return BadRequest();
-            }
 
-            _database.Entry(team).State = EntityState.Modified; // Set the state of the entity to Modified
+        [HttpPut]
+        public async Task<IActionResult> Updateteam(team team)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (!_database.team.Any(t => t.teamId == team.teamId))
+            {
+                return NotFound();
+            }
+            _database.Entry(team).State = EntityState.Modified;
 
             try
             {
                 await _database.SaveChangesAsync();
+
+                var newteam = _database.team.FirstOrDefault(t => t.teamId == team.teamId);
+                return Ok(newteam);
+
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TeamExists(teamId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
-            return NoContent();
+
         }
 
         [HttpDelete("{teamId}")]
