@@ -1,16 +1,16 @@
 <div class="back-layer">
   <div class="section">
-    <form (submit)="onSaveClick(nom.value, prenom.value, age.value, telephone.value,  description.value)">
+    <form [formGroup]="newTaskForm" (ngSubmit)="onSaveClick()" >
       <h1>Add Project</h1>
 
       <div>
-        <label for="nom">nom del la tache<span class="required-field">*</span>:</label>
-        <input type="text" id="nom" name="nom" placeholder="Enter your title" required #nom>
+        <label for="nomTache">nom de la tache<span class="required-field">*</span>:</label>
+        <input type="text" id="nomTache" name="nomTache" formControlName="nomTache" placeholder="Enter your title" required >
       </div>
       <div>
         <label for="prenom">etat:</label>
        
-<select name="pets" id="pet-select"#prenom>
+<select name="etat" id="etat" formControlName="etat">
   <option value="">etat</option>
   <option value="approved">approved</option>
   <option value="review">in review</option>
@@ -26,8 +26,8 @@
 
       
         <div>
-          <label for="age">membre d'equipe</label>
-<select name="pets" id="pet-select"#age>
+          <label for="membre">membre d'equipe</label>
+<select name="membre" id="membre" formControlName="membre">
   <option value="">membre d'equipe</option>
   <option value="aymen">aymen</option>
   <option value="wassim">wassim</option>
@@ -35,14 +35,14 @@
 </select>
         </div>
         <div>
-          <label for="description">Description:</label>
-          <input type="text" id="description" name="description" placeholder="Enter detailed description" #description>
+          <label for="descriptionTache">Description:</label>
+          <input type="text" id="descriptionTache" name="descriptionTache" formControlName="descriptionTache" placeholder="Enter detailed description" required >
         </div>
         <div>
        
         
-          <label for="telephone">date d'echeance</label>
-  <input type="date" id="start" name="trip-start" value="2024-03-22" min="2024-01-01" max="2100-12-31" #telephone/>
+          <label for="dateecheance">date d'echeance</label>
+  <input type="date" id="dateecheance" name="trip-dateecheance" value="2024-03-22" min="2024-01-01" max="2100-12-31" formControlName="dateecheance" />
         </div>
   
     

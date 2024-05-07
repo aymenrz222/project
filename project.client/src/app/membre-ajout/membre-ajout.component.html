@@ -1,13 +1,13 @@
 <div class="back-layer">
     <div class="section">
-        <form [formGroup]="newMemberForm" (ngSubmit)="onSaveClick()">
+        <form [formGroup]="newMembreForm" (ngSubmit)="onSaveClick()" action="/action_page.php">
             <h1>Ajout membre</h1>
-  
+         
             <div>
                 <label for="Nom">Nom<span class="required-field">*</span>:</label>
-                <input type="text" id="Nom" formControlName="Nom" placeholder="Entrer votre nom" required #nom>
+                <input type="text" id="Nom" formControlName="Nom"  placeholder="Entrer votre nom" required >
             </div>
-  
+        
             <div>
                 <label for="Prenom">Prenom<span class="required-field">*</span>:</label>
                 <input type="text" id="Prenom" formControlName="Prenom" placeholder="Entrer votre prénom" required #prenom>
@@ -30,7 +30,7 @@
   
             <div>
                 <label for="Telephone">Téléphone:</label>
-                <input type="tel" id="Telephone"formControlName="Telephone" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Entrer votre téléphone" required #telephone>
+                <input type="tel" id="Telephone" formControlName="Telephone" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Entrer votre téléphone" required #telephone>
             </div>
   
             <div>
@@ -42,5 +42,4 @@
             <button type="button" (click)="closeModal()" class="cancel-button">Annuler <i class="fa-solid fa-xmark"></i></button>
         </form>
     </div>
-  </div>
-  
+</div>

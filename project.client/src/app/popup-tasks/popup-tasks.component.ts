@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TacheService } from '../services/tache.service';
 
 @Component({
   selector: 'app-popup-tasks',
@@ -6,26 +8,36 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrl: './popup-tasks.component.css'
 })
 export class PopupTasksComponent {
-  @Output() saveEmployee = new EventEmitter<any>();
-@Output() closePopup = new EventEmitter<void>(); // New event to close the popup
-newEmployeeData = {
-  status: '' // Initialisez status avec une valeur par défaut, ou laissez-le vide pour l'instant
-  // Ajoutez d'autres propriétés de newEmployeeData si nécessaire
-};
-hoveredStatus: string = '';
+  @Output() saveTask: EventEmitter<void> = new EventEmitter<void>(); 
+  @Output() closePopup = new EventEmitter<void>();
 
-setHoveredStatus(status: string) {
-  this.hoveredStatus = status;
-}
-onSaveClick(nom: string, prenom: string, age: string, telephone: string,description: string): void {
-  const newEmployeeData = { nom, prenom,  age, telephone, description};
-  this.saveEmployee.emit(newEmployeeData);
-  // Emit the closePopup event to notify the parent component to close the popup
+  newTaskForm: FormGroup;
 
+  constructor(private taskService: TacheService) {
+    this.newTaskForm = new FormGroup({
+      nomTache: new FormControl('', Validators.required),
+      etat: new FormControl('', Validators.required),
+      membre: new FormControl('', Validators.required),
+      descriptionTache: new FormControl('', Validators.required),
+      dateecheance: new FormControl('', Validators.required)
+    });
+  }
 
-  this.closePopup.emit();
-}
-closeModal(): void {
-this.closePopup.emit();
-}
+  onSaveClick(): void {
+    const dbase = this.newTaskForm.value;
+    this.taskService.addTask(dbase).subscribe(
+      (response) => {
+        console.log('Task added successfully!', response);
+        this.saveTask.emit();
+        this.closePopup.emit();
+      },
+      (error) => {
+        console.error('Error adding task:', error);
+      }
+    );
+  }
+
+  closeModal(): void {
+    this.closePopup.emit();
+  }
 }

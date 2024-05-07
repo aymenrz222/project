@@ -7,12 +7,12 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class TasksViewComponent {
   
-  @Input() employeer: any;
+  @Input() task: any;
   @Output() ClosePopup: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
   ngOnInit(){
-    console.log('open pop-up' , this.employeer)
+    console.log('open pop-up' , this.task)
   }
   closeModal(): void {
     this.ClosePopup.emit();

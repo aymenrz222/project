@@ -8,7 +8,7 @@ import { MembreService } from '../services/membre.service';
   styleUrls: ['./membre.component.css']
 })
 export class MembreComponent {
-  newMemberForm: FormGroup;
+  newMembreForm: FormGroup;
   showEditPopup: boolean = false;
   showConfirmation: boolean = false;
   membreToDelete: any;
@@ -32,11 +32,12 @@ export class MembreComponent {
   isSortedAscending: boolean = true; // 1 pour trier de A à Z, -1 pour trier de Z à A
   sortField: string = 'nom';
   membre: any;
+  member: any;
   database : any;
   membreId = false;
   showlistesmembre = false;
   constructor(private membreService: MembreService) {
-    this.newMemberForm = new FormGroup({
+    this.newMembreForm = new FormGroup({
       Nom: new FormControl('', Validators.required),
       Prenom: new FormControl('', Validators.required),
       Cin: new FormControl('', Validators.required),
@@ -85,8 +86,8 @@ export class MembreComponent {
     console.log (this.showlistesmembre)
   }
 
-  viewMembre(membre: any): void {
-    this.membre = membre;
+  viewMembre(member: any): void {
+    this.member = member;
     this.openpopup = true;
   }
 

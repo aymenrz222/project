@@ -7,12 +7,12 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class MembreViewComponent {
 
-  @Input() membre: any;
+  @Input() member: any;
   @Output() ClosePopup: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
   ngOnInit(){
-    console.log('open pop-up' , this.membre)
+    console.log('open pop-up' , this.member)
   }
   closeModal(): void {
     this.ClosePopup.emit();

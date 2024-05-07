@@ -8,44 +8,55 @@ import { TacheService } from '../services/tache.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  newTacheForm: FormGroup;
-  taches: Array<{ NomTache: string, etat: string, membre: string, descriptionTache: string, dateecheance: string }> = [];
-  filteredTaches: any[] = [];
-  searchQuery: string = '';
-  openpopup: boolean = false;
-  tacheDetails: any;
-  showConfirmation: boolean = false;
-  tacheToDelete: any;
+  newTaskForm: FormGroup;
   showEditPopup: boolean = false;
-  tacheToEdit: any;
+  showConfirmation: boolean = false;
+  taskToDelete: any;
+  taskToEdit: any;
+  searchQuery: string = '';
+  filteredTasks: any[] = [];
+  tasks: Array<{
+    NomTache: string,
+    etat: string,
+    membre: string,
+    descriptionTache: string,
+    dateecheance: string,
+    actions: Array<{ type: string, callback: Function }>
+  }> = [];
+  openpopup: boolean = false;
+  taskToShow: any;
   currentPage: number = 1;
-  entriesPerPage: number = 2;
-  sortDirection: number = 1;
-  sortField: string = 'NomTache';
-  tache:any;
-  showPopup: boolean = false;
+  entriesPerPage: number = 3;
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true;
+  sortField: string = 'NomTache';
+  tache: any;
+  dbase : any;
+  tacheId = false;
+  showTaskList = false;
+task:any;
   constructor(private tacheService: TacheService) {
-    this.newTacheForm = new FormGroup({
+    this.newTaskForm = new FormGroup({
       NomTache: new FormControl('', Validators.required),
       etat: new FormControl('', Validators.required),
       membre: new FormControl('', Validators.required),
       descriptionTache: new FormControl('', Validators.required),
-      dateecheance: new FormControl('', Validators.required),
+      dateecheance: new FormControl('', Validators.required)
     });
   }
-
+  
   ngOnInit(): void {
-    this.Taches();
+    this.getTasks();
   }
 
-  Taches(): void {
-    this.tacheService.gettache().subscribe((data) => {
-      console.log("data", data)
-      this.tache = data;
+  getTasks(): void {
+    this.tacheService.getTasks().subscribe((dbase) => {
+      console.log("tasks" ,dbase)
+      this.tache= dbase
+      this.showTaskList = true;
+      this.tacheId = true;
     });
-  }
+  }  
 
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
@@ -56,93 +67,85 @@ export class TasksComponent {
     this.showAddPopup = false;
   }
 
-  handeleClosePopup(): void {
-    this.openpopup = false;
-  }
-
   closeEditPopup(): void {
     this.showEditPopup = false;
   }
 
-  checkDuplicateTache(NomTache: string): boolean {
-    return this.taches.some(tache => tache.NomTache === NomTache);
+  addTask(): void {
+    this.showTaskList = false;
+    this.getTasks();
+    console.log (this.showTaskList)
   }
 
-  addTache(newTacheData: any): void {
-    const { NomTache, etat, membre, descriptionTache, dateecheance } = newTacheData;
-
-    const newTache = {
-      NomTache: NomTache,
-      etat: etat,
-      membre: membre,
-      descriptionTache: descriptionTache,
-      dateecheance: dateecheance,
-    };
-
-    this.taches.push(newTache);
-  }
-
-  viewTache(tache: any): void {
-    this.tacheDetails = tache;
+  viewTask(task: any): void {
+    this.task = task;
     this.openpopup = true;
   }
 
-  openEditPopup(tache: any): void {
+  openEditPopup(task: any): void {
     this.showEditPopup = true;
-    this.tacheToEdit = tache;
+    this.dbase = task;
   }
 
-  saveModifiedTache(newTacheData: any): void {
-    const { NomTache, etat, membre, descriptionTache, dateecheance } = newTacheData;
-
-    this.tacheToEdit.NomTache = NomTache;
-    this.tacheToEdit.etat = etat;
-    this.tacheToEdit.membre = membre;
-    this.tacheToEdit.descriptionTache = descriptionTache;
-    this.tacheToEdit.dateecheance = dateecheance;
-
-    this.showEditPopup = false;
+  saveModifiedTask(): void {
+    this.showTaskList = false;
+    this.getTasks();
+    this.tacheId = false;
   }
 
-  deleteTacheConfirmation(tache: any): void {
+  deleteTaskConfirmation(task: any): void {
     this.showConfirmation = true;
-    this.tacheToDelete = tache;
+    this.dbase= task;
   }
 
-  deleteTache(confirmed: boolean): void {
-    if (confirmed) {
-      const index = this.taches.indexOf(this.tacheToDelete);
-      if (index > -1) {
-        this.taches.splice(index, 1);
-      }
-    }
+  deleteTask(): void {
     this.showConfirmation = false;
   }
 
-  searchTache(): void {
-    this.filteredTaches = this.taches.filter(tache => {
-      return (
-        tache.NomTache.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        tache.etat.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        tache.membre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        tache.descriptionTache.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+  displayTaskDetails(task: any): void {
+    // Display details of the task
+  }
+
+  getTasksForCurrentPage(): Array<any> {
+    const startIndex = (this.currentPage - 1) * this.entriesPerPage;
+    const endIndex = startIndex + this.entriesPerPage;
+    return this.tasks.slice(startIndex, endIndex);
+  }
+
+  getFirstEntryIndex(): number {
+    return (this.currentPage - 1) * this.entriesPerPage + 1;
+  }
+
+  getLastEntryIndex(): number {
+    const endIndex = this.currentPage * this.entriesPerPage;
+    return endIndex > this.tasks.length ? this.tasks.length : endIndex;
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.tasks.length / this.entriesPerPage);
+  }
+
+  getPages(): Array<number> {
+    return Array.from({ length: this.getTotalPages() }, (_, i) => i + 1);
+  }
+
+  changePage(newPage: number): void {
+    if (newPage >= 1 && newPage <= this.getTotalPages()) {
+      this.currentPage = newPage;
+    }
+  }
+
+  onEntriesPerPageChange(event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.entriesPerPage = +selectedValue; // Convert the selected value to a number
+    this.currentPage = 1; // Reset the current page to 1 when entries per page changes
+  }
+
+  sortByName(): void {
+    this.isSortedAscending = !this.isSortedAscending;
+    this.tasks.sort((a, b) => {
+      const order = this.isSortedAscending ? 1 : -1;
+      return a.NomTache.localeCompare(b.NomTache) * order;
     });
-    this.currentPage = 1;
-  }
-
-  displayTacheDetails(tache: any): void {
-    const message = `
-      Nom de la tâche: ${tache.NomTache}
-      État: ${tache.etat}
-      Membre: ${tache.membre}
-      Description: ${tache.descriptionTache}
-      Date d'échéance: ${tache.dateecheance}
-    `;
-    alert(message);
-  }
-
-  getTaches(): Array<any> {
-    return this.taches;
   }
 }

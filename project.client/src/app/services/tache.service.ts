@@ -11,10 +11,26 @@ export class TacheService {
   
   constructor(private httpClient: HttpClient) { }
 
-  gettache(): Observable<{DataBASE: any[]}> {
-    return this.httpClient.get<{DataBASE: any[]}>(`${this.BaseURL}`);
+  getTasks(): Observable<{ dbase: any[] }> {
+    return this.httpClient.get<{ dbase: any[] }>(this.BaseURL);
   }
 
+  addTask(dbase: any): Observable<{ dbase: any }> {
+    return this.httpClient.post<{ dbase: any }>(this.BaseURL, dbase);
+  }
+
+  getTask(tacheId: any): Observable<any> {
+    return this.httpClient.get(`${this.BaseURL}/${tacheId}`);
+  }
+
+ 
+  deletetache(tacheId: any): Observable<any> {
+    return this.httpClient.delete(`${this.BaseURL}/${tacheId}`);
+  }
+
+  updateTask(task: any): Observable<{ task: any }> {
+    return this.httpClient.put<{ task: any }>(`${this.BaseURL}`, task);
+  }
  
 
 }

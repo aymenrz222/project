@@ -11,11 +11,11 @@ export class MembreAjoutComponent {
   @Output() saveMembre: EventEmitter<void> = new EventEmitter <void>(); 
   @Output() closePopup = new EventEmitter<void>();// Output event to close the popup
 
-  newMemberForm: FormGroup; // Form for adding a new member
+  newMembreForm: FormGroup; // Form for adding a new member
 
   constructor(private membreService: MembreService) {
     // Initialize the form with required controls and validators
-    this.newMemberForm = new FormGroup({
+    this.newMembreForm = new FormGroup({
       Nom: new FormControl('', Validators.required),
       Prenom: new FormControl('', Validators.required),
       Cin: new FormControl('', Validators.required),
@@ -28,7 +28,7 @@ export class MembreAjoutComponent {
   onSaveClick(): void {
     // Check if the form is valid before emitting the data
    
-      const newMemberData = this.newMemberForm.value; // Get form values
+      const newMemberData = this.newMembreForm.value; // Get form values
       // Call the service method to add member data
       this.membreService.addmembre(newMemberData).subscribe(
         (response) => {
