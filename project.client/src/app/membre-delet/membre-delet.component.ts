@@ -17,7 +17,7 @@ export class MembreDeletComponent {
   }
   confirmDelete(): void {
     
-    this.membreService.deletemembre(this.database.id).subscribe(() => {
+    this.membreService.deletemembre(this.database. teamId).subscribe(() => {
       // Gérer le succès si nécessaire
       console.log('Supprimé avec succès');
     }, (error) => {

@@ -151,3 +151,8 @@ label {
 input {
   margin: 0.4rem;
 }
+.error-message {
+  color: red; /* Couleur du texte */
+  font-size: 14px; /* Taille de la police */
+  margin-top: 5px; /* Marge supérieure */
+}

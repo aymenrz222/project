@@ -19,7 +19,7 @@ export class MembreEditComponent {
 
   ngOnInit(): void {
     this.newMemberForm = new FormGroup({
-    id: new FormControl('', Validators.required),
+      teamId:new FormControl('', Validators.required),
     nom: new FormControl('', Validators.required),
     prenom: new FormControl('', Validators.required),
     cin: new FormControl('', Validators.required),
@@ -35,7 +35,7 @@ export class MembreEditComponent {
   }
 
   onSaveModification(): void {
-    this.newMemberForm.value.id = this.database.id;
+    this.newMemberForm.value. teamId = this.database. teamId;
     const database = this.newMemberForm.value;
 
     this.membreService.updatemembre(database).subscribe(

@@ -104,4 +104,4 @@
   <app-membre-ajout *ngIf="showAddPopup" (saveMembre)=" addMembre()" (closePopup)="handleClosePopup()"></app-membre-ajout>
   <app-membre-edit *ngIf="showEditPopup"(saveModifiedMember)="saveModifiedMembre()"  [database]="database" (closePopup)="closeEditPopup()"></app-membre-edit>
 <app-membre-delet *ngIf="showConfirmation"  [database]="database" (confirmed)="deletemembre()"  ></app-membre-delet>
- 
+<app-membre-view [membre]="membre" *ngIf="openpopup" (ClosePopup)="handleClosePopup()"></app-membre-view>

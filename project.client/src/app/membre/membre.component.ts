@@ -86,7 +86,7 @@ export class MembreComponent {
   }
 
   viewMembre(membre: any): void {
-    this.membreToShow = membre;
+    this.membre = membre;
     this.openpopup = true;
   }
 
