@@ -36,40 +36,39 @@ namespace project.Server.Controllers
             return Ok(tache);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateTache(tache tache)
+        public async Task<IActionResult> CreateTeam(tache tache) // Renamed Createteam to CreateTeam and Team to follow PascalCase
         {
-            _database.tache.Add(tache);
-            await _database.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetTache), new { TacheId = tache.tacheId });
+            _database.tache.Add(tache); // Used Add() to add the new team
+            await _database.SaveChangesAsync(); // Used SaveChangesAsync() to asynchronously save the changes
+            return CreatedAtAction(nameof(GetTache), new { TacheId = tache.tacheId }, tache); // Return the created team with CreatedAtAction
         }
-
-        [HttpPut("{tacheId}")]
-        public async Task<IActionResult> UpdateTache(int tacheId, tache tache)
+        [HttpPut]
+        public async Task<IActionResult> Updatetache(tache tache)
         {
-            if (tacheId != tache.tacheId)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
-
+            if (!_database.tache.Any(a => a.tacheId == tache.tacheId))
+            {
+                return NotFound();
+            }
             _database.Entry(tache).State = EntityState.Modified;
 
             try
             {
                 await _database.SaveChangesAsync();
+                var newtache = await _database.tache.FindAsync(tache.tacheId);
+                return Ok(newtache);
+
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TacheExists(tacheId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
-            return NoContent();
+
         }
 
         [HttpDelete("{tacheId}")]
