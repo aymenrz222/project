@@ -3,19 +3,28 @@
         <form [formGroup]="newMembreForm" (ngSubmit)="onSaveClick()" action="/action_page.php">
             <h1>Ajout membre</h1>
          
-            <div>
+            <div  class="input-container">
                 <label for="Nom">Nom<span class="required-field">*</span>:</label>
                 <input type="text" id="Nom" formControlName="Nom"  placeholder="Entrer votre nom" required >
+                <div class="error-message" *ngIf="newMembreForm.controls['Nom'].errors">
+                    <div *ngIf="newMembreForm.controls['Nom'].errors['required']">veuillez reseigner ce champ</div>
+                  </div>
             </div>
         
-            <div>
+            <div  class="input-container" >
                 <label for="Prenom">Prenom<span class="required-field">*</span>:</label>
                 <input type="text" id="Prenom" formControlName="Prenom" placeholder="Entrer votre prénom" required #prenom>
+                <div class="error-message" *ngIf="newMembreForm.controls['Prenom'].errors">
+                    <div *ngIf="newMembreForm.controls['Prenom'].errors['required']">veuillez reseigner ce champ</div>
+                  </div>
             </div>
   
-            <div>
+            <div class="input-container">
                 <label for="Cin">CIN<span class="required-field">*</span>:</label>
                 <input type="text" id="Cin" formControlName="Cin" placeholder="Entrer votre CIN" required #cin>
+                <div class="error-message" *ngIf="newMembreForm.controls['Cin'].errors">
+                    <div *ngIf="newMembreForm.controls['Cin'].errors['required']">veuillez reseigner ce champ</div>
+                  </div>
             </div>
   
             <div>
@@ -28,12 +37,15 @@
                 </select>
             </div>
   
-            <div>
+            <div class="input-container">
                 <label for="Telephone">Téléphone:</label>
                 <input type="tel" id="Telephone" formControlName="Telephone" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Entrer votre téléphone" required #telephone>
+                <div class="error-message" *ngIf="newMembreForm.controls['Telephone'].errors">
+                    <div *ngIf="newMembreForm.controls['Telephone'].errors['required']">veuillez reseigner ce champ</div>
+                  </div>
             </div>
   
-            <div>
+            <div  >
                 <label for="Email">E-mail:</label>
                 <input type="Email" id="Email" formControlName="Email" placeholder="Entrer votre e-mail" required #email>
             </div>

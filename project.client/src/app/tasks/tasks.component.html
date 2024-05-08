@@ -61,7 +61,7 @@
         <td>{{ tache.etat }}</td>
         <td>{{ tache.membre }}</td>
         <td>{{ tache.descriptionTache }}</td>
-        <td>{{ tache.dateecheance }}</td>
+        <td>{{ tache.dateecheance | date: 'dd/MM/yyyy' }}</td>
         <td>
           <button (click)="viewTask(tache)">
             <i class="material-icons">visibility</i>

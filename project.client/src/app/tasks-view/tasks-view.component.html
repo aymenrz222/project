@@ -10,7 +10,7 @@
                 <p>etat: {{ task.etat }}</p>
                 <p>membre: {{ task.membre }}</p>
                 <p>decription: {{ task.descriptionTache }}</p>
-                <p>date d'echeance: {{ task.dateecheance }}</p>
+                <p>date d'echeance: {{ task.dateecheance | date: 'dd/MM/yyyy' }}</p>
                 
                 
             </div>

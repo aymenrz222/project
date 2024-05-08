@@ -57,6 +57,7 @@ export class MembreComponent {
        this.membre = database
        this.showlistesmembre = true;
        this.membreId = true;
+       this.searchMembre();
     });
   }  
 
@@ -111,6 +112,20 @@ export class MembreComponent {
   deletemembre(): void {
     this.showConfirmation = false;
    
+  }
+  searchMembre(): void {
+    if (!this.searchQuery) {
+      // Si la valeur de recherche est vide, afficher tous les membres
+      this.filteredMembres = this.membres;
+    } else {
+      // Filtrer les membres en fonction de la recherche (ignorer la casse)
+      this.filteredMembres = this.membres.filter(membre =>
+        membre.Nom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        membre.Prenom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        membre.Cin.toString().includes(this.searchQuery)
+        // Ajoutez d'autres champs si nécessaire
+      );
+    }
   }
   displayMembreDetails(membre: any): void {
     // Display details of the membre

@@ -11,8 +11,8 @@
               <p>Client: {{ project.client }}</p>
               <p>Start Date: {{project.team  }}</p>
               <p>Description: {{ project.description }}</p>
-              <p>Debut Date: {{ project.debutDate }}</p>
-              <p>Due Date: {{ project.dueDate }}</p>
+              <p>Debut Date: {{ project.debutDate | date: 'dd/MM/yyyy' }}</p>
+              <p>Due Date: {{ project.dueDate | date: 'dd/MM/yyyy' }}</p>
              
               <p>Categorie: {{ project.categorie }}</p>
               <p>Budget: {{ project.budget }}</p>

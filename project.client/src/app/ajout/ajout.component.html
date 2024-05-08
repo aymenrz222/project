@@ -3,15 +3,14 @@
     <form [formGroup]="newProjectForm" (ngSubmit)="onSaveClick()" novalidate>
       <h1>Add Project</h1>
 
-      <div>
-        <label for="titre">Title<span class="required-field">*</span>:</label>
-        <input type="text" id="titre" formControlName="titre" placeholder="Enter your title" required>
-        <div class="error-messages" *ngIf="newProjectForm.controls['titre'].errors">
-          <div *ngIf="newProjectForm.controls['titre'].errors['required']">Please enter a valid title</div>
-          <div *ngIf="newProjectForm.controls['titre'].errors['pattern']">Invalid title format</div>
-        </div>
-      </div>
-
+      <div class="input-container">
+        <label for="titre">
+          Title</label>
+  <input type="text" id="titre" formControlName="titre" placeholder="Enter your title" required>
+  <div class="error-message" *ngIf="newProjectForm.controls['titre'].errors">
+    <div *ngIf="newProjectForm.controls['titre'].errors['required']">Please enter a valid title</div>
+  </div>
+</div>
       <div>
         <label for="projectStatus">Project Status:</label>
         <select name="projectStatus" id="projectStatus" formControlName="projectStatus">
@@ -22,17 +21,20 @@
         </select>
       </div>
 
-      <div>
+      <div class="input-container">
         <label for="client">Client<span class="required-field">*</span>:</label>
-        <input type="text" id="client" formControlName="client" placeholder="Enter your client" required>
-        <div class="error-messages" *ngIf="newProjectForm.controls['client'].errors">
-          <div *ngIf="newProjectForm.controls['client'].errors['required']">Please enter a valid client</div>
+        <input type="text" id="client" pattern="^[A-Z][a-z]*$" formControlName="client" placeholder="Enter your client" required>
+        <div class="error-message" *ngIf="newProjectForm.controls['client'].errors">
+          <div *ngIf="newProjectForm.controls['client'].errors['required']">Please enter a valid title</div>
         </div>
       </div>
 
-      <div>
+      <div class="input-container">
         <label for="team">Teams:</label>
-        <input type="text" id="team" formControlName="team" placeholder="Enter your teams">
+        <input type="text" id="team" formControlName="team" placeholder="Enter your teams"required>
+        <div class="error-message" *ngIf="newProjectForm.controls['team'].errors">
+          <div *ngIf="newProjectForm.controls['team'].errors['required']">Please enter a valid title</div>
+        </div>
       </div>
 
       <div>
@@ -45,19 +47,28 @@
         <input type="date" id="dueDate" formControlName="dueDate" required>
       </div>
 
-      <div>
+      <div  class="input-container">
         <label for="description">Detailed Description:</label>
         <input type="text" id="description" formControlName="description" placeholder="Enter detailed description">
+        <div class="error-message" *ngIf="newProjectForm.controls['description'].errors">
+          <div *ngIf="newProjectForm.controls['description'].errors['required']">Please enter a valid title</div>
+        </div>
       </div>
 
-      <div>
+      <div class="input-container">
         <label for="categorie">Categorie:</label>
         <input type="text" id="categorie" formControlName="categorie" placeholder="Enter category">
+        <div class="error-message" *ngIf="newProjectForm.controls['categorie'].errors">
+          <div *ngIf="newProjectForm.controls['categorie'].errors['required']">Please enter a valid categorie</div>
+        </div>
       </div>
 
-      <div>
+      <div class="input-container">
         <label for="budget">Project Budget:</label>
         <input type="text" id="budget" formControlName="budget" placeholder="Enter project budget">
+        <div class="error-message" *ngIf="newProjectForm.controls['budget'].errors">
+          <div *ngIf="newProjectForm.controls['budget'].errors['required']">Please enter a valid title</div>
+        </div>
       </div>
 
       <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
