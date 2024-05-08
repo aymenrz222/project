@@ -24,6 +24,7 @@ export class MembreAjoutComponent {
       Email: new FormControl('', [Validators.required, Validators.email])
     });
   }
+  
 
   onSaveClick(): void {
     // Check if the form is valid before emitting the data

@@ -4,6 +4,7 @@
 <div class="content">
   <h1>Gestion des tâches</h1>
   <br><br>
+<<<<<<< HEAD
   
   <li class="item-a" >
            
@@ -30,6 +31,84 @@
           <i class="material-icons">delete</i>
         </button> 
         </div>
+=======
+  <div class="container">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher des tâches...">
+
+    <button class="ajout" type="button" (click)="toggleAddPopup()">
+      <i class="fa-solid fa-plus"></i> Ajouter </button>
+  </div>
+  <div class="dataTables_length bs-select" id="dtBasicExample_length">
+    <label>Show
+      <select 
+        name="dtBasicExample_length" 
+        aria-controls="dtBasicExample" 
+        class="custom-select custom-select-sm form-control form-control-sm"
+        (change)="onEntriesPerPageChange($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+      </select> entries
+    </label>
+  </div>
+
+  <table *ngIf="showTaskList" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>
+          Nom de la tâche
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
+        <th>
+          État
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
+        <th>
+          Membre
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
+        <th>
+          Description
+          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
+        <th>Date d'échéance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tache of tache">
+        <td>{{ tache.nomTache}}</td>
+        <td>{{ tache.etat }}</td>
+        <td>{{ tache.membre }}</td>
+        <td>{{ tache.descriptionTache }}</td>
+        <td>{{ tache.dateecheance | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <button (click)="viewTask(tache)">
+            <i class="material-icons">visibility</i>
+          </button>
+          <button (click)="openEditPopup(tache)">
+            <i class="material-icons">edit</i>
+          </button>
+          <button (click)="deleteTaskConfirmation(tache)">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br><div class="row">
+    <div class="col-sm-12 col-md-5">
+      <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
+        Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ tasks.length }} entries
+>>>>>>> 4109c6c015cc16c0a85a5dac7308ce7dfe849709
       </div>
 
   </div>
