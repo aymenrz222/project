@@ -27,7 +27,7 @@ export class MembreComponent {
   openpopup: boolean = false;
   membreToShow: any;
   currentPage: number = 1;
-  entriesPerPage: number = 3;
+  entriesPerPage: number = 5;
   showAddPopup: boolean = false;
   isSortedAscending: boolean = true; // 1 pour trier de A à Z, -1 pour trier de Z à A
   sortField: string = 'nom';
@@ -119,7 +119,7 @@ export class MembreComponent {
   getMembresForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
-    return this.membres.slice(startIndex, endIndex);
+    return this.membre.slice(startIndex, endIndex);
   }
 
   getFirstEntryIndex(): number {
@@ -128,11 +128,11 @@ export class MembreComponent {
 
   getLastEntryIndex(): number {
     const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex > this.membres.length ? this.membres.length : endIndex;
+    return endIndex > this.membre.length ? this.membre.length : endIndex;
   }
 
   getTotalPages(): number {
-    return Math.ceil(this.membres.length / this.entriesPerPage);
+    return Math.ceil(this.membre.length / this.entriesPerPage);
   }
 
   getPages(): Array<number> {

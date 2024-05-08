@@ -95,21 +95,32 @@ task:any;
 
   deleteTaskConfirmation(task: any): void {
     this.showConfirmation = true;
-    this.dbase= task;
+    this.dbase= task; 
   }
 
   deleteTask(): void {
     this.showConfirmation = false;
   }
 
-  displayTaskDetails(task: any): void {
-    // Display details of the task
+  displayTacheDetails(tache: any): void {
+    const message = `
+      Nom de la tâche: ${tache.NomTache}
+      État: ${tache.etat}
+      Membre: ${tache.membre}
+      Description: ${tache.descriptionTache}
+      Date d'échéance: ${tache.dateecheance}
+    `;
+    alert(message);
+  }
+
+  getTaches(): Array<any> {
+    return this.tache;
   }
 
   getTasksForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
-    return this.tasks.slice(startIndex, endIndex);
+    return this.tache.slice(startIndex, endIndex);
   }
 
   getFirstEntryIndex(): number {

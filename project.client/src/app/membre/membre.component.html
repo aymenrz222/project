@@ -55,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let membre of membre ">
+      <tr *ngFor="let membre of getMembresForCurrentPage()  ">
         
         <td>{{ membre.nom }}</td>
         <td>{{ membre.prenom }}</td>
@@ -79,7 +79,7 @@
   <br><div class="row">
     <div class="col-sm-12 col-md-5">
       <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
-        Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ membres.length }} entries
+        Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ membre.length }} entries
       </div>
     </div>
     <div class="col-sm-12 col-md-7">
