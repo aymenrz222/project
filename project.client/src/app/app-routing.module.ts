@@ -6,16 +6,18 @@ import { MembreComponent } from './membre/membre.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: '',
     component: SideBarComponent,
     children: [
       {path:'dashbord',component:DashbordComponent},
-      { path: '', component: ListProjetComponent },
       { path: 'list-projet', component: ListProjetComponent },
       { path: 'membre', component: MembreComponent },
-      { path: 'tasks', component: TasksComponent }
+      { path: 'tasks', component: TasksComponent },
+      { path: 'about', component: AboutComponent }
+     
     ]
   }
  ];
