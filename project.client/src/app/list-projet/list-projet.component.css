@@ -1,10 +1,13 @@
 
 /* Media query pour les écrans de 2000px ou moins */
 
-  .content[_ngcontent-ng-c2231757140][_ngcontent-ng-c2231757140] {
-    margin-left: 65px;
-    padding: 16px;
-    margin-right: -26px;
+.content[_ngcontent-ng-c2629463974] {
+  /* margin-left: 225px; */
+  /* padding: 76px; */
+  padding: 0;
+  margin: 58px;
+  margin-right: -103px;
+  margin-top: -175px;
 }
   .content h1 {
     color: #000000d8;
@@ -337,6 +340,6 @@ app-pop-up {
   --bs-pagination-disabled-bg: var(--bs-secondary-bg);
   --bs-pagination-disabled-border-color: var(--bs-border-color);
   display: flex; 
-  padding-left: 400px;
+  padding-left: 222px;
   list-style: none;
 }
