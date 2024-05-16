@@ -4,17 +4,17 @@
             <h1>Ajout membre</h1>
          
             <div  class="input-container">
-                <label for="Nom">Nom<span class="required-field">*</span>:</label>
-                <input type="text" id="Nom" formControlName="Nom"  placeholder="Entrer votre nom" required >
+                <label for="Nom">Nom Complet<span class="required-field">*</span>:</label>
+                <input type="text" id="Nom" formControlName="Nom"  placeholder="Entrer votre nom et  prénom" required >
                 <div class="error-message" *ngIf="newMembreForm.controls['Nom'].errors">
                     <div *ngIf="newMembreForm.controls['Nom'].errors['required']">veuillez reseigner ce champ</div>
                   </div>
             </div>
         
             <div  class="input-container" >
-                <label for="Prenom">Prenom<span class="required-field">*</span>:</label>
-                <input type="text" id="Prenom" formControlName="Prenom" placeholder="Entrer votre prénom" required #prenom>
-                <div class="error-message" *ngIf="newMembreForm.controls['Prenom'].errors">
+                    <label for="prenom">Mot de passe :</label>
+                    <input type="text" id="prenom" formControlName="prenom" placeholder="Entrer votre mot de passe" required #mdp>
+                 <div class="error-message" *ngIf="newMembreForm.controls['Prenom'].errors">
                     <div *ngIf="newMembreForm.controls['Prenom'].errors['required']">veuillez reseigner ce champ</div>
                   </div>
             </div>
@@ -49,7 +49,7 @@
                 <label for="Email">E-mail:</label>
                 <input type="Email" id="Email" formControlName="Email" placeholder="Entrer votre e-mail" required #email>
             </div>
-  
+           
             <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
             <button type="button" (click)="closeModal()" class="cancel-button">Annuler <i class="fa-solid fa-xmark"></i></button>
         </form>

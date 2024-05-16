@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators'; // Importer map depuis 'rxjs/operators'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,5 +28,15 @@ export class MembreService {
   updatemembre(database: any): Observable<{ database: any[] }> {
     return this.httpClient.put<{ database: any[] }>(`${this.BaseURL}`, database);
   }
-
+ 
+  getmembreMails(): Observable<string[]> {
+    return this.httpClient.get<any[]>(`${this.BaseURL}`).pipe(
+      map(response => response.map(item => item.email))
+    );
+  }
+  getMdp(): Observable<string[]> {
+    return this.httpClient.get<any[]>(`${this.BaseURL}`).pipe(
+      map(response => response.map(item => item.prenom))
+    );
+  }
 }

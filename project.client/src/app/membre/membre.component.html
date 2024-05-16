@@ -28,17 +28,12 @@
     <thead>
       <tr>
         <th>
-          Nom
+          Nom complet
           <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
             <i class="th-sm sorting_asc"></i>
           </button>
         </th>
-        <th>
-          Prénom
-          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
-            <i class="th-sm sorting_asc"></i>
-          </button>
-        </th>
+       
         <th>
           CIN
           <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
@@ -51,6 +46,11 @@
             <i class="th-sm sorting_asc"></i>
           </button>
         </th>
+        <th>
+Telephone          <button type="button" class="btn btn-link btn-sm" (click)="sortByName()">
+            <i class="th-sm sorting_asc"></i>
+          </button>
+        </th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -58,9 +58,10 @@
       <tr *ngFor="let membre of getMembresForCurrentPage()  ">
         
         <td>{{ membre.nom }}</td>
-        <td>{{ membre.prenom }}</td>
         <td>{{ membre.cin }}</td>
         <td>{{ membre.poste}}</td>
+        <td>{{ membre.telephone }}</td>
+
         
         <td>
           <button (click)="viewMembre(membre)">

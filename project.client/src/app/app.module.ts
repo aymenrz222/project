@@ -32,8 +32,8 @@ import { MembreService } from './services/membre.service';
 import { TacheService } from './services/tache.service';
 import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
+import { AboutComponent } from './about/about.component';
 
-import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -59,6 +59,7 @@ import { UserService } from './services/user.service';
           TopBarComponent,
           DashbordComponent,
           LoginComponent,
+          AboutComponent,
         
 
   ],
@@ -70,7 +71,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [ProjetService,MembreService,TacheService , DatePipe,UserService],
+  providers: [ProjetService,MembreService,TacheService , DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
