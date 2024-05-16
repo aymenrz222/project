@@ -1,22 +1,21 @@
 <div class="back-layer">
   <div class="section">
       <div #container class="container">
-          <h1>VIEW</h1>
+          <h1>Les détails de Projet</h1>
           <div class="title">
-              <button class="close-button" (click)="closeModal()">Close</button>
+              <button class="close-button" (click)="closeModal()"> Fermer</button>
           </div>
           <div>
-              <p>Title: {{ project.titre }}</p>
-              <p>Project Status: {{project.projectStatus }}</p>
-              <p>Client: {{ project.client }}</p>
-              <p>Start Date: {{project.team  }}</p>
-              <p>Description: {{ project.description }}</p>
-              <p>Debut Date: {{ project.debutDate | date: 'dd/MM/yyyy' }}</p>
-              <p>Due Date: {{ project.dueDate | date: 'dd/MM/yyyy' }}</p>
-             
-              <p>Categorie: {{ project.categorie }}</p>
-              <p>Budget: {{ project.budget }}</p>
-          </div>
+            <p class="animate"> <strong>Titre de Projet: </strong>   {{ project.titre }}</p>
+            <p class="animate"> <strong>Le statut de Projet:</strong>    {{ project.projectStatus }}</p>
+            <p class="animate"> <strong>Client: </strong>   {{ project.client }}</p>
+            <p class="animate"> <strong>Membre de Projet: </strong>   {{ project.team }}</p>
+            <p class="animate"> <strong>Description: </strong>   {{ project.description }}</p>
+            <p class="animate"> <strong>Date de debut: </strong>   {{ project.debutDate | date: 'dd/MM/yyyy' }}</p>
+            <p class="animate"> <strong>Date de fin : </strong>   {{ project.dueDate | date: 'dd/MM/yyyy' }}</p>
+            <p class="animate"> <strong>Categorie: </strong>   {{ project.categorie }}</p>
+            <p class="animate"> <strong>Budget de projet: </strong>   {{ project.budget }}</p>
+           </div>
       </div>
   </div>
 </div>

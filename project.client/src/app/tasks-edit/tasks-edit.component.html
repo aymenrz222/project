@@ -1,5 +1,7 @@
 <div class="back-layer">
   <div class="section">
+    <button type="button" (click)="closeModal()" class="cancel-button1"> <i class="fa-solid fa-window-maximize"></i> </button>
+<br><br>
     <form [formGroup]="newTaskForm" (ngSubmit)=" onSaveModification()" >
       <h1>modifier tache</h1>
 

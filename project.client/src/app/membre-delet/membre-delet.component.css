@@ -1,5 +1,5 @@
 .back-layer {
-  background: rgba(221, 111, 111, 0.6);
+  background-color: rgba(0, 0, 0, 0.5); /* Noir semi-transparent */
   position: fixed;
   top: 0;
   left: 0;

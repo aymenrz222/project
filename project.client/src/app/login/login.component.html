@@ -1,9 +1,10 @@
+
 <div class="login-box">
   <h2>𝐋𝐨𝐠𝐢𝐧</h2>
   <form>
     <div class="user-box">
-      <input type="text" name="username" [(ngModel)]="username" required>
-      <label>Username</label>
+      <input type="text" name="username ou Email" [(ngModel)]="username" required>
+      <label>Username ou E-mail</label>
     </div>
     <div class="user-box">
       <input type="password" name="password" [(ngModel)]="password" required>
@@ -11,6 +12,6 @@
     </div>
     <a href="http://localhost:4200/list-projet/currentPage" *ngIf="(username === 'wassim' && password === 'user' )   || (mails.includes(username) && mdps.includes(password))  ">
       Submit
-    </a>
+    </a> 
   </form>
 </div>

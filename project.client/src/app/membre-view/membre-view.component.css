@@ -4,7 +4,7 @@ h1 {
   TEXT-ALIGN: center;
    }
 .back-layer {
-  background: rgba(196, 194, 194, 0.541);
+  background: rgba(196, 194, 194, 0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -53,13 +53,21 @@ back-layer {
     justify-content: center;
 }
 .container {
-  background-color: #ffffff;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmgyfTCA5GTJKdrI3hLASsFEmoEQjlQc8mgw&usqp=CAU');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  position: relative; 
-  width: 584px;/* Ajoutez cette ligne */
+  position: relative;
+  width: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .close-button {
   position: absolute;
@@ -78,3 +86,46 @@ back-layer {
 .close-button:hover {
   background-color: #6e6e6e;
 }
+
+.animate {
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slideInFromLeft 0.5s ease forwards;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.animate:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.animate:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.animate:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.animate:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.animate:nth-child(6) {
+  animation-delay: 1.2s;
+}
+
+

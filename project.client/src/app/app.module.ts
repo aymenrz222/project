@@ -33,6 +33,7 @@ import { TacheService } from './services/tache.service';
 import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { AboutComponent } from './about/about.component';
           DashbordComponent,
           LoginComponent,
           AboutComponent,
+          ContactComponent,
         
 
   ],

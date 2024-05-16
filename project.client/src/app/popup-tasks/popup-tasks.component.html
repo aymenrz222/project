@@ -1,7 +1,9 @@
 <div class="back-layer">
   <div class="section">
+    <button type="button" (click)="closeModal()" class="cancel-button1"> <i class="fa-solid fa-window-maximize"></i> </button>
+<br><br>
     <form [formGroup]="newTaskForm" (ngSubmit)="onSaveClick()" >
-      <h1>Add Project</h1>
+      <h1>Ajout de tache </h1>
 
       <div>
         <label for="nomTache">nom de la tache<span class="required-field">*</span>:</label>
@@ -45,7 +47,7 @@
   <input type="date" id="dateecheance" name="trip-dateecheance" value="2024-03-22" min="2024-01-01" max="2100-12-31" formControlName="dateecheance" />
         </div>
   
-    
+    <br><br>
       <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
       <button type="button" (click)="closeModal()" class="cancel-button">Annuler <i class="fa-solid fa-xmark"></i></button>
     </form>
