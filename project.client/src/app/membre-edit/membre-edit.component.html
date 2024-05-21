@@ -1,19 +1,16 @@
 <div class="back-layer">
     <div class="section">
-  
+      <button type="button" (click)="closeModal()" class="cancel-button1"> <i class="fa-solid fa-window-maximize"></i> </button>
+      <br><br>
       <form [formGroup]="newMembreForm" (ngSubmit)="onSaveModification()">
 
       <h1>Modifier membre </h1>
       <div>
-        <label for="nom">Nom<span class="required-field">*</span>:</label>
+        <label for="nom">Nom complet <span class="required-field">*</span>:</label>
         <input type="text" id="nom"  formControlName="nom" placeholder="Enter your title" required >
       </div>
 
-      <div>
-          <label for="prenom">Prenom<span class="required-field">*</span>:</label>
-          <input type="text" id="prenom"  formControlName="prenom" placeholder="Enter your title" required >
-        </div>
-
+     
       <div>
         <label for="cin">Cin<span class="required-field">*</span>:</label>
         <input type="text" id="cin"  formControlName="cin"pattern="[0-9]{8}"  placeholder="Enter your client" required >
@@ -42,6 +39,11 @@
     <label for="email">Email:</label>
     <input type="email" id="email" formControlName="email" pattern="+@example.com" placeholder="user@example.gov" required #email>
 </div>
+<div>
+  <label for="prenom">Mot de passe<span class="required-field">*</span>:</label>
+  <input type="text" id="prenom"  formControlName="prenom" placeholder="Enter your title" required >
+</div>
+
       
     <button type="submit">Enregistrer <i class="fa-regular fa-floppy-disk"></i></button>
       <button type="button" (click)="closeModal()" class="cancel-button">

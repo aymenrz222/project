@@ -94,7 +94,11 @@ h4 {
 .cancel-button {
   margin-left: 10px;
 }
-
+.cancel-button1 {
+  float :inline-end ;
+  background-color: #adb5bd;
+  font-size: x-large;
+ }
 /* Adjustments for form inputs */
 form > div {
   margin-bottom: 10px;
@@ -121,7 +125,7 @@ form button[type="submit"]{
   font-size: 17px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  margin-right: -34px;
+  margin-right: 45px;
   padding: 5px 10px;
   cursor: pointer;
 }
@@ -134,7 +138,7 @@ form button[type="button"] { float: inline-end;
   font-size: 17px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  margin-right: 8px;
+  margin-right: 73px;
   padding: 6px 24px;
   cursor: pointer;
 }

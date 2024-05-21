@@ -105,7 +105,7 @@ padding: 76px;
 
 
 button {
-background-color:   #4d2929 ;
+background-color:   #000000 ;
 color: #f7f2f2;
 border: none;
 border-radius: 11px;
@@ -189,13 +189,13 @@ a {
 }
 }
 
-.item-a , .item-b , .item-c {
+.item-a[_ngcontent-ng-c2545539094], .item-b[_ngcontent-ng-c2545539094], .item-c[_ngcontent-ng-c2545539094] {
   width: 250px;
-  height: auto ; /* ou définissez une hauteur spécifique selon vos besoins */
+  height: auto;
   transition: height 0.3s ease;
-   background-color: rgb(133 8 8 / 82%);
+  background-color: rgb(7 7 7 / 92%);
   border-radius: 10px;
-  box-shadow: 2px 10px 12px rgba(109, 5, 150, 0.918);
+  box-shadow: 1px 10px 12px rgba(109, 5, 150, 0.918);
   display: inline-block;
   flex-direction: column;
   align-items: center;
@@ -204,15 +204,14 @@ a {
   margin: 20px 10px;
 }
 
-.detail1 , .detail2 , .detail3 {
-  
+.detail1[_ngcontent-ng-c2545539094], .detail2[_ngcontent-ng-c2545539094], .detail3[_ngcontent-ng-c2545539094] {
   width: 90%;
-  background-color: #b4a9a9; /* Fond blanc */
-  box-shadow: 2px 10px 12px rgba(255, 255, 255, 0.918);
-  border-radius:  10px; /* Coins arrondis uniquement en bas */
+  background-color: #ababab;
+  box-shadow: 1px 3px 12px rgb(8 8 8 / 92%);
+  border-radius: 10px;
   padding: 5px;
   margin-top: 10px;
-  margin-left: 10px; /* Ajouter un peu d'espace autour du contenu */
+  margin-left: 10px;
   box-sizing: border-box;
 }
 

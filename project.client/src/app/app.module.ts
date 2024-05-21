@@ -31,6 +31,10 @@ import { ProjetService } from './services/projet.service';
 import { MembreService } from './services/membre.service';
 import { TacheService } from './services/tache.service';
 import { DatePipe } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { DatePipe } from '@angular/common';
           TasksViewComponent,
           TasksEditComponent,
           TopBarComponent,
-          DashbordComponent
+          DashbordComponent,
+          LoginComponent,
+          AboutComponent,
+          ContactComponent,
+        
 
   ],
   imports: [

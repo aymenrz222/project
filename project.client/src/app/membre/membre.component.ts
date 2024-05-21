@@ -19,9 +19,11 @@ export class MembreComponent {
     Nom: string,
     Prenom: string,
     Cin: Int32Array,
-    Poste: string, // Remplacez "age" par "poste" ici
+    Poste: string, 
     Telepohne: Int32Array,
     Email: string,
+    mdp: string,
+
     actions: Array<{ type: string, callback: Function }>
   }> = [];
   openpopup: boolean = false;
@@ -43,7 +45,9 @@ export class MembreComponent {
       Cin: new FormControl('', Validators.required),
       Poste: new FormControl('', Validators.required),
       Telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{2}-[0-9]{3}-[0-9]{3}')]),
-      Email: new FormControl('', [Validators.required, Validators.email])
+      Email: new FormControl('', [Validators.required, Validators.email]),
+      mdp: new FormControl('', Validators.required)
+
     });
   }
   
@@ -85,7 +89,7 @@ export class MembreComponent {
     this.showlistesmembre = false;
     this.team();
     console.log (this.showlistesmembre)
-  }
+    }
 
   viewMembre(member: any): void {
     this.member = member;
@@ -128,8 +132,17 @@ export class MembreComponent {
     }
   }
   displayMembreDetails(membre: any): void {
-    // Display details of the membre
-  }
+    console.log("Détails du membre :", membre);
+    console.log("Nom :", membre.Nom);
+    console.log("Prénom :", membre.Prenom);
+    console.log("CIN :", membre.Cin);
+    console.log("Poste :", membre.Poste);
+    console.log("Téléphone :", membre.Telephone);
+    console.log("Email :", membre.Email);
+    console.log("mot de passe :", membre.mdp);
+
+}
+  
 
   getMembresForCurrentPage(): Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;

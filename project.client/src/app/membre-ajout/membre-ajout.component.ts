@@ -21,7 +21,9 @@ export class MembreAjoutComponent {
       Cin: new FormControl('', Validators.required),
       Poste: new FormControl('', Validators.required),
       Telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{2}-[0-9]{3}-[0-9]{3}')]),
-      Email: new FormControl('', [Validators.required, Validators.email])
+      Email: new FormControl('', [Validators.required, Validators.email]),
+      mdp : new FormControl('', Validators.required)
+
     });
   }
   

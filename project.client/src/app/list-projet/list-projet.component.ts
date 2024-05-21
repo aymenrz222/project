@@ -11,7 +11,7 @@ export class ListProjetComponent implements OnInit {
  
   paginatedProjects: any[] = [];
   currentPage: number = 1;
-  entriesPerPage: number = 3;
+  entriesPerPage: number = 5;
   isSortedAscending: boolean = true;
  
   newProjectForm: FormGroup;
@@ -64,7 +64,7 @@ export class ListProjetComponent implements OnInit {
       this.listProjects = data;
       this.showlistes = true;
       this.projectId = true;
-      this.paginateProjects();
+     
   })}
 
   toggleAddPopup(): void {
@@ -114,15 +114,11 @@ export class ListProjetComponent implements OnInit {
    
   }
 
-  searchProject(): void {
-    this.filteredProjects = this.projects.filter(project => {
-      return (
-        project.titre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        project.projectstatus.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        project.client.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    });
-    this.currentPage = 1;
+  searchProjects(event: Event): void {
+    const query = (event.target as HTMLInputElement).value;
+    this.filteredProjects = this.listProjects.filter(
+    this.project.titre.toLowerCase().includes(query.toLowerCase())
+    );
   }
 
   displayProjectDetails(project: any): void {
@@ -139,44 +135,53 @@ export class ListProjetComponent implements OnInit {
   }
 
   // Pagination methods
-  paginateProjects(): void {
+  getProjectsForCurrentPage():  Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
     const endIndex = startIndex + this.entriesPerPage;
-    this.paginatedProjects = this.projects.slice(startIndex, endIndex);
+    return this.listProjects.slice(startIndex, endIndex);
   }
-
+  getFirstEntryIndex(): number {
+    return (this.currentPage - 1) * this.entriesPerPage + 1;
+  }
+  getLastEntryIndex(): number {
+    const endIndex = this.currentPage * this.entriesPerPage;
+    return endIndex > this.listProjects.length ? this.listProjects.length : endIndex;
+  }
   changePage(newPage: number): void {
-    this.currentPage = newPage;
-    this.paginateProjects();
+    if (newPage >= 1 && newPage <= this.getTotalPages()) {
+      this.currentPage = newPage;
+    }
   }
 
   onEntriesPerPageChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
-    this.entriesPerPage = +selectedValue;
-    this.currentPage = 1;
-    this.paginateProjects();
+    this.entriesPerPage = +selectedValue; // Convert the selected value to a number
+    this.currentPage = 1; //
   }
 
   sortByName(): void {
-    this.isSortedAscending =!this.isSortedAscending;
+    this.isSortedAscending = !this.isSortedAscending;
     this.projects.sort((a, b) => {
-      const order = this.isSortedAscending? 1 : -1;
+      const order = this.isSortedAscending ? 1 : -1;
       return a.titre.localeCompare(b.titre) * order;
     });
-    this.paginateProjects();
+   
   }
+
   getTotalPages(): number {
-    return Math.ceil(this.projects.length / this.entriesPerPage);
+    return Math.ceil(this.listProjects.length / this.entriesPerPage);
   }
-  
+
   getPages(): number[] {
     const totalPages = this.getTotalPages();
     return Array(totalPages).fill(0).map((x, i) => i + 1);
   }
-  
 
- 
+  getNextPageUrl(){ console.log(this. getProjectsForCurrentPage(),this. getTotalPages()) ; 
+   /* if (this.currentPage < this.getTotalPages()) {     return `/list-projet/${this.currentPage + 1}`;  } else {     return '#';   } }*/
+
+
 
  
 }
-
+}

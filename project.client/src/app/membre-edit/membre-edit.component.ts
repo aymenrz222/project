@@ -25,7 +25,9 @@ export class MembreEditComponent {
     cin: new FormControl('', Validators.required),
     poste: new FormControl(''),
     telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{2}-[0-9]{3}-[0-9]{3}')]),
-    email: new FormControl('', [Validators.required, Validators.email])
+    email: new FormControl('', [Validators.required, Validators.email]),
+    mdp: new FormControl('', Validators.required)
+
   });
     this.ouvrirModel();
   }

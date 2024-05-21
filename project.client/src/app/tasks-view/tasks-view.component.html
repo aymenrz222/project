@@ -6,11 +6,11 @@
                 <button class="close-button" (click)="closeModal()">Close</button>
             </div>
             <div>
-                <p>Nom de la tache:   {{ task.nomTache}}</p>
-                <p>etat: {{ task.etat }}</p>
-                <p>membre: {{ task.membre }}</p>
-                <p>decription: {{ task.descriptionTache }}</p>
-                <p>date d'echeance: {{ task.dateecheance | date: 'dd/MM/yyyy' }}</p>
+                <p class="animate"> <strong>Nom de la tache:  </strong> {{ task.nomTache}}</p>
+                <p class="animate"><strong>etat:</strong> {{ task.etat }}</p>
+                <p class="animate"><strong>membre:</strong> {{ task.membre }}</p>
+                <p class="animate"><strong>decription:</strong> {{ task.descriptionTache }}</p>
+                <p class="animate"><strong>date d'echeance:</strong> {{ task.dateecheance | date: 'dd/MM/yyyy' }}</p>
                 
                 
             </div>

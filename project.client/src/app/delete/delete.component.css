@@ -1,5 +1,5 @@
 .back-layer {
-    background: rgba(221, 111, 111, 0.6);
+    background: rgba(116, 112, 112, 0.6);
     position: fixed;
     top: 0;
     left: 0;
@@ -9,7 +9,7 @@
   }
   
   .delete-confirmation {
-    background-color: #6d6d6d;
+    background-color: #4d4949;
     border-radius: 30px;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.2);
     padding: 50px;

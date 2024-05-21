@@ -6,19 +6,32 @@ import { MembreComponent } from './membre/membre.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { LoginComponent } from './login/login.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 const routes: Routes = [
-  { path: '',
-    component: SideBarComponent,
+  // Redirect root path to login
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: 'login', component: LoginComponent },
+ 
+  {
+     path: '',
+    component: SideBarComponent, 
     children: [
-      {path:'dashbord',component:DashbordComponent},
-      { path: '', component: ListProjetComponent },
-      { path: 'list-projet', component: ListProjetComponent },
+      { path: 'dashbord', component: DashbordComponent },
+      { path: 'list-projet/:pagenumber', component: ListProjetComponent },
       { path: 'membre', component: MembreComponent },
-      { path: 'tasks', component: TasksComponent }
+      { path: 'tasks', component: TasksComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'contact', component: ContactComponent },
+
+      { path: '', redirectTo: 'list-projet', pathMatch: 'full' }
     ]
   }
- ];
+  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
