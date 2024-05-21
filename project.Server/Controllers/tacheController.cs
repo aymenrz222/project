@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using project.Server.Entity;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using project.Server.Ropository.Entity;
 
 namespace project.Server.Controllers
 {

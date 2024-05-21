@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using project.Server.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using project.Server.Ropository.Entity;
+using project.Server.Ropository.EntityDto;
+using project.Server.Ropository.AutoMapper;
+using project.Server.Ropository.AutoMapper.Helper;
 
 namespace project.Server.Controllers
 {
@@ -38,8 +41,10 @@ namespace project.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTeam(team team) // Renamed Createteam to CreateTeam and Team to follow PascalCase
+        public async Task<IActionResult> CreateTeam(TeamDto newteam) // Renamed Createteam to CreateTeam and Team to follow PascalCase
         {
+            var mapper = MapperHelper.ConfigureMapper(TeamAutoMapper.ConfigureTeams);
+            var team = mapper.Map<team>(newteam);
             _database.team.Add(team); // Used Add() to add the new team
             await _database.SaveChangesAsync(); // Used SaveChangesAsync() to asynchronously save the changes
             return CreatedAtAction(nameof(GetTeam), new { TeamId = team.teamId }, team); // Return the created team with CreatedAtAction
