@@ -1,16 +1,28 @@
 
 /* Media query pour les écrans de 2000px ou moins */
-
-.content[_ngcontent-ng-c2629463974] {
-  /* margin-left: 225px; */
-  /* padding: 76px; */
-  padding: 0;
-  margin: 58px;
-  margin-right: -103px;
-  margin-top: -175px;
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
+
+/* Application de l'animation au titre h1 */
+h1 {
+  animation: blink 1.5s infinite; /* Le titre clignotera toutes les 1.5 secondes */
+}
+.content[_ngcontent-ng-c2423335819] {
+  margin-left: 95px;
+  padding: 0px;
+}
+
   .content h1 {
-    color: #000000d8;
+    color:  #740f0fd8;
     text-align: left;
     text-decoration: solid;
   }
