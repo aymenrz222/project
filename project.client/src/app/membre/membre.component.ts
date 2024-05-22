@@ -49,10 +49,12 @@ export class MembreComponent {
       mdp: new FormControl('', Validators.required)
 
     });
+    
   }
   
   ngOnInit(): void {
     this.team();
+
   }
 
   team(): void{
@@ -186,4 +188,5 @@ export class MembreComponent {
       return a.Nom.localeCompare(b.Nom) * order;
     });
   }
+
 }

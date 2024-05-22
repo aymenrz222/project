@@ -24,7 +24,11 @@
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
     "bootstrap": "^5.3.3",
+<<<<<<< HEAD
     "dhtmlx-gantt": "^8.0.7",
+=======
+    "emailjs-com": "^3.2.0",
+>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480
     "jest-editor-support": "*",
     "jquery": "^3.7.1",
     "ngx-toastr": "^18.0.0",

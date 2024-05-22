@@ -36,8 +36,12 @@ import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+<<<<<<< HEAD
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { GanttComponent } from './gantt/gantt.component';
+=======
+import { AccueilComponent } from './accueil/accueil.component';
+>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480
 
 
 @NgModule({
@@ -66,7 +70,11 @@ import { GanttComponent } from './gantt/gantt.component';
           LoginComponent,
           AboutComponent,
           ContactComponent,
+<<<<<<< HEAD
           GanttComponent,
+=======
+          AccueilComponent,
+>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480
         
 
   ],

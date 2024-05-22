@@ -10,7 +10,7 @@
       <input type="password" name="password" [(ngModel)]="password" required>
       <label>Password</label>
     </div>
-    <a href="http://localhost:4200/list-projet/currentPage" *ngIf="(username === 'wassim' && password === 'user' )   || (mails.includes(username) && mdps.includes(password))  ">
+    <a href="http://localhost:4200/accueil" *ngIf="((username === 'wassim' || username === 'aymen')  && password === 'user' )   || (mails.includes(username) && mdps.includes(password))  ">
       Submit
     </a> 
   </form>

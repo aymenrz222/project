@@ -10,11 +10,17 @@
               <i class="bi bi-list"></i>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
+          <li>
+            <a [routerLink]="'accueil'">
+              <i class="fas fa-address-book"></i>
+              <span>  Accueil</span>
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-address-book"></i> Contact</a>
+          <li>
+            <a [routerLink]="'contact'">
+              <i class="fas fa-address-book"></i>
+              <span>  contact</span>
+            </a>
           </li>
         </ul>
         <form class="d-flex ms-2">
