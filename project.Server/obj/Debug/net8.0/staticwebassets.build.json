@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "3QFJSg+TzsSCDY1G7VgwYvslZ5AHO6tWWOMdrGUoQnE=",
+  "Hash": "l92pVoywsEJQx+QDPA0WEYyZYER4f4zi6KCKEeroKOU=",
   "Source": "project.Server",
   "BasePath": "_content/project.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\aymen\\Desktop\\gestion\\project\\project.client\\project.client.esproj",
+      "Identity": "C:\\Users\\aymen\\Desktop\\pfe\\project\\project.client\\project.client.esproj",
       "Version": 2,
       "Source": "project.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

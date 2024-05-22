@@ -4,6 +4,7 @@
       "type": "secrets.user"
     },
     "mssql1": {
+      "serviceConnectorResourceId": "",
       "secretStore": "LocalSecretsFile",
       "type": "mssql.onprem",
       "connectionId": "ConnectionStrings:DESKTOP-F14RLIJ:SQLEXPRESS"

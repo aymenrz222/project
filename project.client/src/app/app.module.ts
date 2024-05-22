@@ -4,8 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ListProjetComponent } from './list-projet/list-projet.component';
@@ -34,6 +36,8 @@ import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { GanttComponent } from './gantt/gantt.component';
 
 
 @NgModule({
@@ -62,6 +66,7 @@ import { ContactComponent } from './contact/contact.component';
           LoginComponent,
           AboutComponent,
           ContactComponent,
+          GanttComponent,
         
 
   ],
@@ -71,9 +76,12 @@ import { ContactComponent } from './contact/contact.component';
 
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatSelectModule,
+    MatInputModule
+   
   ],
-  providers: [ProjetService,MembreService,TacheService , DatePipe],
+  providers: [ProjetService,MembreService,TacheService , DatePipe, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

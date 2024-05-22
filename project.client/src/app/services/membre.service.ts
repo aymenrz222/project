@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators'; // Importer map depuis 'rxjs/operators'
-
+import { Membre } from '../membre';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +12,10 @@ export class MembreService {
   private BaseURL = `${environment.appUrl}/teams`;
   
   constructor(private httpClient: HttpClient) { }
-
+  getMembres(): Observable<Membre[]> {
+    return this.httpClient.get<Membre[]>(this.BaseURL);
+ 
+}
   getmembre(): Observable<{database: any[]}> {
     return this.httpClient.get<{database: any[]}>(`${this.BaseURL}`);
   }

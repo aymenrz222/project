@@ -1,5 +1,4 @@
 
-
 @mixin color-div($color1, $color2) {
   background-color: $color1;
   color: $color2;

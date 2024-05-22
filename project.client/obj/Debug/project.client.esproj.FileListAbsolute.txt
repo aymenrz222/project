@@ -4,3 +4,4 @@ C:\Users\aymen\Desktop\gestion\project\project.client\obj\Debug\project.client.e
 C:\Users\lenovo\Desktop\nouveau pfee\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
 C:\Users\lenovo\Desktop\nouveau pfee - Copie\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
 C:\Users\lenovo\Desktop\neeew\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
+C:\Users\aymen\Desktop\pfe\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache

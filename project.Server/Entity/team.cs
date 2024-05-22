@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace project.Server.Entity
 {
     public class team
     {
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       
+       
         public int teamId { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
@@ -15,5 +17,8 @@ namespace project.Server.Entity
         public string Poste { get; set; }
         public int Telephone { get; set; }
         public string Email { get; set; }
+       
+        
     }
+   
 }

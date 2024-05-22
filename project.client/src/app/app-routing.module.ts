@@ -9,6 +9,8 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { GanttComponent } from './gantt/gantt.component';
+
 
 
 const routes: Routes = [
@@ -24,6 +26,7 @@ const routes: Routes = [
       { path: 'list-projet/:pagenumber', component: ListProjetComponent },
       { path: 'membre', component: MembreComponent },
       { path: 'tasks', component: TasksComponent },
+      { path: 'gantt', component:GanttComponent },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
 

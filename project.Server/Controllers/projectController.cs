@@ -38,7 +38,7 @@ namespace project.Server.Controllers
                 .Include(p => p.ProjectTeams)
                 .ThenInclude(pt => pt.Team)
                 .FirstOrDefaultAsync(p => p.Id == projectId);
-
+             
             if (project == null)
             {
                 return new ApiResponse(400, "projet non trouveé");

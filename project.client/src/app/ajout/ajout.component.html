@@ -32,10 +32,17 @@
       </div>
 
       <div class="input-container">
-        <label for="team">Teams:</label>
-        <input type="text" id="team" formControlName="team" placeholder="Enter your teams"required>
-        <div class="error-message" *ngIf="newProjectForm.controls['team'].errors">
-          <div *ngIf="newProjectForm.controls['team'].errors['required']">Please enter a valid title</div>
+        <label for="teamIds">Teams:</label>
+        <mat-form-field appearance="fill">
+          <mat-label>Select members</mat-label>
+          <mat-select formControlName="teamIds" multiple>
+            <mat-option *ngFor="let membre of membres" [value]="membre.teamId">
+              {{ membre.nom }} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="error-message" *ngIf="newProjectForm.controls['teamIds'].errors">
+          <div *ngIf="newProjectForm.controls['teamIds'].errors['required']"></div>
         </div>
       </div>
 
