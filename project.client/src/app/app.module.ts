@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,12 +36,8 @@ import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-<<<<<<< HEAD
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { GanttComponent } from './gantt/gantt.component';
-=======
-import { AccueilComponent } from './accueil/accueil.component';
->>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480
 
 
 @NgModule({
@@ -70,11 +66,8 @@ import { AccueilComponent } from './accueil/accueil.component';
           LoginComponent,
           AboutComponent,
           ContactComponent,
-<<<<<<< HEAD
           GanttComponent,
-=======
-          AccueilComponent,
->>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480
+         
         
 
   ],

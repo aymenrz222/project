@@ -38,10 +38,10 @@ namespace project.Server.Controllers
                 .Include(p => p.ProjectTeams)
                 .ThenInclude(pt => pt.Team)
                 .FirstOrDefaultAsync(p => p.Id == projectId);
-             
+
             if (project == null)
             {
-                return new ApiResponse(400, "projet non trouveé");
+                return new ApiResponse(400, "projet non trouvé");
             }
 
             var teams = project.ProjectTeams.Select(pt => pt.Team).ToList();
@@ -50,11 +50,23 @@ namespace project.Server.Controllers
                 ReferenceHandler = ReferenceHandler.Preserve
             };
 
-            string jsonString = JsonSerializer.Serialize(project, options);
-            return new ApiResponse(200, "get project succefuly", jsonString);
+            string jsonString = JsonSerializer.Serialize(new
+            {
+                project.Id,
+                project.Titre,
+                project.ProjectStatus,
+                project.Client,
+                project.DebutDate,
+                project.DueDate,
+                project.Description,
+                project.Categorie,
+                project.Budget,
+                Teams = teams // Ajoutez les équipes au résultat JSON
+            }, options);
+
+            return new ApiResponse(200, "get project successfully", jsonString);
         }
 
-    
         [HttpPost]
         public async Task<IActionResult> CreateProject(ProjetDto project)
         {

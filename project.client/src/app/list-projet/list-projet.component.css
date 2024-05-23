@@ -1,6 +1,5 @@
 
 /* Media query pour les écrans de 2000px ou moins */
-<<<<<<< HEAD
 
 .content[_ngcontent-ng-c2423335819] {
   /* margin-left: 225px; */
@@ -9,18 +8,6 @@
   margin: 58px;
   margin-right: -103px;
   margin-top: -175px;
-=======
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
->>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480
 }
 
 /* Application de l'animation au titre h1 */

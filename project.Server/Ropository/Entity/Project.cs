@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace project.Server.Ropository.Entity
 {
@@ -24,13 +25,14 @@ namespace project.Server.Ropository.Entity
 
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; } // Changed DateOnly to DateTime with DataType attribute
-
+        
         public string Description { get; set; }
         public string Categorie { get; set; }
 
         [Range(0, double.MaxValue)]
         public decimal Budget { get; set; } // Changed float to decimal for better precision
 
+        [System.Text.Json.Serialization.JsonConverter(typeof(ProjectTeamsConverter))]
         public List<TeamProject> ProjectTeams { get; set; }
 
     }

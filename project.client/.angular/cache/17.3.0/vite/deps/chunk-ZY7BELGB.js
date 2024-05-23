@@ -1,10 +1,6 @@
 import {
   withHttpTransferCache
-<<<<<<<< HEAD:project.client/.angular/cache/17.3.0/vite/deps/chunk-CEV4MVCV.js
-} from "./chunk-KRLDXODH.js";
-========
-} from "./chunk-W2LQVVZ2.js";
->>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480:project.client/.angular/cache/17.3.0/vite/deps/chunk-QW3X76UB.js
+} from "./chunk-DKDJPPRD.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -15,11 +11,7 @@ import {
   isPlatformServer,
   parseCookieValue,
   setRootDomAdapter
-<<<<<<<< HEAD:project.client/.angular/cache/17.3.0/vite/deps/chunk-CEV4MVCV.js
-} from "./chunk-CMTVTJ7W.js";
-========
-} from "./chunk-CPOF36MN.js";
->>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480:project.client/.angular/cache/17.3.0/vite/deps/chunk-QW3X76UB.js
+} from "./chunk-MMG5Q3IW.js";
 import {
   APP_ID,
   ApplicationModule,
@@ -75,19 +67,11 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-<<<<<<<< HEAD:project.client/.angular/cache/17.3.0/vite/deps/chunk-CEV4MVCV.js
-} from "./chunk-L7EVSBZQ.js";
-import {
-  __spreadProps,
-  __spreadValues
-} from "./chunk-FQZWWORG.js";
-========
-} from "./chunk-YFRUUZIY.js";
+} from "./chunk-2V5CLL3R.js";
 import {
   __spreadProps,
   __spreadValues
 } from "./chunk-J4B6MK7R.js";
->>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480:project.client/.angular/cache/17.3.0/vite/deps/chunk-QW3X76UB.js
 
 // node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
 var GenericBrowserDomAdapter = class extends DomAdapter {
@@ -1910,8 +1894,4 @@ export {
    * License: MIT
    *)
 */
-<<<<<<<< HEAD:project.client/.angular/cache/17.3.0/vite/deps/chunk-CEV4MVCV.js
-//# sourceMappingURL=chunk-CEV4MVCV.js.map
-========
-//# sourceMappingURL=chunk-QW3X76UB.js.map
->>>>>>>> 9b89885dec132785cb690e0f1c605fbccd18f480:project.client/.angular/cache/17.3.0/vite/deps/chunk-QW3X76UB.js
+//# sourceMappingURL=chunk-ZY7BELGB.js.map

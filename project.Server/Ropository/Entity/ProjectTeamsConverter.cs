@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace project.Server.Ropository.Entity
@@ -7,30 +9,21 @@ namespace project.Server.Ropository.Entity
     {
         public override List<TeamProject> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var values = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
-            if (values.ValueKind != JsonValueKind.Array)
+            var teamIds = JsonSerializer.Deserialize<List<int>>(ref reader, options);
+            var teamProjects = new List<TeamProject>();
+            foreach (var teamId in teamIds)
             {
-                throw new JsonException();
+                teamProjects.Add(new TeamProject { TeamId = teamId });
             }
-
-            var result = new List<TeamProject>();
-            foreach (var value in values.EnumerateArray())
-            {
-                result.Add(JsonSerializer.Deserialize<TeamProject>(value, options));
-            }
-
-            return result;
+            return teamProjects;
         }
 
         public override void Write(Utf8JsonWriter writer, List<TeamProject> value, JsonSerializerOptions options)
         {
             writer.WriteStartArray();
-            foreach (var item in value)
+            foreach (var teamProject in value)
             {
-                writer.WriteStartObject();
-                writer.WriteNumber("TeamId", item.TeamId);
-                writer.WriteNumber("ProjectId", item.ProjectId);
-                writer.WriteEndObject();
+                writer.WriteNumberValue(teamProject.TeamId);
             }
             writer.WriteEndArray();
         }
