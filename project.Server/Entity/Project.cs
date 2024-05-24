@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,7 +18,9 @@ namespace project.Server.Entity
         public string ProjectStatus { get; set; } // Use PascalCase for property names
 
         public string Client { get; set; }
-        public string Team { get; set; }
+       
+        [JsonProperty("team")]    
+        public List<team> Team { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime DebutDate { get; set; } // Changed DateOnly to DateTime with DataType attribute

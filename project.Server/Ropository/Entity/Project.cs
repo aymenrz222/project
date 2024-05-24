@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace project.Server.Ropository.Entity
 {
@@ -23,8 +24,7 @@ namespace project.Server.Ropository.Entity
         public DateTime DebutDate { get; set; } // Changed DateOnly to DateTime with DataType attribute
 
         [DataType(DataType.Date)]
-        public DateTime DueDate { get; set; } // Changed DateOnly to DateTime with DataType attribute
-
+        public DateTime DueDate { get; set; } // Changed DateOnly to DateTime with DataType attribute     
         public string Description { get; set; }
         public string Categorie { get; set; }
 

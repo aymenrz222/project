@@ -53,7 +53,7 @@ namespace project.Server.Controllers
 
             if (project == null)
             {
-                return new ApiResponse(400, "projet non trouveé");
+                return new ApiResponse(400, "projet non trouvé");
             }
 
 
