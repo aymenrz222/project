@@ -4,8 +4,6 @@ using project.Server.Ropository.Entity;
 using project.Server.Ropository.AutoMapper.Helper;
 using project.Server.Ropository.AutoMapper;
 using project.Server.Ropository.EntityDto;
-using System.Text.Json.Serialization;
-using System.Text.Json;
 
 namespace project.Server.Controllers
 {
@@ -21,19 +19,33 @@ namespace project.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<List<ProjetDto>> GetProjects()
+        public async Task<ApiResponse> GetProjects()
         {
-            var mapper = MapperHelper.ConfigureMapper(ProjetAutoMapper.ConfigureProjectDto);
+            var mapperDto = MapperHelper.ConfigureMapper(TeamAutoMapper.ConfigureTeamsDto);
+           
+          
+            var projects = await _database.project
+                    .Include(p => p.ProjectTeams)
+                    .ThenInclude(pt => pt.Team)
+                    .ToListAsync();
 
-            List<Project> projects = await _database.project.ToListAsync();
+            var projectDtos = projects.Select(p => new ProjetDto
+            {
+                Id = p.Id,
+                teamIds = p.ProjectTeams.Select(pt => pt.TeamId).ToList(),
+                teams = p.ProjectTeams.Select(pt => mapperDto.Map<TeamDto>(pt.Team)).ToList()
+            });
 
-            return ProjetAutoMapper.MapProjectToDtos(projects, mapper);
+            return new ApiResponse(200 ,"success" , projectDtos);
+
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetProjectById")]
         public async Task<ApiResponse> GetProject(int projectId)
         {
+            var mapperDto = MapperHelper.ConfigureMapper(TeamAutoMapper.ConfigureTeamsDto);
             var project = await _database.project
                 .Include(p => p.ProjectTeams)
                 .ThenInclude(pt => pt.Team)
@@ -44,14 +56,16 @@ namespace project.Server.Controllers
                 return new ApiResponse(400, "projet non trouveé");
             }
 
-            var teams = project.ProjectTeams.Select(pt => pt.Team).ToList();
-            var options = new JsonSerializerOptions
-            {
-                ReferenceHandler = ReferenceHandler.Preserve
-            };
 
-            string jsonString = JsonSerializer.Serialize(project, options);
-            return new ApiResponse(200, "get project succefuly", jsonString);
+            var projectDtos = new ProjetDto
+            {
+                Id = project.Id,
+                teamIds = project.ProjectTeams.Select(pt => pt.TeamId).ToList(),
+                teams = project.ProjectTeams.Select(pt => mapperDto.Map<TeamDto>(pt.Team)).ToList()
+            };
+          
+          
+            return new ApiResponse(200, "get project succefuly", projectDtos);
         }
 
     
@@ -68,9 +82,10 @@ namespace project.Server.Controllers
 
             if (ModelState.IsValid)
             {
+               
                 _database.Add(projet);
                 await _database.SaveChangesAsync();
-
+               
                 // Add teams to the project
                 foreach (int teamId in project.teamIds)
                 {
@@ -79,6 +94,7 @@ namespace project.Server.Controllers
                     {
                         var teamProject = new TeamProject { TeamId = teamId , ProjectId = projet.Id };
                         _database.TeamProject.Add(teamProject);
+                          projet.ProjectTeams.Add(teamProject);
                     }
                 }
 
@@ -127,11 +143,6 @@ namespace project.Server.Controllers
             await _database.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool ProjectExists(int id)
-        {
-            return _database.project.Any(e => e.Id == id);
         }
 
     }

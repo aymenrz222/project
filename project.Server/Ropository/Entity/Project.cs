@@ -31,7 +31,7 @@ namespace project.Server.Ropository.Entity
         [Range(0, double.MaxValue)]
         public decimal Budget { get; set; } // Changed float to decimal for better precision
 
-        public List<TeamProject> ProjectTeams { get; set; }
+        public ICollection<TeamProject> ProjectTeams { get; set; }
 
     }
 

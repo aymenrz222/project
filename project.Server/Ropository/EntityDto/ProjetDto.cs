@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using project.Server.Ropository.Entity;
+using System.Text.Json.Serialization;
 
 namespace project.Server.Ropository.EntityDto
 {
@@ -29,6 +31,8 @@ namespace project.Server.Ropository.EntityDto
         [Range(0, double.MaxValue)]
         public decimal Budget { get; set; } // Changed float to decimal for better precision
 
-        public  List<int> teamIds { get; set; }
+        public  ICollection<int> teamIds { get; set; }
+     
+        public ICollection<TeamDto>? teams { get; set; }
     } 
 }
