@@ -48,7 +48,8 @@
           <td>{{ project.titre }}</td>
           <td>{{ project.projectStatus }}</td>
           <td>{{ project.client }}</td>
-          <td>{{ project.team }}</td>
+          <td *ngIf="project.teams && project.teams.length > 0">      {{ getnameteams(project.teams)}}  </td>    
+          <td *ngIf="!project.teams ||project.teams.length === 0">      Aucun élément à afficher    </td>
           <td>{{ project.dueDate | date: 'dd/MM/yyyy'}}</td>
           <td>
             <button (click)="viewProject(project)">
@@ -67,7 +68,7 @@
     <br><br>
     <div class="row">
       <div class="col-sm-12 col-md-5">
-        <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
+      <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
           Showing {{ getFirstEntryIndex() }} to {{ getLastEntryIndex() }} of {{ listProjects.length }} entries
         </div>
       </div>

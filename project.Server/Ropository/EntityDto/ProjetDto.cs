@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using project.Server.Ropository.Entity;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace project.Server.Ropository.EntityDto
 {

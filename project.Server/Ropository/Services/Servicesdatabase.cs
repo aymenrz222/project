@@ -10,7 +10,7 @@ public class Servicesdatabase : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=DESKTOP-TQ5Q2NL;Database=GestionProjetN2s;Trusted_Connection=True;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer("Server=DESKTOP-F14RLIJ\\SQLEXPRESS;Database=gestionProjet;Trusted_Connection=True;TrustServerCertificate=True;");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

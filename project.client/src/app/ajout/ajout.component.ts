@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ProjetService } from '../services/projet.service';
-
+import { Membre } from '../membre';
+import { MembreService } from '../services/membre.service';
 @Component({
   selector: 'app-ajout',
   templateUrl: './ajout.component.html',
@@ -13,28 +14,33 @@ export class AjoutComponent {
   @Output() closePopup = new EventEmitter<void>(); // Événement de sortie pour fermer le popup
 
   newProjectForm: FormGroup; // Formulaire de nouveau projet
-
-  constructor(private projectService: ProjetService , private formBuilder : FormBuilder) {
+  membres: Membre[]=[];
+  teamControl = new FormControl('', Validators.required);
+  constructor(private projectService: ProjetService , private formBuilder : FormBuilder,private membreService: MembreService) {
     // Initialiser le formulaire avec les contrôles requis et les validateurs
     this.newProjectForm = this.formBuilder.group({
       titre: ['', Validators.required],
       projectStatus: new FormControl('', Validators.required),
       client: new FormControl('', Validators.required),
-      team: new FormControl(''),
+      teamIds: new FormControl('',Validators.required),
       debutDate: new FormControl('', Validators.required),
       dueDate: new FormControl('', Validators.required),
       description: new FormControl(''),
       categorie: new FormControl(''),
       budget: new FormControl('')
     });
-    
+    this.getMembres();
   }
-
+  getMembres(): void {
+    
+    this.membreService.getMembres().subscribe(membres => this.membres = membres);
+  }
   onSaveClick(): void {
     // Vérifier si le formulaire est valide avant d'émettre les données
-    
-      const newProjectData = this.newProjectForm.value; // Obtenir les valeurs du formulaire
-      this.projectService.addData(newProjectData).subscribe(
+    const selectteamIds =this.teamControl.value;
+      const data = this.newProjectForm.value;
+       
+      this.projectService.addData(data).subscribe(
         (response) => {
           console.log('Project added successfully!', response);
           this.saveProject.emit(); // Émettre les données du nouveau projet via l'événement saveProject

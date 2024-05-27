@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProjetService } from '../services/projet.service';
-
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-list-projet',
   templateUrl: './list-projet.component.html',
@@ -40,7 +40,7 @@ export class ListProjetComponent implements OnInit {
   showlistes = false;
   showlistesmodifier = false;
   showAddPopup: boolean = false;
-  constructor(private projectService: ProjetService) {
+  constructor(private projectService: ProjetService, private authService: AuthService) {
     this.newProjectForm = new FormGroup({
       titre: new FormControl('', Validators.required),
       projectstatus: new FormControl('', Validators.required),
@@ -53,19 +53,21 @@ export class ListProjetComponent implements OnInit {
     });
   }
 
+  isAdmin: boolean = false;
   ngOnInit(): void {
     this.ListProjects();
-    
+    this.isAdmin = this.authService.getAdminStatus();
   }
-
   ListProjects(): void {
     this.projectService.getListProjects().subscribe((data) => {
       console.log("data", data)
-      this.listProjects = data;
+      this.listProjects = data.data;
       this.showlistes = true;
       this.projectId = true;
      
   })}
+getnameteams(teams:any[]):string{
+  return teams.map(team => team.nom).join(', ')}
 
   toggleAddPopup(): void {
     this.showAddPopup = !this.showAddPopup;
@@ -143,9 +145,12 @@ export class ListProjetComponent implements OnInit {
   getFirstEntryIndex(): number {
     return (this.currentPage - 1) * this.entriesPerPage + 1;
   }
-  getLastEntryIndex(): number {
-    const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex > this.listProjects.length ? this.listProjects.length : endIndex;
+  getLastEntryIndex():any {
+    console.log('afficher liste projet',this.listProjects)
+   /* const endIndex = this.currentPage * this.entriesPerPage;
+    return endIndex > this.listProjects.length ? this.listProjects.length : endIndex;*/
+    
+
   }
   changePage(newPage: number): void {
     if (newPage >= 1 && newPage <= this.getTotalPages()) {

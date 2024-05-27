@@ -32,6 +32,14 @@ namespace project.Server.Controllers
             var projectDtos = projects.Select(p => new ProjetDto
             {
                 Id = p.Id,
+                Titre = p.Titre,
+                ProjectStatus = p.ProjectStatus,
+                Client = p.Client,
+                DebutDate = p.DebutDate,
+                DueDate = p.DueDate,
+                Description = p.Description,
+                Categorie = p.Categorie,
+                Budget = p.Budget,
                 teamIds = p.ProjectTeams.Select(pt => pt.TeamId).ToList(),
                 teams = p.ProjectTeams.Select(pt => mapperDto.Map<TeamDto>(pt.Team)).ToList()
             });
@@ -60,6 +68,14 @@ namespace project.Server.Controllers
             var projectDtos = new ProjetDto
             {
                 Id = project.Id,
+                Titre = project.Titre,
+                ProjectStatus = project.ProjectStatus,
+                Client = project.Client,
+                DebutDate = project.DebutDate,
+                DueDate = project.DueDate,
+                Description = project.Description,
+                Categorie = project.Categorie,
+                Budget = project.Budget,
                 teamIds = project.ProjectTeams.Select(pt => pt.TeamId).ToList(),
                 teams = project.ProjectTeams.Select(pt => mapperDto.Map<TeamDto>(pt.Team)).ToList()
             };
