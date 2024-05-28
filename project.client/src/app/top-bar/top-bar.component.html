@@ -1,26 +1,32 @@
 <nav class="navbar navbar-expand navbar-light bg-light col-12">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="icon-list" href="#">
-              <i class="bi bi-list"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-address-book"></i> Contact</a>
-          </li>
-        </ul>
-        <form class="d-flex ms-2">
-          <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-        </form>
-      </div>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="icon-list" href="#">
+            <i class="bi bi-list"></i>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="'accueil'">
+            <i class="fas fa-address-book"></i>
+            <span>  Accueil</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="'contact'">
+            <i class="fas fa-address-book"></i>
+            <span>  contact</span>
+          </a>
+        </li>
+      </ul>
+      <form class="d-flex ms-2">
+        <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+      </form>
     </div>
-  </nav>
+  </div>
+</nav>

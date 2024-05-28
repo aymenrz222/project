@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MembreService } from '../services/membre.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-membre',
@@ -38,7 +39,7 @@ export class MembreComponent {
   database : any;
   membreId = false;
   showlistesmembre = false;
-  constructor(private membreService: MembreService) {
+  constructor(private membreService: MembreService , private authService: AuthService) {
     this.newMembreForm = new FormGroup({
       Nom: new FormControl('', Validators.required),
       Prenom: new FormControl('', Validators.required),
@@ -49,11 +50,19 @@ export class MembreComponent {
       mdp: new FormControl('', Validators.required)
 
     });
+    
   }
-  
+
+  isAdmin: boolean = false;  
   ngOnInit(): void {
     this.team();
+    this.isAdmin = this.authService.getAdminStatus();
+
   }
+
+
+
+
 
   team(): void{
     this.membreService.getmembre().subscribe((database) => {
@@ -186,4 +195,5 @@ export class MembreComponent {
       return a.Nom.localeCompare(b.Nom) * order;
     });
   }
+
 }

@@ -6,3 +6,4 @@ C:\Users\lenovo\Desktop\nouveau pfee - Copie\project\project.client\obj\Debug\pr
 C:\Users\lenovo\Desktop\neeew\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
 C:\Users\aymen\Desktop\pfe\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
 C:\Users\aymen\Desktop\satge\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache
+C:\Users\lenovo\Desktop\vrai one\project\project.client\obj\Debug\project.client.esproj.CoreCompileInputs.cache

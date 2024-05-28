@@ -1,12 +1,14 @@
 html {
   height: 100%;
 }
+
 body[_ngcontent-ng-c885358559] {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: linear-gradient(#fffcfc, #7f7f7f);
+  background-image: url('https://media.licdn.com/dms/image/C4E1BAQFARsMpYlyGig/company-background_10000/0/1584452827307?e=2147483647&v=beta&t=R4IarCItC3qzgkwB-YiH5sv_6YdTKn9F45cfwQLncC0.jpg'); /* Image de fond */
 }
+
 
 .login-box {
   position: absolute;

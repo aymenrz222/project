@@ -2,13 +2,12 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
 </head>
 <div class="content">
-  <h1>Ajout de membre</h1>
+  <h1>LISTE DES MEMBRES</h1>
   <br><br>
   <div class="container">
-    <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher des membres...">
 
     <button class="ajout" type="button" (click)="toggleAddPopup()">
-      <i class="fa-solid fa-plus"></i> Ajouter </button>
+      <i class="fa-solid fa-plus"></i> Ajouter un membre  </button>
   </div>
   <div class="dataTables_length bs-select" id="dtBasicExample_length">
     <label>Show
@@ -64,15 +63,17 @@ Telephone          <button type="button" class="btn btn-link btn-sm" (click)="so
 
         
         <td>
-          <button (click)="viewMembre(membre)">
+          <button (click)="viewMembre(membre) " [disabled]="!isAdmin">
             <i class="material-icons">visibility</i>
           </button>
-          <button (click)="openEditPopup(membre)">
+          <button (click)="openEditPopup(membre)" [disabled]="!isAdmin">
             <i class="material-icons">edit</i>
           </button>
-          <button (click)=" deletemembreConfirmation( membre)">
+          <button (click)=" deletemembreConfirmation( membre)" [disabled]="!isAdmin">
             <i class="material-icons">close</i>
-          </button>
+          </button><br>
+          <span *ngIf="!isAdmin"><strong> ALERT : </strong>Action inaccessible pour les non-administrateurs</span>
+
         </td>
       </tr>
     </tbody>

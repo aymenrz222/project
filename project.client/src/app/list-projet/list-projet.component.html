@@ -52,15 +52,18 @@
           <td *ngIf="!project.teams ||project.teams.length === 0">      Aucun élément à afficher    </td>
           <td>{{ project.dueDate | date: 'dd/MM/yyyy'}}</td>
           <td>
-            <button (click)="viewProject(project)">
+            
+            <button (click)="viewProject(project)" [disabled]="!isAdmin">
               <i class="material-icons">visibility</i>
             </button>
-            <button (click)="openEditPopup(project)">
+            <button (click)="openEditPopup(project)" [disabled]="!isAdmin">
               <i class="material-icons">edit</i>
             </button>
-            <button (click)="deleteprojectConfirmation(project)">
+            <button (click)="deleteprojectConfirmation(project)" [disabled]="!isAdmin" >
               <i class="material-icons">close</i>
-            </button>
+            </button><br>
+            <span *ngIf="!isAdmin"><strong> ALERT : </strong>Action inaccessible pour les non-administrateurs</span>
+
           </td>
         </tr>
       </tbody>

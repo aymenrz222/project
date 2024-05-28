@@ -1,17 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatOptionModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ListProjetComponent } from './list-projet/list-projet.component';
@@ -36,13 +32,15 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import { ProjetService } from './services/projet.service';
 import { MembreService } from './services/membre.service';
 import { TacheService } from './services/tache.service';
+import { AuthService } from './services/auth.service';
+
 import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AuthService } from './services/auth.service';
- 
+import { GanttComponent } from './gantt/gantt.component';
+
 
 @NgModule({
   declarations: [
@@ -70,22 +68,23 @@ import { AuthService } from './services/auth.service';
           LoginComponent,
           AboutComponent,
           ContactComponent,
-          
+          GanttComponent,
+         
+        
 
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule,BrowserModule,BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatOptionModule,
+    AppRoutingModule,BrowserModule,
 
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatSelectModule,
+    MatInputModule
+   
   ],
-  providers: [ProjetService,MembreService,TacheService ,AuthService,DatePipe, provideAnimationsAsync()],
+  providers: [ProjetService,MembreService,TacheService , AuthService, DatePipe, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

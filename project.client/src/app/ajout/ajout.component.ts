@@ -9,10 +9,10 @@ import { MembreService } from '../services/membre.service';
   styleUrls: ['./ajout.component.css']
 })
 export class AjoutComponent {
-  
+ 
   @Output() saveProject:EventEmitter<void> = new EventEmitter <void>(); // Événement de sortie pour enregistrer les données du projet
   @Output() closePopup = new EventEmitter<void>(); // Événement de sortie pour fermer le popup
-
+ 
   newProjectForm: FormGroup; // Formulaire de nouveau projet
   membres: Membre[]=[];
   teamControl = new FormControl('', Validators.required);
@@ -32,7 +32,7 @@ export class AjoutComponent {
     this.getMembres();
   }
   getMembres(): void {
-    
+   
     this.membreService.getMembres().subscribe(membres => this.membres = membres);
   }
   onSaveClick(): void {
@@ -51,10 +51,11 @@ export class AjoutComponent {
           // Traitez l'erreur en conséquence, affichez un message à l'utilisateur, etc.
         }
       );
-  
+ 
   }
-
+ 
   closeModal(): void {
     this.closePopup.emit(); // Émettre l'événement closePopup pour fermer le popup
   }
 }
+ 
