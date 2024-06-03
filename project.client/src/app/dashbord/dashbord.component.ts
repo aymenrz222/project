@@ -14,6 +14,7 @@ export class DashbordComponent implements OnInit {
   nombreProjets: number = 0;
   nombreMembres: number = 0;
   nombreTaches: number = 0;
+  performance: number = 0;
   projects: any[] = []; // Liste des projets
   debutDates: string[] = []; // Dates de début des projets
   chartOptions: any; // Options du graphique
@@ -40,6 +41,7 @@ export class DashbordComponent implements OnInit {
     this.projetService.countProjects().subscribe(
       count => {
         this.nombreProjets = count;
+        this.calculatePerformance();
       },
       error => {
         console.error('Une erreur s\'est produite lors de la récupération du nombre de projets : ', error);
@@ -49,18 +51,10 @@ export class DashbordComponent implements OnInit {
     this.membreService.countMembres().subscribe(
       count => {
         this.nombreMembres = count;
+        this.calculatePerformance();
       },
       error => {
         console.error('Une erreur s\'est produite lors de la récupération du nombre de membres : ', error);
-      }
-    );
-
-    this.tacheService.countTaches().subscribe(
-      count => {
-        this.nombreTaches = count;
-      },
-      error => {
-        console.error('Une erreur s\'est produite lors de la récupération du nombre de tâches : ', error);
       }
     );
   }
@@ -79,6 +73,14 @@ export class DashbordComponent implements OnInit {
     );
   }
 
+  calculatePerformance(): void {
+    if (this.nombreMembres > 0) {
+      this.performance = (this.nombreProjets / this.nombreMembres) * 100;
+    } else {
+      this.performance = 0;
+    }
+  }
+
   setupChart(projects: any[]): void {
     const chartData: any[][] = this.calculateChartData(projects);
 
@@ -87,7 +89,7 @@ export class DashbordComponent implements OnInit {
         type: 'column'
       },
       title: {
-        text: 'Nombre de projets par date '
+        text: 'Nombre de projets par date'
       },
       xAxis: {
         categories: this.debutDates,

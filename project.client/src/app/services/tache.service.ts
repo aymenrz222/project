@@ -33,9 +33,5 @@ export class TacheService {
   updateTask(task: any): Observable<{ task: any }> {
     return this.httpClient.put<{ task: any }>(`${this.BaseURL}`, task);
   }
-  countTaches(): Observable<number> {
-    return this.getTasks().pipe(
-      map(response => response.dbase.length)
-    );
-  }
+ 
 }
