@@ -38,7 +38,7 @@
           <th scope="col">Projet Status</th>
           <th scope="col">Client</th>
           <th scope="col">Team</th>
-          <th scope="col">Due date</th>
+          <th scope="col">date debut</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -50,7 +50,7 @@
           <td>{{ project.client }}</td>
           <td *ngIf="project.teams && project.teams.length > 0">      {{ getnameteams(project.teams)}}  </td>    
           <td *ngIf="!project.teams ||project.teams.length === 0">      Aucun élément à afficher    </td>
-          <td>{{ project.dueDate | date: 'dd/MM/yyyy'}}</td>
+          <td>{{ project.debutDate | date: 'dd/MM/yyyy'}}</td>
           <td>
             
             <button (click)="viewProject(project)" [disabled]="!isAdmin">

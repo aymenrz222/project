@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,12 @@ export class ProjetService {
   updateProject(data: any): Observable<{ data: any[] }> {
     return this.httpClient.put<{ data: any[] }>(`${this.BaseURL}`, data);
   }
-  
+  countProjects(): Observable<number> {
+    return this.getListProjects().pipe(
+      map(response => response.data.length)
+    );
   }
+ 
+}
 
 

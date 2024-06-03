@@ -42,4 +42,9 @@ export class MembreService {
       map(response => response.map(item => item.prenom))
     );
   }
+  countMembres(): Observable<number> {
+    return this.getMembres().pipe(
+      map(membre => membre.length)
+    );
+  }
 }

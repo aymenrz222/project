@@ -7,6 +7,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { HighchartsChartModule } from 'highcharts-angular'; // Importer HighchartsChartModule
+
+
 
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -75,7 +78,7 @@ import { GanttComponent } from './gantt/gantt.component';
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule,BrowserModule,
+    AppRoutingModule,BrowserModule,HighchartsChartModule,
 
     FormsModule,
     ReactiveFormsModule,

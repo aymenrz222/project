@@ -57,16 +57,18 @@ export class ListProjetComponent implements OnInit {
   ngOnInit(): void {
     this.ListProjects();
     this.isAdmin = this.authService.getAdminStatus();
+    
   }
   ListProjects(): void {
     this.projectService.getListProjects().subscribe((data) => {
       console.log("data", data)
       this.listProjects = data.data;
+      
       this.showlistes = true;
       this.projectId = true;
      
   })}
-getnameteams(teams:any[]):string{
+  getnameteams(teams:any[]):string{
   return teams.map(team => team.nom).join(', ')}
 
   toggleAddPopup(): void {
@@ -184,9 +186,7 @@ getnameteams(teams:any[]):string{
 
   getNextPageUrl(){ console.log(this. getProjectsForCurrentPage(),this. getTotalPages()) ; 
    /* if (this.currentPage < this.getTotalPages()) {     return `/list-projet/${this.currentPage + 1}`;  } else {     return '#';   } }*/
-
-
-
  
 }
+
 }
