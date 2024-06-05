@@ -26939,7 +26939,7 @@ pre[class*="language-"] {
   background-image: linear-gradient(310deg, #373737 0%, #fc4c51 100%);
 }
 .header {
-  width: 150%;
+  width: 120%;
 position: relative;
 }
 ::after, ::before {

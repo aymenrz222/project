@@ -42,6 +42,11 @@ export class MembreService {
       map(response => response.map(item => item.prenom))
     );
   }
+  getNoms(): Observable<string[]> {
+    return this.httpClient.get<any[]>(`${this.BaseURL}`).pipe(
+      map(response => response.map(item => item.nom))
+    );
+  }
   countMembres(): Observable<number> {
     return this.getMembres().pipe(
       map(membre => membre.length)

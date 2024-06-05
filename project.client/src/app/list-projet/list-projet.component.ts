@@ -18,6 +18,7 @@ export class ListProjetComponent implements OnInit {
   showEditPopup: boolean = false;
   showConfirmation: boolean = false;
   projectToEdit: any;
+  searchValue: string = '';
   searchQuery: string = '';
   filteredProjects: any[] = [];
   projects: Array<{
@@ -29,6 +30,7 @@ export class ListProjetComponent implements OnInit {
     duedate: string,
     categorie: string,
     budget: string,
+    
     actions: Array<{ type: string, callback: Function }>
   }> = [];
   openpopup: boolean = false;
@@ -118,26 +120,53 @@ export class ListProjetComponent implements OnInit {
    
   }
 
-  searchProjects(event: Event): void {
-    const query = (event.target as HTMLInputElement).value;
-    this.filteredProjects = this.listProjects.filter(
-    this.project.titre.toLowerCase().includes(query.toLowerCase())
-    );
+  searchProjects(): void {
+    const query = this.searchValue.trim().toLowerCase();
+    if (query === '') {
+      this.filteredProjects = this.listProjects;
+    } else {
+      this.filteredProjects = this.listProjects.filter((project: any) =>
+        project.titre.toLowerCase().includes(query) ||
+        project.projectstatus.toLowerCase().includes(query) ||
+        project.client.toLowerCase().includes(query) ||
+        (project.teams && project.teams.some((team: any) => team.nom.toLowerCase().includes(query))) ||
+        project.debutdate.toLowerCase().includes(query) ||
+        project.duedate.toLowerCase().includes(query) ||
+        project.categorie.toLowerCase().includes(query) ||
+        project.budget.toLowerCase().includes(query)
+      );
+    }
+  }
+
+  onSubmit(event: Event): void {
+    event.preventDefault(); // Prevent the default form submission
+    this.searchProjects(); // Perform the search
+    if (this.filteredProjects.length > 0) {
+      this.displayProjectDetails(this.filteredProjects[0]);
+    } else {
+      alert('Aucun projet trouvé.');
+    }
   }
 
   displayProjectDetails(project: any): void {
     const message = `
       Titre: ${project.titre}
-      Projet Status: ${project.projetstatus}
+      Projet Status: ${project.projectstatus}
       Client: ${project.client}
       Team: ${project.team}
       Debut Date: ${project.debutdate}
       Categorie: ${project.categorie}
       Budget: ${project.budget}
     `;
-    alert(message);
+    prompt(message);
   }
-
+  sortByName(): void {
+    this.isSortedAscending = !this.isSortedAscending;
+    this.listProjects.sort((a: { titre: string }, b: { titre: string }) => {
+      const order = this.isSortedAscending ? 1 : -1;
+      return a.titre.localeCompare(b.titre) * order;
+    });
+  }
   // Pagination methods
   getProjectsForCurrentPage():  Array<any> {
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
@@ -149,30 +178,27 @@ export class ListProjetComponent implements OnInit {
   }
   getLastEntryIndex():any {
     console.log('afficher liste projet',this.listProjects)
-   /* const endIndex = this.currentPage * this.entriesPerPage;
-    return endIndex > this.listProjects.length ? this.listProjects.length : endIndex;*/
+  const endIndex = this.currentPage * this.entriesPerPage;
+    return endIndex > this.listProjects.length ? this.listProjects.length : endIndex;
     
 
   }
-  changePage(newPage: number): void {
+  
+  changePage(newPage: number, event: Event): void {
+    event.preventDefault(); // Empêche le comportement de navigation par défaut du lien
     if (newPage >= 1 && newPage <= this.getTotalPages()) {
       this.currentPage = newPage;
+      // Refresh the paginated projects
+      this.paginatedProjects = this.getProjectsForCurrentPage();
     }
-  }
+}
 
   onEntriesPerPageChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.entriesPerPage = +selectedValue; // Convert the selected value to a number
-    this.currentPage = 1; //
-  }
-
-  sortByName(): void {
-    this.isSortedAscending = !this.isSortedAscending;
-    this.projects.sort((a, b) => {
-      const order = this.isSortedAscending ? 1 : -1;
-      return a.titre.localeCompare(b.titre) * order;
-    });
-   
+    this.currentPage = 1; // Reset to the first page whenever the entries per page change
+    // Refresh the paginated projects
+    this.paginatedProjects = this.getProjectsForCurrentPage();
   }
 
   getTotalPages(): number {
@@ -183,10 +209,4 @@ export class ListProjetComponent implements OnInit {
     const totalPages = this.getTotalPages();
     return Array(totalPages).fill(0).map((x, i) => i + 1);
   }
-
-  getNextPageUrl(){ console.log(this. getProjectsForCurrentPage(),this. getTotalPages()) ; 
-   /* if (this.currentPage < this.getTotalPages()) {     return `/list-projet/${this.currentPage + 1}`;  } else {     return '#';   } }*/
- 
-}
-
 }

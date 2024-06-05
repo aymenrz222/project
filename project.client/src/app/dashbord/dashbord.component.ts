@@ -13,7 +13,7 @@ export class DashbordComponent implements OnInit {
 
   nombreProjets: number = 0;
   nombreMembres: number = 0;
-  nombreTaches: number = 0;
+
   performance: number = 0;
   projects: any[] = []; // Liste des projets
   debutDates: string[] = []; // Dates de début des projets

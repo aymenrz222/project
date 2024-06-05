@@ -91,10 +91,13 @@
     81.25%, 93.75% { transform: translate3d(0, -325%, 0); }
     87.5%, 100% { transform: translate3d(0, -350%, 0); }
   }
-  
+  .content h6 strong {
+    color: rgb(207, 30, 30); /* Couleur du texte en blanc */
+
+  }
   .content h6 {
     margin-top: 30%;
-    color: rgb(250, 100, 100); /* Couleur du texte en blanc */
+    color: rgb(247, 247, 247); /* Couleur du texte en blanc */
   font-size: 18px; /* Taille de la police */
   white-space: nowrap; /* Empêche le texte de passer à la ligne */
   overflow: hidden; /* Cache le contenu qui déborde */

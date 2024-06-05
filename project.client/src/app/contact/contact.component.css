@@ -1,4 +1,14 @@
+.social-media-list .contact-icon {
+  margin-right: 10px; /* Ajoutez l'espace souhaité entre les icônes */
+}
+
+.social-media-list .contact-icon:last-child {
+  margin-right: 0; /* Supprimez la marge droite du dernier élément pour éviter un espace supplémentaire */
+}
+
+
 .aaaa {
+  margin-left: 150px;
     width: 1000px;
     height: 640px;
     background-color:#000000;

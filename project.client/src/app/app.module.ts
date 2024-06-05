@@ -42,7 +42,6 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { GanttComponent } from './gantt/gantt.component';
 
 
 @NgModule({
@@ -70,8 +69,7 @@ import { GanttComponent } from './gantt/gantt.component';
           DashbordComponent,
           LoginComponent,
           AboutComponent,
-          ContactComponent,
-          GanttComponent,
+          ContactComponent
          
         
 
