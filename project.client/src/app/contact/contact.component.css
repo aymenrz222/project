@@ -6,7 +6,13 @@
   margin-right: 0; /* Supprimez la marge droite du dernier élément pour éviter un espace supplémentaire */
 }
 
-
+.mb-4 label {
+  color: rgb(0, 102, 255);
+}
+.mb-4 input {
+  background: black;
+  color: beige;
+}
 .aaaa {
   margin-left: 150px;
     width: 1000px;

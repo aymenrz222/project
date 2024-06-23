@@ -6,7 +6,7 @@
   <br><br>
   <div class="container">
 
-    <button class="ajout" type="button" (click)="toggleAddPopup()">
+    <button class="ajout" type="button" (click)="toggleAddPopup()" [disabled]="!isAdmin">
       <i class="fa-solid fa-plus"></i> Ajouter un membre  </button>
   </div>
   <div class="dataTables_length bs-select" id="dtBasicExample_length">
@@ -87,18 +87,14 @@ Telephone          <button type="button" class="btn btn-link btn-sm" (click)="so
     <div class="col-sm-12 col-md-7">
       <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
         <ul class="pagination">
-          <li class="paginate_button page-item" [class.disabled]="currentPage === 1" 
-              (click)="changePage(currentPage - 1)">
-            <a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+          <li class="paginate_button page-item" [class.disabled]="currentPage === 1" (click)="changePage(currentPage - 1, $event)">
+            <a href="#" aria-controls="dtBasicExample" tabindex="0" class="page-link">Previous</a>
           </li>
           <li class="paginate_button page-item" [class.active]="page === currentPage" *ngFor="let page of getPages()">
-            <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
-               class="page-link" (click)="changePage(page)">{{ page }}</a>
+            <a href="#" aria-controls="dtBasicExample" tabindex="0" class="page-link" (click)="changePage(page, $event)">{{ page }}</a>
           </li>
-          <li class="paginate_button page-item" [class.disabled]="currentPage === getTotalPages()" 
-              (click)="changePage(currentPage + 1)">
-            <a href="#" aria-controls="dtBasicExample"  tabindex="0" 
-               class="page-link">Next</a>
+          <li class="paginate_button page-item" [class.disabled]="currentPage === getTotalPages()" (click)="changePage(currentPage + 1, $event)">
+            <a href="#" aria-controls="dtBasicExample" tabindex="0" class="page-link">Next</a>
           </li>
         </ul>
       </div>

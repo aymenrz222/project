@@ -7,29 +7,40 @@
     
     <!-- Left contact page --> 
       
-      <form id="contact-form" class="form-horizontal" role="form">
-         
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
-          </div>
-        </div>
-  
-        <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
-        
-        <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+    <form #emailForm="ngForm" (ngSubmit)="sendMail(emailForm)" class="max-w-md mx-auto">
+      <div *ngIf="errorMessage" class="text-red-500 mb-4">{{ errorMessage }}</div> <!-- Error Message -->
+      <div *ngIf="successMessage" class="text-green-500 mb-4">{{ successMessage }}</div> <!-- Success Message -->
+      
+      <div class="mb-4">
+        <label for="senderName">Nom :</label>
+        <input type="text" id="senderName" name="senderName" required [(ngModel)]="senderName" #senderNameInput="ngModel" class="border p-2 w-full">
+        <div *ngIf="senderNameInput.touched && senderNameInput.invalid" class="text-red-500 mb-1">Votre nom est requis</div> <!-- Error Message -->
+      </div>
+      <div class="mb-4">
+        <label for="to"> De(E-mail) :</label>
+        <input type="email" id="to" name="recipientEmail" required [(ngModel)]="recipientEmail" #recipientEmailInput="ngModel" class="border p-2 w-full">
+        <div *ngIf="recipientEmailInput.touched && recipientEmailInput.invalid" class="text-red-500 mb-1">E-mail Développeur est requis</div> <!-- Error Message -->
+      </div>
+      <div class="mb-4">
+        <label for="subject">Subject  : </label>
+        <input type="text" id="subject" name="subject" required [(ngModel)]="subject" #subjectInput="ngModel" class="border p-2 w-full">
+        <div *ngIf="subjectInput.touched && subjectInput.invalid" class="text-red-500 mb-1">Subject est requis</div> <!-- Error Message -->
+      </div>
+      <div class="mb-4">
+        <label for="replyToEmail">à (E-mail) : </label>
+        <input type="email" id="replyto" name="replyto" [(ngModel)]="replyToEmail" #replyToEmailInput="ngModel" class="border p-2 w-full">
+      </div>
+      <div class="mb-4">
+        <label for="message"> Message  :  </label>
+        <textarea id="message" name="message" rows="4" required [(ngModel)]="message" #messageInput="ngModel" class="border p-2 w-full"></textarea>
+        <div *ngIf="messageInput.touched && messageInput.invalid" class="text-red-500 mb-1">Message est requis</div> <!-- Error Message -->
+      </div>
+          <button  type="submit" value="SEND">
           <div class="alt-send-button">
             <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
           </div>
         
         </button>
-        
       </form>
       
     <!-- Left contact page --> 
@@ -71,3 +82,6 @@
   </section>  
     
 </div>
+
+
+

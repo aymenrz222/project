@@ -9,6 +9,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./membre.component.css']
 })
 export class MembreComponent {
+  paginatedMembres: any[] = [];
+
   newMembreForm: FormGroup;
   showEditPopup: boolean = false;
   showConfirmation: boolean = false;
@@ -176,11 +178,14 @@ export class MembreComponent {
     return Array.from({ length: this.getTotalPages() }, (_, i) => i + 1);
   }
 
-  changePage(newPage: number): void {
+  changePage(newPage: number, event: Event): void {
+    event.preventDefault(); // Empêche le comportement de navigation par défaut du lien
     if (newPage >= 1 && newPage <= this.getTotalPages()) {
       this.currentPage = newPage;
+      // Refresh the paginated projects
+      this.paginatedMembres = this.getMembresForCurrentPage();
     }
-  }
+}
 
   onEntriesPerPageChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;

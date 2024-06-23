@@ -120,6 +120,7 @@ export class ListProjetComponent implements OnInit {
    
   }
 
+  
   searchProjects(): void {
     const query = this.searchValue.trim().toLowerCase();
     if (query === '') {
@@ -142,7 +143,7 @@ export class ListProjetComponent implements OnInit {
     event.preventDefault(); // Prevent the default form submission
     this.searchProjects(); // Perform the search
     if (this.filteredProjects.length > 0) {
-      this.displayProjectDetails(this.filteredProjects[0]);
+      this.displayProjectDetails(this.filteredProjects[0]); // Display the first found project details
     } else {
       alert('Aucun projet trouvé.');
     }
